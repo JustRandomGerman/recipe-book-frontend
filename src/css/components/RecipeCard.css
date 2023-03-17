@@ -1,0 +1,18 @@
+.recipeCard{
+    border-radius: 5px;
+    box-shadow: 0 0 10px gray;
+    transition: 0.3s;
+    width: 20%;
+    height: 200px;
+}
+
+.recipeCard:hover{
+    box-shadow: 0 0 10px rgb(71, 71, 71);
+    
+}
+
+.recipeCard a{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}

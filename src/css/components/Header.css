@@ -1,0 +1,15 @@
+.header{
+    padding: 1em;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.header p{
+    padding: 0;
+}
+
+.header a{
+    padding: 0;
+}
