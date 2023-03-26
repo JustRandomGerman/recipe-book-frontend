@@ -7,7 +7,7 @@ function Layout() {
 
     return (
       <div id='layout'>
-        <div>
+        <div id='upper_layout'>
           <Header />
           <Outlet />
         </div>

@@ -1,5 +1,5 @@
 .recipeCard{
-    border-radius: 5px;
+    border-radius: 1em;
     box-shadow: 0 0 10px gray;
     transition: 0.3s;
     width: 20%;

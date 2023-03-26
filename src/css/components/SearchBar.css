@@ -1,0 +1,28 @@
+.search{
+    height: 2em;
+}
+
+.search select{
+    background-color: white;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border: 1px solid lightgray;
+    padding: .5em;
+}
+
+.search input{
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-left: none;
+    border-right: none;
+    padding: .5em;
+    outline: none;
+}
+
+.search button{
+    background-color: white;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border: 1px solid lightgray;
+    padding: .5em;
+}
