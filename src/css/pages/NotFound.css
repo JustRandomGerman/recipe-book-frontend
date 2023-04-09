@@ -1,4 +1,9 @@
 .notFound h1{
     font-size: 5em;
     font-weight: bold;
+    margin: 2rem;
+}
+
+.notFound p{
+    margin-left: 2rem;
 }

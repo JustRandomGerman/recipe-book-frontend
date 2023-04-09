@@ -1,9 +1,8 @@
 .recipeCard{
-    border-radius: 1em;
-    box-shadow: 0 0 10px gray;
+    border-radius: .5em;
+    box-shadow: 0 0 10px rgb(167, 167, 167);
     transition: 0.3s;
     width: 20%;
-    height: 200px;
 }
 
 .recipeCard:hover{
@@ -15,4 +14,10 @@
     display: inline-block;
     height: 100%;
     width: 100%;
+}
+
+.recipeCard img{
+    width: 100%;
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
 }

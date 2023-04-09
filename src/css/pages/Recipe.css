@@ -7,7 +7,28 @@
     background-color: white;
     box-shadow: 0 0 10px gray;
     width: 50%;
-    border-radius: 1em;
+    border-radius: .5em;
     margin: 2em auto 2em auto;
-    padding: 1em
+}
+
+.recipe img{
+    width: 100%;
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
+}
+
+.recipe article, h1, h2{
+    margin: 1rem;
+}
+
+.recipe .tags{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.recipe .tags p{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: .5em
 }
