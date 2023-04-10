@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../../css/pages/Recipe.css';
-import image from '../../assets/marmorkuchen.jpg'
+import style from '../../css/pages/Recipe.module.css';
+import image from '../../assets/marmorkuchen.jpg';
 import CollectionMenu from '../components/CollectionMenu';
 
 function Recipe(){
@@ -14,31 +14,30 @@ function Recipe(){
     }
 
     return(
-        <div className='recipe_background'>
-            <div className="recipe">
-                <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
-                <img src={image} alt="image of food"></img>
-                <button>Edit</button>
-                <button onClick={showCollectionPopup}>Add to collection</button>
-                <h1>{testtext.name}</h1>
-                <h2>Ingredients</h2>
-                <article>
-                    <table>
+        <div className={style.recipe}>
+            <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
+            <img src={image} alt="image of food"></img>
+            <button>Edit</button>
+            <button onClick={showCollectionPopup}>Add to collection</button>
+            <h1>{testtext.name}</h1>
+            <h2>Ingredients</h2>
+            <article>
+                <table>
 
-                    </table>
-                </article>
-                <h2>Instructions</h2>
-                <article>
-                    <p>{testtext.instructions}</p>
-                </article>
-                <h2>Tags</h2>
-                <article className='tags'>
-                    {testtext.tags.map(tag => {
-                        return <p key={tag}>{tag}</p>
-                    })}
-                </article>
-            </div>
+                </table>
+            </article>
+            <h2>Instructions</h2>
+            <article>
+                <p>{testtext.instructions}</p>
+            </article>
+            <h2>Tags</h2>
+            <article className={style.tags}>
+                {testtext.tags.map(tag => {
+                    return <p key={tag}>{tag}</p>
+                })}
+            </article>
         </div>
+        
     )
 }
 

@@ -1,9 +1,9 @@
-import '../../css/components/Footer.css'
+import style from '../../css/components/Footer.module.css';
 
 function Footer() {
 
     return (
-      <div className="footer">
+      <div className={style.footer}>
         &copy; Daniel Drescher. All rights reserved
       </div>
     )

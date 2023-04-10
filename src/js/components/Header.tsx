@@ -1,11 +1,11 @@
-import '../../css/components/Header.css';
+import style from '../../css/components/Header.module.css';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
 
 function Header() {
 
     return (
-      <div className='header'>
+      <div className={style.header}>
         <Link to='/'>
           <p>Recipe Book</p>
         </Link>

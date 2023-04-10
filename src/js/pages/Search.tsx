@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import '../../css/pages/Search.css'
+import style from '../../css/pages/Search.module.css';
 
 function Search(){
 
     const params = useParams();
 
     return(
-        <div className='search_page'>
+        <div className={style.search}>
             <h2>{"Results for: \"" + params.query + "\""}</h2>
         </div>
     )

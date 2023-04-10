@@ -1,4 +1,4 @@
-import '../../css/components/CollectionMenu.css';
+import style from '../../css/components/CollectionMenu.module.css';
 
 interface CollectionMenuProps {
     shown: boolean,
@@ -8,12 +8,12 @@ interface CollectionMenuProps {
 function CollectionMenu( { shown, setShown } : CollectionMenuProps){
 
     function hideCollectionPopup(){
-        setShown(false)
+        setShown(false);
     }
 
     return(
-        <div className={'popup_backdrop ' + (shown ? 'shown' : '')}>
-            <div className='popup'>
+        <div className={style.popup_backdrop  + (shown ? 'shown' : '')}>
+            <div className={style.popup}>
                 <button onClick={hideCollectionPopup}>Close</button>
                 <h2>popup</h2>
                 <input type='checkbox'></input>

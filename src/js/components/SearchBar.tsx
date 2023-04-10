@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../css/components/SearchBar.css'
+import style from '../../css/components/SearchBar.module.css';
 
 function SearchBar(){
     const navigate = useNavigate();
@@ -11,14 +11,14 @@ function SearchBar(){
     }
 
     return(
-        <div className='search'>
-            <button id='filter'>Filter</button>
+        <div className={style.search}>
+            <button id={style.filter}>Filter</button>
             <select name="search_mode">
                 <option value="recipe">Recipe</option>
                 <option value="ingredient">Ingredient</option>
             </select>
             <input type="search" value={searchString} onInput={e => setSearchString(e.currentTarget.value)}/>
-            <button id='begin_search' onClick={startSearch}>Search</button>
+            <button id={style.begin_search} onClick={startSearch}>Search</button>
         </div>
     )
 }

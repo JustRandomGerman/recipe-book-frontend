@@ -1,12 +1,12 @@
-import '../../css/pages/Home.css'
+import style from '../../css/pages/Home.module.css';
 import RecipeCard from '../components/RecipeCard';
 
 function Home() {
 
   return (
-    <div className='home'>
+    <div className={style.home}>
       <h1>Recent</h1>
-      <div className='container'>
+      <div className={style.container}>
         <RecipeCard />
         <RecipeCard />
         <RecipeCard />
