@@ -18,7 +18,14 @@
     top: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 10px gray;
-    padding: 1em;
+}
+
+.popup h2, .popup input{
+    margin-left: 1rem;
+}
+
+.popup button{
+    float: right;
 }
 
 .shown{

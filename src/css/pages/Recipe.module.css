@@ -17,7 +17,7 @@
     border-top-left-radius: .5em;
 }
 
-.recipe article, h1, h2{
+.recipe article, .recipe h1, .recipe h2{
     margin: 1rem;
 }
 

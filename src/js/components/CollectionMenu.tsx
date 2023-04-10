@@ -12,7 +12,7 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
     }
 
     return(
-        <div className={style.popup_backdrop  + (shown ? 'shown' : '')}>
+        <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
             <div className={style.popup}>
                 <button onClick={hideCollectionPopup}>Close</button>
                 <h2>popup</h2>
