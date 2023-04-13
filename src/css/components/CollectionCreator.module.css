@@ -1,0 +1,20 @@
+.creator{
+    display: none;
+}
+
+.shown{
+    display: unset;
+}
+
+.creator input{
+    border: 1px solid lightgray;
+    border-radius: .5em;
+    margin-bottom: 1em;
+    padding: .5em;
+    outline: none;
+    width: calc(100% - 1rem);
+}
+
+#create_button{
+    float: right;
+}
