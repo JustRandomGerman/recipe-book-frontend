@@ -12,11 +12,8 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
     let collections = [{id: 1, name: "first collection"}, {id: 2, name: "second collection"}, {id: 3, name: "third collection"}]
 
     function hideCollectionPopup(){
-        //setCollectionCreatorShown(false);
         setShown(false);
     }
-
-    
 
     return(
         <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
