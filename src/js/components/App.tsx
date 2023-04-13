@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/recipe/:id" element={<Recipe/>} />
-          <Route path="/search/:query" element={<Search/>} />
+          <Route path="/search" element={<Search/>} />
           <Route path="/create" element={<CreateRecipe />} />
           <Route path="*" element={<NotFound />} />
         </Route>

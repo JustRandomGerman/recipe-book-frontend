@@ -7,7 +7,7 @@ interface CollectionCreatorProps{
 
 function CollectionCreator( {parent_shown} : CollectionCreatorProps){
     
-    let [shown, setShown] = useState(false);
+    let [shown, setShown] = useState<boolean>(false);
     
     function handleAddCollection(){
         setShown(true);

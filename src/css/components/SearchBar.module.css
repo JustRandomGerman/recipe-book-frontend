@@ -26,9 +26,3 @@
     border: 1px solid lightgray;
     padding: .5em;
 }
-
-.search #filter{
-    background-color: transparent;
-    border: none;
-    padding: .5em;
-}
