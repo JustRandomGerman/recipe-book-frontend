@@ -1,6 +1,7 @@
 import style from '../../css/components/CollectionMenu.module.css';
 import CollectionItem from './CollectionItem';
 import CollectionCreator from './CollectionCreator';
+import image from '../../assets/x.svg';
 
 interface CollectionMenuProps {
     shown: boolean,
@@ -18,7 +19,9 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
     return(
         <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
             <div className={style.popup}>
-                <button id={style.close_button} onClick={hideCollectionPopup}>Close</button>
+                <button id={style.close_button} onClick={hideCollectionPopup}>
+                    <img src={image} alt="Close" />
+                </button>
                 <h3>Add to collection</h3>
                 <ul>
                     {collections.map(collection => <CollectionItem name={collection.name} />)}

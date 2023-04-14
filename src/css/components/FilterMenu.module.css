@@ -4,6 +4,10 @@
     padding: .5em;
 }
 
+#filter img{
+    height: 1em;
+}
+
 .filter_menu{
     position: absolute;
     background-color: white;

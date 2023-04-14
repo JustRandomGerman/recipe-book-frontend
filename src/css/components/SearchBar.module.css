@@ -26,3 +26,7 @@
     border: 1px solid lightgray;
     padding: .5em;
 }
+
+.search #begin_search img{
+    height: 1em;
+}

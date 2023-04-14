@@ -24,7 +24,7 @@
 
 .popup h3{
     margin-left: 0;
-    margin-top: 1.5em;
+    margin-top: .5em;
     white-space: nowrap;
 }
 
@@ -35,6 +35,16 @@
 
 #close_button{
     float: right;
+    position: relative;
+    right: -.5rem;
+    top: -.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+#close_button img{
+    height: 1.5em;
 }
 
 .shown{
