@@ -1,0 +1,11 @@
+.tags{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.tags p{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: .5em
+}

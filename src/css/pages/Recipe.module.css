@@ -17,18 +17,6 @@
     border-top-left-radius: .5em;
 }
 
-.recipe article, .recipe h1, .recipe h2{
+.recipe section, .recipe h1{
     margin: 1rem;
-}
-
-.recipe .tags{
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-}
-
-.recipe .tags p{
-    background-color: lightgray;
-    border-radius: 5px;
-    padding: .5em
 }
