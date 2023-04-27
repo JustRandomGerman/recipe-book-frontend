@@ -1,16 +1,12 @@
 import style from '../../css/components/IngredientList.module.css';
 import IngredientItem from './IngredientItem';
-//import Ingredient from './IngredientItem'
+import { Ingredient } from '../interfaces/Ingredient'
 
-interface Ingredient{
-    amount: string,
-    name: string
-}
+
 
 interface IngredientListProps{
     editing: boolean
     ingredients: Ingredient[]
-    //TODO ?????
 }
 
 function IngredientList( {editing, ingredients} : IngredientListProps){
@@ -19,7 +15,9 @@ function IngredientList( {editing, ingredients} : IngredientListProps){
         <section className={style.ingredient_list}>
             <h2>Ingredients</h2>
             <table>
-                {ingredients.map(ingredient => <IngredientItem editing={editing} ingredient={ingredient}/>)}
+                <tbody>
+                    {ingredients.map(ingredient => <IngredientItem key={ingredient.name} editing={editing} ingredient={ingredient}/>)}
+                </tbody>
             </table>
         </section>
     )

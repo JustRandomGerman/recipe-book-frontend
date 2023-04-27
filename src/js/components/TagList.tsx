@@ -1,8 +1,5 @@
 import style from '../../css/components/TagList.module.css';
-
-interface Tag{
-    name : string
-}
+import { Tag } from '../interfaces/Tag'
 
 interface TagListProps{
     editing: boolean

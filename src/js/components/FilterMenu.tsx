@@ -1,10 +1,11 @@
-import { MouseEventHandler, useState } from 'react';
+import { useState } from 'react';
 import style from '../../css/components/FilterMenu.module.css';
 import FilterItem from './FilterItem';
 import image from '../../assets/funnel.svg';
+import { Tag } from '../interfaces/Tag'
 
 interface FilterMenuProps{
-    selectedTags : string[],
+    selectedTags : Tag[],
     setSelectedTags : Function
 }
 
@@ -12,7 +13,7 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
     let [shown, setShown] = useState<boolean>(false);
     
     //TODO get from server
-    let tags = [ "test1", "test2", "test3" ];
+    let tags = [ {name: "test1"}, {name: "test2"}, {name:"test3"} ];
     
     function handleFilterButton(event : React.MouseEvent<HTMLElement>){
         event.preventDefault();
@@ -26,8 +27,7 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
             </button>
             {shown ? 
                 <div className={style.filter_menu}>
-                    {tags.map(tag => <FilterItem name={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
-                    <p>{selectedTags}</p>
+                    {tags.map(tag => <FilterItem key={tag.name} currentTag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
                 </div> : ''
             }
         </>

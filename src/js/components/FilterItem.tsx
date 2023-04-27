@@ -1,32 +1,32 @@
-import { ChangeEventHandler } from 'react';
 import style from '../../css/components/FilterItem.module.css';
+import { Tag } from '../interfaces/Tag'
 
 interface FilterItemProps{
-    name: string;
-    selectedTags: string[],
+    currentTag: Tag;
+    selectedTags: Tag[],
     setSelectedTags: Function
 }
 
-function FilterItem( {name, selectedTags, setSelectedTags} : FilterItemProps){
+function FilterItem( {currentTag, selectedTags, setSelectedTags} : FilterItemProps){
     
     function handleSelectChange(event : React.ChangeEvent<HTMLInputElement>){
         if(event.target.checked === true){
-            setSelectedTags((prevTags : string[]) => [
+            setSelectedTags((prevTags : Tag[]) => [
             ...prevTags,
-            name
+            currentTag
             ])
         }
         else{
-            setSelectedTags((prevTags : string[]) => {
-                return prevTags.filter((tag : string) => tag !== name)
+            setSelectedTags((prevTags : Tag[]) => {
+                return prevTags.filter((tag: Tag) => tag.name !== currentTag.name)
             })
         }
     }
     
     return (
         <fieldset className={style.filter_item}>
-            <input type="checkbox" id={name} name={name} onChange={handleSelectChange}/>
-            <label htmlFor={name}>{name}</label>
+            <input type="checkbox" id={currentTag.name} name={currentTag.name} checked={selectedTags.some((tag) => tag.name === currentTag.name)} onChange={handleSelectChange}/>
+            <label htmlFor={currentTag.name}>{currentTag.name}</label>
         </fieldset>
     )
 }

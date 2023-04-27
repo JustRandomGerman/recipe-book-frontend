@@ -1,9 +1,5 @@
 import style from '../../css/components/IngredientItem.module.css';
-
-interface Ingredient{
-    amount: string,
-    name: string
-}
+import { Ingredient } from '../interfaces/Ingredient'
 
 interface IngredientItemProps{
     editing: boolean
