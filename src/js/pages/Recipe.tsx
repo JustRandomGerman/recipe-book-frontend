@@ -43,16 +43,16 @@ function Recipe(){
             <img src={image} alt="image of food"></img>
             <section className={style.control_buttons}>
                 <button onClick={editing ? save : edit}>
-                    <img src={!editing ? edit_image : check_image} />
+                    <img src={!editing ? edit_image : check_image} alt={!editing ? 'Edit' : 'Save'}/>
                 </button>
                 {!editing ? <button onClick={showCollectionPopup}>
-                    <img src={collection_image} />
+                    <img src={collection_image} alt='Add to collection'/>
                 </button> : <></>}
                 {!editing ? <button onClick={deleteRecipe}>
-                    <img src={delete_image} />
+                    <img src={delete_image} alt='Delete'/>
                 </button> : <></>}
                 {!editing ? <button onClick={savePdf}>
-                    <img src={download_image} />
+                    <img src={download_image} alt='Download'/>
                 </button> : <></>}
             </section>
             <h1 contentEditable={editing}>{testtext.name}</h1>

@@ -31,3 +31,10 @@
     border-radius: 0;
     width: 1.5em;
 }
+
+@media (prefers-color-scheme: dark){
+    .recipe{
+        background-color: rgb(60, 60, 60);
+        box-shadow: 0 0 10px black;
+    }
+}

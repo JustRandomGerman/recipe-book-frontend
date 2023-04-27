@@ -13,3 +13,13 @@
 .header a{
     padding: 0;
 }
+
+@media (prefers-color-scheme: dark) {
+    .header{
+        background-color: rgb(60, 60, 60);
+    }
+
+    .header a{
+        color: yellow;
+    }
+}

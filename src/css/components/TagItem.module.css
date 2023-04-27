@@ -16,3 +16,9 @@
     border: none;
     margin-left: 1em;
 }
+
+@media (prefers-color-scheme: dark){
+    .tag{
+        background-color: rgb(80, 80, 80);
+    }
+}
