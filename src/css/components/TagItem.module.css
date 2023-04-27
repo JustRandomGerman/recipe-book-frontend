@@ -1,0 +1,18 @@
+.tag{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: .5em;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.tag p{
+    margin: 0;
+}
+
+.tag button{
+    height: 1em;
+    background: none;
+    border: none;
+    margin-left: 1em;
+}

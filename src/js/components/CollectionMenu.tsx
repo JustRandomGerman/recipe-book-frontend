@@ -24,7 +24,7 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
                 </button>
                 <h3>Add to collection</h3>
                 <ul>
-                    {collections.map(collection => <CollectionItem name={collection.name} />)}
+                    {collections.map(collection => <CollectionItem key={collection.name} name={collection.name} />)}
                 </ul>
                 
                 <CollectionCreator parent_shown={shown} />

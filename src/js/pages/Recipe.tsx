@@ -4,6 +4,11 @@ import image from '../../assets/marmorkuchen.jpg';
 import CollectionMenu from '../components/CollectionMenu';
 import IngredientList from '../components/IngredientList';
 import TagList from '../components/TagList';
+import edit_image from '../../assets/pencil.svg'
+import check_image from '../../assets/check2.svg'
+import collection_image from '../../assets/collection.svg'
+import delete_image from '../../assets/trash.svg'
+import download_image from '../../assets/download.svg'
 
 function Recipe(){
     let [collectionPopupShown, setCollectionPopupShown] = useState<boolean>(false);
@@ -24,13 +29,31 @@ function Recipe(){
         //TODO send PUT request to server
     }
 
+    function deleteRecipe(){
+        //TODO send DELETE request to server
+    }
+
+    function savePdf(){
+        //TODO
+    }
+
     return(
         <div className={style.recipe}>
             <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
             <img src={image} alt="image of food"></img>
             <section className={style.control_buttons}>
-                <button onClick={editing ? save : edit}>{editing ? "Save" : "Edit"}</button>
-                <button onClick={showCollectionPopup}>Add to collection</button>
+                <button onClick={editing ? save : edit}>
+                    <img src={!editing ? edit_image : check_image} />
+                </button>
+                {!editing ? <button onClick={showCollectionPopup}>
+                    <img src={collection_image} />
+                </button> : <></>}
+                {!editing ? <button onClick={deleteRecipe}>
+                    <img src={delete_image} />
+                </button> : <></>}
+                {!editing ? <button onClick={savePdf}>
+                    <img src={download_image} />
+                </button> : <></>}
             </section>
             <h1 contentEditable={editing}>{testtext.name}</h1>
             <IngredientList editing={editing} ingredients={testtext.ingredients}/>

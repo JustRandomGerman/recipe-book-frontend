@@ -2,3 +2,13 @@
     text-align: right;
     margin-right: 1em;
 }
+.ingredient button{
+    height: 1em;
+    background: none;
+    border: none;
+    margin-left: 1em;
+}
+
+.ingredient img{
+    height: 1em;
+}
