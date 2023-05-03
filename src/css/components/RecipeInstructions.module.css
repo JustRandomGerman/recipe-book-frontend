@@ -1,0 +1,15 @@
+.recipe_instructions{
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    resize: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

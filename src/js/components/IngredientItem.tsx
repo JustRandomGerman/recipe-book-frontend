@@ -17,7 +17,9 @@ function IngredientItem({editing, ingredient} : IngredientItemProps){
         <tr className={style.ingredient}>
             <td contentEditable={editing}>{ingredient.amount}</td>
             <td contentEditable={editing}>{ingredient.name}</td>
-            {editing ? <button onClick={removeIngredient}><img src={delete_image} /> </button> : <></>}
+            <td>
+                {editing ? <button onClick={removeIngredient}><img src={delete_image} /> </button> : <></>}
+            </td>
         </tr>
     )
 }

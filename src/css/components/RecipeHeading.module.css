@@ -1,0 +1,17 @@
+.recipe_heading{
+    font-size: 2em;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: none;
+    color: black;
+    margin: 1rem;
+    width: fit-content;
+}
+
+@media (prefers-color-scheme: dark) {
+    .recipe_heading{
+        color: white;
+    }
+
+}
