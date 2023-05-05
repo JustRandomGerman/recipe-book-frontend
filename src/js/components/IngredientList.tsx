@@ -5,9 +5,10 @@ import { Ingredient } from '../interfaces/Ingredient'
 interface IngredientListProps{
     editing: boolean
     ingredients: Ingredient[]
+    setRecipe: Function
 }
 
-function IngredientList( {editing, ingredients} : IngredientListProps){
+function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps){
 
     function addIngredient(){
         //TODO
@@ -18,7 +19,7 @@ function IngredientList( {editing, ingredients} : IngredientListProps){
             <h2>Ingredients</h2>
             <table>
                 <tbody>
-                    {ingredients.map(ingredient => <IngredientItem key={ingredient.name} editing={editing} ingredient={ingredient}/>)}
+                    {ingredients.map((ingredient, index) => <IngredientItem key={ingredient.ingredient_name} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
             {editing ? <button onClick={addIngredient}>+</button> : <></>}

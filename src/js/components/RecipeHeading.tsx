@@ -3,11 +3,11 @@ import { Recipe } from '../interfaces/Recipe';
 
 interface RecipeHeadingProps {
     editing: boolean,
-    recipe: Recipe,
+    name: string,
     setRecipe: Function
 }
 
-function RecipeHeading({ editing, recipe, setRecipe }: RecipeHeadingProps) {
+function RecipeHeading({ editing, name, setRecipe }: RecipeHeadingProps) {
 
     function handleInput(event: React.FormEvent<HTMLInputElement>) {
         const value = event.currentTarget.value;
@@ -18,7 +18,7 @@ function RecipeHeading({ editing, recipe, setRecipe }: RecipeHeadingProps) {
     }
 
     return (
-        <input className={style.recipe_heading} type="text" value={recipe.name} onInput={handleInput} disabled={!editing} />
+        <input className={style.recipe_heading} type="text" value={name} onInput={handleInput} disabled={!editing} />
     )
 }
 

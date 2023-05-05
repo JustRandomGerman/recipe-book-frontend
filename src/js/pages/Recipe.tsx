@@ -9,6 +9,7 @@ import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/TagList';
 import edit_image from '../../assets/pencil.svg'
 import check_image from '../../assets/check2.svg'
+import cancel_image from '../../assets/x.svg'
 import collection_image from '../../assets/collection.svg'
 import delete_image from '../../assets/trash.svg'
 import download_image from '../../assets/download.svg'
@@ -21,11 +22,13 @@ function Recipe(){
     let [editing, setEditing] = useState<boolean>(false);
     let [loading, setLoading] = useState<boolean>(true);
     let [recipe, setRecipe] = useState<Recipe>();
+    let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
     useEffect( () => {
         axios.get<Recipe>("http://localhost:3000/recipes/" + params.id).then((response) => {
           setRecipe(response.data);
+          setOriginalRecipe(response.data);
           setLoading(false);
         })
       }, [])
@@ -40,8 +43,16 @@ function Recipe(){
 
     function save(){
         setEditing(false);
+
         console.log(recipe)
         //TODO send PUT request to server
+        
+        setOriginalRecipe(recipe);
+    }
+
+    function cancel(){
+        setEditing(false);
+        setRecipe(orginalRecipe);
     }
 
     function deleteRecipe(){
@@ -62,6 +73,9 @@ function Recipe(){
                         <button onClick={editing ? save : edit}>
                             <img src={!editing ? edit_image : check_image} alt={!editing ? 'Edit' : 'Save'}/>
                         </button>
+                        {editing ? <button onClick={cancel}>
+                            <img src={cancel_image} alt='cancel' />
+                        </button> : <></>}
                         {!editing ? <button onClick={showCollectionPopup}>
                             <img src={collection_image} alt='Add to collection'/>
                         </button> : <></>}
@@ -72,9 +86,9 @@ function Recipe(){
                             <img src={download_image} alt='Download'/>
                         </button> : <></>}
                     </section>
-                    <RecipeHeading editing={editing} recipe={recipe!} setRecipe={setRecipe} />
-                    <IngredientList editing={editing} ingredients={recipe!.ingredients} />
-                    <RecipeInstructions editing={editing} recipe={recipe!} setRecipe={setRecipe} />
+                    <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
+                    <IngredientList editing={editing} ingredients={recipe!.ingredients} setRecipe={setRecipe} />
+                    <RecipeInstructions editing={editing} instructions={recipe!.instructions} setRecipe={setRecipe} />
                     <TagList editing={editing} tags={recipe!.tags} />
                 </>
             ) : <p>loading...</p>}

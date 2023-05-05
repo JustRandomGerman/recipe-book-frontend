@@ -1,22 +1,58 @@
 import style from '../../css/components/IngredientItem.module.css';
+import { useEffect, useRef } from 'react';
 import { Ingredient } from '../interfaces/Ingredient'
 import delete_image from '../../assets/trash.svg'
+import { Recipe } from '../interfaces/Recipe';
 
 interface IngredientItemProps{
+    index: number
     editing: boolean
     ingredient: Ingredient
+    setRecipe: Function
 }
 
-function IngredientItem({editing, ingredient} : IngredientItemProps){
+function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItemProps){
+
+    const amountInputRef = useRef<HTMLInputElement>(null);
+    const nameInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (amountInputRef.current) {
+            amountInputRef.current.style.width = ingredient.amount.length + 'ch';
+        }
+        if (nameInputRef.current) {
+            nameInputRef.current.style.width = ingredient.ingredient_name.length + 'ch';
+        }
+    }, [ingredient.amount, ingredient.ingredient_name]);
+
+    function handleInput(event: React.FormEvent<HTMLInputElement>) {
+        const { name, value } = event.currentTarget;
+        setRecipe((oldRecipe : Recipe) => {
+            const updatedIngredient = { ...ingredient, [name]: value };
+            const updatedIngredients = [...oldRecipe.ingredients];
+            updatedIngredients[index] = updatedIngredient;
+            return { ...oldRecipe, ingredients: updatedIngredients };
+        })
+
+        //ingredient_name input gets unfocussed. WHY?
+    }
 
     function removeIngredient(){
-        //TODO
-    }
+        setRecipe((oldRecipe: Recipe) => {
+          const updatedIngredients = [...oldRecipe.ingredients];
+          updatedIngredients.splice(index, 1);
+          return { ...oldRecipe, ingredients: updatedIngredients };
+        });
+      }
 
     return(
         <tr className={style.ingredient}>
-            <td contentEditable={editing}>{ingredient.amount}</td>
-            <td contentEditable={editing}>{ingredient.name}</td>
+            <td>
+                <input type="text" name="amount" value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
+            </td>
+            <td>
+                <input type="text" name="ingredient_name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
+            </td>
             <td>
                 {editing ? <button onClick={removeIngredient}><img src={delete_image} /> </button> : <></>}
             </td>

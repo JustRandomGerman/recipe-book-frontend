@@ -4,11 +4,11 @@ import { Recipe } from '../interfaces/Recipe';
 
 interface RecipeInstructionProps{
     editing: boolean,
-    recipe: Recipe,
+    instructions: string,
     setRecipe: Function
 }
 
-function RecipeInstructions ({ editing, recipe, setRecipe } : RecipeInstructionProps){
+function RecipeInstructions ({ editing, instructions, setRecipe } : RecipeInstructionProps){
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -17,7 +17,7 @@ function RecipeInstructions ({ editing, recipe, setRecipe } : RecipeInstructionP
             textareaRef.current.style.height = "auto";
             textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
         }
-    }, [recipe.instructions]);
+    }, [instructions]);
 
     function handleInput(event: React.FormEvent<HTMLTextAreaElement>) {
         const value = event.currentTarget.value;
@@ -35,7 +35,7 @@ function RecipeInstructions ({ editing, recipe, setRecipe } : RecipeInstructionP
     return(
         <section>
             <h2>Instructions</h2>
-            <textarea className={style.recipe_instructions} value={recipe.instructions} onInput={handleInput} disabled={!editing} ref={textareaRef}/>
+            <textarea className={style.recipe_instructions} value={instructions} onInput={handleInput} disabled={!editing} ref={textareaRef}/>
         </section>
     )
 }
