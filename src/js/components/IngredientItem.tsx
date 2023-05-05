@@ -18,10 +18,10 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
 
     useEffect(() => {
         if (amountInputRef.current) {
-            amountInputRef.current.style.width = ingredient.amount.length + 'ch';
+            amountInputRef.current.style.width = (ingredient.amount.length + 1) + 'ch';
         }
         if (nameInputRef.current) {
-            nameInputRef.current.style.width = ingredient.ingredient_name.length + 'ch';
+            nameInputRef.current.style.width = (ingredient.ingredient_name.length + 1) + 'ch';
         }
     }, [ingredient.amount, ingredient.ingredient_name]);
 

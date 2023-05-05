@@ -1,3 +1,3 @@
 export interface Tag{
-    name : string
+    tag_name : string
 }

@@ -31,7 +31,7 @@ function Recipe(){
           setOriginalRecipe(response.data);
           setLoading(false);
         })
-      }, [])
+    }, [])
 
     function showCollectionPopup(){
         setCollectionPopupShown(true);
@@ -46,7 +46,7 @@ function Recipe(){
 
         console.log(recipe)
         //TODO send PUT request to server
-        
+
         setOriginalRecipe(recipe);
     }
 
@@ -89,7 +89,7 @@ function Recipe(){
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
                     <IngredientList editing={editing} ingredients={recipe!.ingredients} setRecipe={setRecipe} />
                     <RecipeInstructions editing={editing} instructions={recipe!.instructions} setRecipe={setRecipe} />
-                    <TagList editing={editing} tags={recipe!.tags} />
+                    <TagList editing={editing} tags={recipe!.tags} setRecipe={setRecipe}/>
                 </>
             ) : <p>loading...</p>}
         </div>

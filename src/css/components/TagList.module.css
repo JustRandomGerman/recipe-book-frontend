@@ -4,6 +4,17 @@
     gap: 1em;
 }
 
-#tag_button{
+#tag_select{
     margin-bottom: 1rem;
+    background-color: rgb(180, 180, 180);
+    border-radius: 5px;
+    border: none;
+    padding: .5em;
+}
+
+@media (prefers-color-scheme: dark){
+    #tag_select{
+        background-color: rgb(110, 110, 110);
+        color: white;
+    }
 }

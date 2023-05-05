@@ -1,6 +1,7 @@
 import style from '../../css/components/IngredientList.module.css';
 import IngredientItem from './IngredientItem';
 import { Ingredient } from '../interfaces/Ingredient'
+import Recipe from '../pages/Recipe';
 
 interface IngredientListProps{
     editing: boolean
@@ -11,7 +12,10 @@ interface IngredientListProps{
 function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps){
 
     function addIngredient(){
-        //TODO
+        setRecipe((oldRecipe: Recipe) => {
+            const updatedIngredients = [...oldRecipe.ingredients, { amount: "", ingredient_name: "" }];
+            return { ...oldRecipe, ingredients: updatedIngredients };
+        });
     }
 
     return(
