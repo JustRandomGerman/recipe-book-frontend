@@ -30,6 +30,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
         setRecipe((oldRecipe : Recipe) => {
             const updatedIngredient = { ...ingredient, [name]: value };
             const updatedIngredients = [...oldRecipe.ingredients];
+            //using the index to update, because name might not be unique
             updatedIngredients[index] = updatedIngredient;
             return { ...oldRecipe, ingredients: updatedIngredients };
         })
@@ -40,6 +41,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
     function removeIngredient(){
         setRecipe((oldRecipe: Recipe) => {
           const updatedIngredients = [...oldRecipe.ingredients];
+          //using the index to splice, because name might not be unique
           updatedIngredients.splice(index, 1);
           return { ...oldRecipe, ingredients: updatedIngredients };
         });

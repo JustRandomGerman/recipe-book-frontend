@@ -2,7 +2,6 @@
     border-radius: .5em;
     box-shadow: 0 0 10px rgb(167, 167, 167);
     transition: 0.3s;
-    width: 20%;
 }
 
 .recipe_card:hover{

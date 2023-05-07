@@ -7,15 +7,20 @@ interface TagItemProps{
     editing: boolean
     tag: Tag
     setRecipe: Function
+    setAvailableTags: Function
 }
 
-function TagItem({editing, tag, setRecipe} : TagItemProps){
+function TagItem({editing, tag, setRecipe, setAvailableTags} : TagItemProps){
 
     function removeTag(){
         setRecipe((oldRecipe : Recipe) => {
             const updatedTags = oldRecipe.tags.filter((t) => t.tag_name !== tag.tag_name);
             return {...oldRecipe, tags: updatedTags};
         });
+        setAvailableTags((oldTags : Tag[] ) => [
+            ...oldTags,
+            tag
+        ]);
     }
 
     return(
