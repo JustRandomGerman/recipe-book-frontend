@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from '../../css/components/FilterMenu.module.css';
 import FilterItem from './FilterItem';
 import image from '../../assets/funnel.svg';
 import { Tag } from '../interfaces/Tag'
+import axios from 'axios';
 
 interface FilterMenuProps{
     selectedTags : Tag[],
@@ -11,9 +12,13 @@ interface FilterMenuProps{
 
 function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
     let [shown, setShown] = useState<boolean>(false);
-    
-    //TODO get from server
-    let tags = [ {name: "test1"}, {name: "test2"}, {name:"test3"} ];
+    let [tags, setTags] = useState<Tag[]>([]);
+
+    useEffect( () => {
+        axios.get<Tag[]>("http://localhost:3000/tags/available").then((response) => {
+          setTags(response.data);
+        })
+    }, [])
     
     function handleFilterButton(event : React.MouseEvent<HTMLElement>){
         event.preventDefault();
@@ -27,8 +32,8 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
             </button>
             {shown ? 
                 <div className={style.filter_menu}>
-                    {tags.map(tag => <FilterItem key={tag.name} currentTag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
-                </div> : ''
+                    {tags.map(tag => <FilterItem key={tag.tag_name} currentTag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
+                </div> : <></>
             }
         </>
     )

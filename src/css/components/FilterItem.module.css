@@ -4,3 +4,13 @@
     background-color: lightgray;
     margin: 1em;
 }
+
+.filter_item input{
+    margin-right: .5em;
+}
+
+@media (prefers-color-scheme: dark){
+    .filter_item{
+        background-color: rgb(80, 80, 80);
+    }
+}

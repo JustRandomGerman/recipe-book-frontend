@@ -18,7 +18,7 @@ function SearchBar(){
     function handleStartSearch(event : React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         if(! (searchString === "")){
-            navigate("/search?query=" + searchString + "&mode=" + searchMode + "&tags=" + searchFilterTags.map(tag => tag.name));
+            navigate("/search?query=" + searchString + "&mode=" + searchMode + "&tags=" + searchFilterTags.map(tag => tag.tag_name));
         }
     }
 

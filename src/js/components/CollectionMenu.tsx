@@ -17,19 +17,23 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
     }
 
     return(
-        <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
-            <div className={style.popup}>
-                <button id={style.close_button} onClick={hideCollectionPopup}>
-                    <img src={image} alt="Close" />
-                </button>
-                <h3>Add to collection</h3>
-                <ul>
-                    {collections.map(collection => <CollectionItem key={collection.name} name={collection.name} />)}
-                </ul>
-                
-                <CollectionCreator parent_shown={shown} />
-            </div>
-        </div>
+        <>
+        {shown ? 
+            <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
+                <div className={style.popup}>
+                    <button id={style.close_button} onClick={hideCollectionPopup}>
+                        <img src={image} alt="Close" />
+                    </button>
+                    <h3>Add to collection</h3>
+                    <ul>
+                        {collections.map(collection => <CollectionItem key={collection.name} name={collection.name} />)}
+                    </ul>
+                    
+                    <CollectionCreator parent_shown={shown} />
+                </div>
+            </div> : <></>
+        }
+        </>
     )
 }
 

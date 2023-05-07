@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 function Header() {
 
     return (
-      <div className={style.header}>
+      <header className={style.header}>
         <Link to='/'>
           <p>Recipe Book</p>
         </Link>
@@ -13,7 +13,7 @@ function Header() {
         <Link to='create'>
           <p>Create new</p>
         </Link>
-      </div>
+      </header>
     )
 }
 

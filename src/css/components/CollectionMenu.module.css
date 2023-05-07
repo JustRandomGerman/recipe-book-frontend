@@ -5,7 +5,6 @@
     width: 100vw;
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.2);
-    visibility: hidden;
 }
 
 .popup{
@@ -45,11 +44,6 @@
 
 #close_button img{
     height: 1.5em;
-}
-
-.shown{
-    visibility: visible;
-    animation: fadeIn .5s;
 }
 
 @keyframes fadeIn{

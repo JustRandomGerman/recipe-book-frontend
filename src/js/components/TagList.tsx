@@ -17,8 +17,10 @@ function TagList( {editing, tags, setRecipe} : TagListProps){
 
     useEffect( () => {
         axios.get<Tag[]>("http://localhost:3000/tags/available").then((response) => {
-          setAvailableTags(response.data);
-          //TODO remove tags the recipe has from available tags
+            setAvailableTags(response.data.filter(tag => {
+                const isTagInRecipe = tags.some(recipeTag => recipeTag.tag_name === tag.tag_name);
+                return !isTagInRecipe;
+              }));
         })
     }, [])
 
@@ -40,8 +42,8 @@ function TagList( {editing, tags, setRecipe} : TagListProps){
             <div className={style.tags}>
                 {tags.map(tag => <TagItem key={tag.tag_name} editing={editing} tag={tag} setRecipe={setRecipe} setAvailableTags={setAvailableTags} />)}
                 {editing ? 
-                    <select id={style.tag_select} onChange={addTag}>
-                        <option value="Add Tag" selected disabled>Add Tag</option>
+                    <select id={style.tag_select} onChange={addTag} value={"Add Tag"}>
+                        <option value="Add Tag" disabled>Add Tag</option>
                         {availableTags.map((availableTag, index) => <option key={index} value={availableTag.tag_name}>{availableTag.tag_name}</option>)}
                     </select> 
                 : <></>}
