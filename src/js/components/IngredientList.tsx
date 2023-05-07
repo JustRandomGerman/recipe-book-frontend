@@ -23,7 +23,7 @@ function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps
             <h2>Ingredients</h2>
             <table>
                 <tbody>
-                    {ingredients.map((ingredient, index) => <IngredientItem key={ingredient.ingredient_name} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
+                    {ingredients.map((ingredient, index) => <IngredientItem key={index + ingredient.ingredient_name} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
             {editing ? <button onClick={addIngredient}>+</button> : <></>}

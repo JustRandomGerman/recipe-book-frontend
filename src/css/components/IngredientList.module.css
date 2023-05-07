@@ -1,3 +1,19 @@
 .ingredient_list table{
     border-spacing: .5em;
 }
+
+.ingredient_list button{
+    background-color: lightgray;
+    border: none;
+    border-radius: .5em;
+    color: black;
+    width: 10em;
+    height: 2em;
+}
+
+@media (prefers-color-scheme: dark){
+    .ingredient_list button{
+        background-color: rgb(110,110,110);
+        color: white;
+    }
+}

@@ -1,6 +1,5 @@
 import style from '../../css/components/RecipeCard.module.css';
 import { Link } from 'react-router-dom';
-import image from '../../assets/marmorkuchen.jpg';
 import { Recipe } from '../interfaces/Recipe';
 
 interface RecipeCardProps{
@@ -14,7 +13,7 @@ function RecipeCard( { recipe } : RecipeCardProps){
         <div className={style.recipe_card}>
             <Link to={"/recipe/" + recipe.id}>
                 <div>
-                    <img src={image} alt='image'></img>
+                    <img src={recipe.image} alt='image'></img>
                     <h1>{recipe.name}</h1>
                 </div>
             </Link>
