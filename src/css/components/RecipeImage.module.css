@@ -1,0 +1,19 @@
+.image_buttons{
+    position: relative;
+    top: -2em;
+    left: calc(50% - 5em);
+    background-color: inherit;
+    width: 10em;
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+}
+
+.image_buttons button{
+    height: 2em;
+    margin: .5em;
+}
+
+input[type=file]{
+    display: block;
+    margin: auto;
+}

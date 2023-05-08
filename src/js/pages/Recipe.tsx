@@ -43,15 +43,22 @@ function Recipe(){
 
     function save(){
         setEditing(false);
-
-        console.log(recipe)
-        //TODO send PUT request to server
+        axios.put<Recipe>("http://localhost:3000/recipes/" + params.id, {
+            name: recipe?.name,
+            instructions: recipe?.instructions,
+            ingredients: recipe?.ingredients,
+            tags: recipe?.tags,
+            image: recipe?.image
+        }).then((response) => {
+            console.log(response)
+        })
 
         setOriginalRecipe(recipe);
     }
 
     function cancel(){
         setEditing(false);
+        console.log(recipe)
         setRecipe(orginalRecipe);
     }
 
@@ -68,7 +75,7 @@ function Recipe(){
             {!loading ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
-                    <RecipeImage editing={editing} image={recipe!.image} />
+                    <RecipeImage editing={editing} image={recipe!.image} setRecipe={setRecipe}/>
                     <section className={style.control_buttons}>
                         <button onClick={editing ? save : edit}>
                             <img src={!editing ? edit_image : check_image} alt={!editing ? 'Edit' : 'Save'}/>

@@ -21,6 +21,10 @@
     margin: 1rem;
 }
 
+.control_buttons{
+    margin-bottom: 0 !important;
+}
+
 .control_buttons button{
     background: none;
     border:none;
