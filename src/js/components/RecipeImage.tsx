@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 import style from '../../css/components/RecipeImage.module.css';
 import { Recipe } from '../interfaces/Recipe';
 import axios from 'axios'
+import delete_image from '../../assets/trash.svg'
 
 interface RecipeImageProps{
     editing: boolean,
@@ -39,7 +40,9 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
                 <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>
             }
             {editing && image !== null ? <div className={style.image_buttons}>
-                <button onClick={deleteImage}>Delete</button>
+                <button onClick={deleteImage}>
+                    <img src={delete_image} alt="Delete"></img>
+                </button>
             </div> : <></>}
         </>
     )
