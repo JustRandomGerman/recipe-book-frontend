@@ -5,13 +5,26 @@ import Recipe from '../pages/Recipe';
 import Search from '../pages/Search';
 import CreateRecipe from '../pages/CreateRecipe'
 import NotFound from '../pages/NotFound';
+import ThemeContext from '../context/ThemeContext';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 function App() {
 
+  let [theme, setTheme] = useState("light");
+  useEffect( () => {
+    const colorScheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light"
+    setTheme(colorScheme)
+}, [])
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    e.matches ? setTheme("dark") : setTheme("light");
+    console.log(theme)
+  })
+
   return (
     <BrowserRouter>
+    <ThemeContext.Provider value={theme}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -21,6 +34,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+    </ThemeContext.Provider>
     </BrowserRouter>
   )
 }

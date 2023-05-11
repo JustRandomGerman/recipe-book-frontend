@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import style from '../../css/pages/Recipe.module.css';
 import CollectionMenu from '../components/CollectionMenu';
@@ -8,16 +8,25 @@ import IngredientList from '../components/IngredientList';
 import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/TagList';
 import edit_image from '../../assets/pencil.svg'
+import edit_image_white from '../../assets/pencil_white.svg'
 import check_image from '../../assets/check2.svg'
+import check_image_white from '../../assets/check2_white.svg'
 import cancel_image from '../../assets/x.svg'
+import cancel_image_white from '../../assets/x_white.svg'
 import collection_image from '../../assets/collection.svg'
+import collection_image_white from '../../assets/collection_white.svg'
 import delete_image from '../../assets/trash.svg'
+import delete_image_white from '../../assets/trash_white.svg'
 import download_image from '../../assets/download.svg'
+import download_image_white from '../../assets/download_white.svg'
 import { Recipe } from '../interfaces/Recipe';
 
 import axios from 'axios'
+import ThemeContext from '../context/ThemeContext';
 
 function Recipe(){
+    const theme = useContext(ThemeContext);
+    
     let [collectionPopupShown, setCollectionPopupShown] = useState<boolean>(false);
     let [editing, setEditing] = useState<boolean>(false);
     let [loading, setLoading] = useState<boolean>(true);
@@ -77,20 +86,23 @@ function Recipe(){
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
                     <RecipeImage editing={editing} image={recipe!.image} setRecipe={setRecipe}/>
                     <section className={style.control_buttons}>
-                        <button onClick={editing ? save : edit}>
-                            <img src={!editing ? edit_image : check_image} alt={!editing ? 'Edit' : 'Save'}/>
-                        </button>
+                        {editing ? <button onClick={save}>
+                            <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
+                        </button> : <></>}
                         {editing ? <button onClick={cancel}>
-                            <img src={cancel_image} alt='cancel' />
+                            <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
+                        </button> : <></>}
+                        {!editing ? <button onClick={edit}>
+                            <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
                         </button> : <></>}
                         {!editing ? <button onClick={showCollectionPopup}>
-                            <img src={collection_image} alt='Add to collection'/>
+                            <img src={theme === "light" ? collection_image : collection_image_white} alt='Add to collection'/>
                         </button> : <></>}
                         {!editing ? <button onClick={deleteRecipe}>
-                            <img src={delete_image} alt='Delete'/>
+                            <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
                         </button> : <></>}
                         {!editing ? <button onClick={savePdf}>
-                            <img src={download_image} alt='Download'/>
+                            <img src={theme === "light" ? download_image : download_image_white} alt='Download'/>
                         </button> : <></>}
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />

@@ -20,11 +20,11 @@ function CreateRecipe(){
     
     return(
         <div>
-            <RecipeImage editing={true} image={recipe.image} />
+            <RecipeImage editing={true} image={recipe.image} setRecipe={setRecipe}/>
             <RecipeHeading editing={true} name={recipe.name} setRecipe={setRecipe} />
             <IngredientList editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
             <RecipeInstructions editing={true} instructions={recipe.instructions} setRecipe={setRecipe} />
-            <TagList editing={true} tags={recipe.tags} />
+            <TagList editing={true} tags={recipe.tags} setRecipe={setRecipe}/>
         </div>
     )
 }

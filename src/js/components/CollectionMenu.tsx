@@ -2,6 +2,9 @@ import style from '../../css/components/CollectionMenu.module.css';
 import CollectionItem from './CollectionItem';
 import CollectionCreator from './CollectionCreator';
 import image from '../../assets/x.svg';
+import image_white from '../../assets/x_white.svg'
+import { useContext } from 'react';
+import ThemeContext from '../context/ThemeContext';
 
 interface CollectionMenuProps {
     shown: boolean,
@@ -9,6 +12,7 @@ interface CollectionMenuProps {
 }
 
 function CollectionMenu( { shown, setShown } : CollectionMenuProps){
+    const theme = useContext(ThemeContext)
 
     let collections = [{id: 1, name: "first collection"}, {id: 2, name: "second collection"}, {id: 3, name: "third collection"}]
 
@@ -22,7 +26,7 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
             <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
                 <div className={style.popup}>
                     <button id={style.close_button} onClick={hideCollectionPopup}>
-                        <img src={image} alt="Close" />
+                        <img src={theme === "light" ? image : image_white} alt="Close" />
                     </button>
                     <h3>Add to collection</h3>
                     <ul>

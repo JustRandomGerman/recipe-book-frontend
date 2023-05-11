@@ -1,8 +1,10 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import style from '../../css/components/RecipeImage.module.css';
 import { Recipe } from '../interfaces/Recipe';
 import axios from 'axios'
 import delete_image from '../../assets/trash.svg'
+import delete_image_white from '../../assets/trash_white.svg'
+import ThemeContext from '../context/ThemeContext';
 
 interface RecipeImageProps{
     editing: boolean,
@@ -11,6 +13,7 @@ interface RecipeImageProps{
 }
 
 function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
+    const theme = useContext(ThemeContext);
 
     function deleteImage(){
         setRecipe((oldRecipe : Recipe) => ({
@@ -41,7 +44,7 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
             }
             {editing && image !== null ? <div className={style.image_buttons}>
                 <button onClick={deleteImage}>
-                    <img src={delete_image} alt="Delete"></img>
+                    <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                 </button>
             </div> : <></>}
         </>
