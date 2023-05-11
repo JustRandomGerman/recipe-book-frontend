@@ -4,9 +4,10 @@ import style from '../../css/pages/Recipe.module.css';
 import CollectionMenu from '../components/CollectionMenu';
 import RecipeImage from '../components/RecipeImage';
 import RecipeHeading from '../components/RecipeHeading';
-import IngredientList from '../components/IngredientList';
+import RecipeKeywords from '../components/RecipeKeywords';
+import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
-import TagList from '../components/TagList';
+import TagList from '../components/RecipeTags';
 import edit_image from '../../assets/pencil.svg'
 import edit_image_white from '../../assets/pencil_white.svg'
 import check_image from '../../assets/check2.svg'
@@ -30,15 +31,20 @@ function Recipe(){
     let [collectionPopupShown, setCollectionPopupShown] = useState<boolean>(false);
     let [editing, setEditing] = useState<boolean>(false);
     let [loading, setLoading] = useState<boolean>(true);
+    let [error, setError] = useState<string>("");
+    let [success, setSuccess] = useState<string>("");
     let [recipe, setRecipe] = useState<Recipe>();
     let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
     useEffect( () => {
-        axios.get<Recipe>("http://localhost:3000/recipes/" + params.id).then((response) => {
-          setRecipe(response.data);
-          setOriginalRecipe(response.data);
-          setLoading(false);
+        axios.get<Recipe>(`http://localhost:3000/recipes/${params.id}`).then((response) => {
+            setRecipe(response.data);
+            setOriginalRecipe(response.data);
+            setLoading(false);
+        }).catch((error) => {
+            setError(`${error.response.status} - ${error.response.data.message}`)
+            setLoading(false)
         })
     }, [])
 
@@ -52,27 +58,32 @@ function Recipe(){
 
     function save(){
         setEditing(false);
-        axios.put<Recipe>("http://localhost:3000/recipes/" + params.id, {
+        console.log(recipe)
+        axios.put<Recipe>(`http://localhost:3000/recipes/${params.id}`, {
             name: recipe?.name,
+            keywords: recipe?.keywords,
             instructions: recipe?.instructions,
             ingredients: recipe?.ingredients,
             tags: recipe?.tags,
             image: recipe?.image
         }).then((response) => {
-            console.log(response)
+            setSuccess("Successfully saved recipe")
+            //set original recipe to the new one after saving
+            setOriginalRecipe(recipe);
+        }).catch((error) => {
+            setError(`${error.response.status} - ${error.response.data.message}`)
         })
-
-        setOriginalRecipe(recipe);
     }
 
     function cancel(){
         setEditing(false);
-        console.log(recipe)
         setRecipe(orginalRecipe);
     }
 
     function deleteRecipe(){
-        //TODO send DELETE request to server
+        axios.delete(`http://localhost:3000/recipes/${params.id}`).then(
+            //TODO redirect
+        )
     }
 
     function savePdf(){
@@ -81,10 +92,14 @@ function Recipe(){
 
     return(
         <div className={style.recipe}>
-            {!loading ? (
+            {!loading && error === "" ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
                     <RecipeImage editing={editing} image={recipe!.image} setRecipe={setRecipe}/>
+                    <section>
+                        <p className='error'>{error}</p>
+                        <p className='success'>{success}</p>
+                    </section>
                     <section className={style.control_buttons}>
                         {editing ? <button onClick={save}>
                             <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
@@ -106,11 +121,19 @@ function Recipe(){
                         </button> : <></>}
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
-                    <IngredientList editing={editing} ingredients={recipe!.ingredients} setRecipe={setRecipe} />
+                    {editing ? 
+                        <RecipeKeywords editing={editing} keywords={recipe!.keywords} setRecipe={setRecipe} />
+                    : <></>}
+                    <RecipeIngredients editing={editing} ingredients={recipe!.ingredients} setRecipe={setRecipe} />
                     <RecipeInstructions editing={editing} instructions={recipe!.instructions} setRecipe={setRecipe} />
                     <TagList editing={editing} tags={recipe!.tags} setRecipe={setRecipe}/>
                 </>
-            ) : <p>loading...</p>}
+            ) : (
+                <>
+                    {loading ? <p className="loading">loading...</p> : <></>}
+                    <p className="error">{error}</p>
+                </>
+            )}
         </div>
         
     )

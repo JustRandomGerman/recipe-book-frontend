@@ -7,6 +7,32 @@ a{
     text-decoration: none;
 }
 
+.loading{
+    padding: .5em;
+}
+
+.error{
+    border: 1px solid red;
+    border-radius: .5em;
+    background-color: rgb(255, 100, 100);
+    padding: .5em;
+}
+
+.error:empty{
+    display: none;
+}
+
+.success{
+    border: 1px solid green;
+    border-radius: .5em;
+    background-color: lightgreen;
+    padding: .5em;
+}
+
+.success:empty{
+    display: none;
+}
+
 @media (prefers-color-scheme: dark) {
     body{
         background-color: rgb(50, 50, 50);
@@ -15,5 +41,13 @@ a{
 
     a{
         color: white;
+    }
+
+    .error{
+        background-color: red;
+    }
+
+    .success{
+        background-color: green;
     }
 }

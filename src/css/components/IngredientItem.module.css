@@ -19,10 +19,12 @@
 }
 .ingredient button{
     height: 1em;
+    width: 1em;
     background: none;
     border: none;
 }
 
 .ingredient img{
     height: 1em;
+    width: 1em;
 }

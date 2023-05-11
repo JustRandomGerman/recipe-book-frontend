@@ -16,10 +16,9 @@ function App() {
   useEffect( () => {
     const colorScheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light"
     setTheme(colorScheme)
-}, [])
+  }, [])
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     e.matches ? setTheme("dark") : setTheme("light");
-    console.log(theme)
   })
 
   return (

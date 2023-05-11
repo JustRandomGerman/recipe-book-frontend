@@ -1,15 +1,15 @@
-import style from '../../css/components/IngredientList.module.css';
+import style from '../../css/components/RecipeIngredients.module.css';
 import IngredientItem from './IngredientItem';
 import { Ingredient } from '../interfaces/Ingredient'
 import Recipe from '../pages/Recipe';
 
-interface IngredientListProps{
+interface RecipeIngredientsProps{
     editing: boolean
     ingredients: Ingredient[]
     setRecipe: Function
 }
 
-function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps){
+function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredientsProps){
 
     function addIngredient(){
         setRecipe((oldRecipe: Recipe) => {
@@ -23,7 +23,7 @@ function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps
             <h2>Ingredients</h2>
             <table>
                 <tbody>
-                    {ingredients.map((ingredient, index) => <IngredientItem key={index + ingredient.ingredient_name} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
+                    {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient.ingredient_name}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
             {editing ? <button onClick={addIngredient}>+</button> : <></>}
@@ -31,4 +31,4 @@ function IngredientList( {editing, ingredients, setRecipe} : IngredientListProps
     )
 }
 
-export default IngredientList;
+export default RecipeIngredients;

@@ -1,17 +1,17 @@
-import style from '../../css/components/TagList.module.css';
+import style from '../../css/components/RecipeTags.module.css';
 import TagItem from './TagItem';
 import { Tag } from '../interfaces/Tag'
 import { useEffect, useState } from 'react';
 
 import axios from 'axios'
 
-interface TagListProps{
+interface RecipeTagsProps{
     editing: boolean
     tags: Tag[]
     setRecipe: Function
 }
 
-function TagList( {editing, tags, setRecipe} : TagListProps){
+function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
 
     let [availableTags, setAvailableTags] = useState<Tag[]>([]);
 
@@ -52,4 +52,4 @@ function TagList( {editing, tags, setRecipe} : TagListProps){
     )
 }
 
-export default TagList;
+export default RecipeTags;

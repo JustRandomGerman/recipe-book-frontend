@@ -19,6 +19,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
     const amountInputRef = useRef<HTMLInputElement>(null);
     const nameInputRef = useRef<HTMLInputElement>(null);
 
+    //adjust width of the input elements to mimick behavior of p elements
     useEffect(() => {
         if (amountInputRef.current) {
             amountInputRef.current.style.width = (ingredient.amount.length + 1) + 'ch';

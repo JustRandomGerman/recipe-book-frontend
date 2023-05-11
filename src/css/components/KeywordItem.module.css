@@ -1,0 +1,33 @@
+.keyword{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: .5em;
+    margin-bottom: 1rem;
+}
+
+.keyword input{
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.keyword button{
+    height: 1em;
+    background: none;
+    border: none;
+}
+
+.keyword img{
+    height: 1em;
+    width: 1em;
+}
+
+@media (prefers-color-scheme: dark){
+    .keyword{
+        background-color: rgb(80, 80, 80);
+    }
+}
