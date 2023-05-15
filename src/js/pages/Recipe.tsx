@@ -21,7 +21,6 @@ import delete_image_white from '../../assets/trash_white.svg'
 import download_image from '../../assets/download.svg'
 import download_image_white from '../../assets/download_white.svg'
 import { Recipe } from '../interfaces/Recipe';
-
 import axios from 'axios'
 import ThemeContext from '../context/ThemeContext';
 
@@ -37,6 +36,7 @@ function Recipe(){
     let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
+
     useEffect( () => {
         axios.get<Recipe>(`http://localhost:3000/recipes/${params.id}`).then((response) => {
             setRecipe(response.data);
@@ -58,7 +58,6 @@ function Recipe(){
 
     function save(){
         setEditing(false);
-        console.log(recipe)
         axios.put<Recipe>(`http://localhost:3000/recipes/${params.id}`, {
             name: recipe?.name,
             keywords: recipe?.keywords,
@@ -67,9 +66,13 @@ function Recipe(){
             tags: recipe?.tags,
             image: recipe?.image
         }).then((response) => {
-            setSuccess("Successfully saved recipe")
+            setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
             setOriginalRecipe(recipe);
+            //hide success message after some time
+            setTimeout(() => {
+                setSuccess("");
+            }, 5000)
         }).catch((error) => {
             setError(`${error.response.status} - ${error.response.data.message}`)
         })

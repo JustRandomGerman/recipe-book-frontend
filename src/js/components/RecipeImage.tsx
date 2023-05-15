@@ -18,7 +18,7 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
     function deleteImage(){
         setRecipe((oldRecipe : Recipe) => ({
             ...oldRecipe,
-            image: null
+            image: ""
         }))
     }
 
@@ -37,7 +37,7 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
 
     return(
         <>
-            {image !== null ? 
+            {image !== "" ? 
                 <img src={image} alt="image of food"></img>
             :
                 <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>

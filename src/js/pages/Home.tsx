@@ -18,7 +18,7 @@ function Home() {
     <div className={style.home}>
       <h1>Recent</h1>
       <div className={style.container}>
-        {recipes?.map(recipe => <RecipeCard key={"recent_" + recipe.name} recipe={recipe} />)}
+        {recipes?.map( (recipe: Recipe)=> <RecipeCard key={"recent_" + recipe.name} recipe={recipe} />)}
       </div>
       <h1>Random</h1>
     </div>
