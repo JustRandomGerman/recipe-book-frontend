@@ -42,7 +42,7 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
             :
                 <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>
             }
-            {editing && image !== null ? <div className={style.image_buttons}>
+            {editing && image !== "" ? <div className={style.image_buttons}>
                 <button onClick={deleteImage}>
                     <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                 </button>

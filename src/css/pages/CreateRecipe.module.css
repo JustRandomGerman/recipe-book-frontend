@@ -1,3 +1,24 @@
-#instructions{
-    resize: none;
+.create_recipe{
+    background-color: white;
+    box-shadow: 0 0 10px gray;
+    width: 50%;
+    border-radius: .5em;
+    margin: 2em auto 2em auto;
+}
+
+.create_recipe img{
+    width: 100%;
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
+}
+
+.create_recipe section{
+    margin: 1rem;
+}
+
+@media (prefers-color-scheme: dark){
+    .create_recipe{
+        background-color: rgb(60, 60, 60);
+        box-shadow: 0 0 10px black;
+    }
 }
