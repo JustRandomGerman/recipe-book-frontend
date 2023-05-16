@@ -33,7 +33,8 @@ function CreateRecipe(){
         }).then((response) => {
             //TODO redirect to recipe page
         }).catch((error) => {
-            setError(`${error.response.status} - ${error.response.data.message}`)
+            const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`)
+            setError(`${error.response.status} - ${details}`)
         })
     }
     

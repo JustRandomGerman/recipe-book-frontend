@@ -31,6 +31,7 @@ function Recipe(){
     let [editing, setEditing] = useState<boolean>(false);
     let [loading, setLoading] = useState<boolean>(true);
     let [error, setError] = useState<string>("");
+    let [loadingError, setLoadingError] = useState<string>("");
     let [success, setSuccess] = useState<string>("");
     let [recipe, setRecipe] = useState<Recipe>();
     let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
@@ -43,7 +44,7 @@ function Recipe(){
             setOriginalRecipe(response.data);
             setLoading(false);
         }).catch((error) => {
-            setError(`${error.response.status} - ${error.response.data.message}`)
+            setLoadingError(`${error.response.status} - ${error.response.data.message}`)
             setLoading(false)
         })
     }, [])
@@ -74,7 +75,8 @@ function Recipe(){
                 setSuccess("");
             }, 5000)
         }).catch((error) => {
-            setError(`${error.response.status} - ${error.response.data.message}`)
+            const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`)
+            setError(`${error.response.status} - ${details}`)
         })
     }
 
@@ -95,7 +97,7 @@ function Recipe(){
 
     return(
         <div className={style.recipe}>
-            {!loading && error === "" ? (
+            {!loading && loadingError === "" ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
                     <RecipeImage editing={editing} image={recipe!.image} setRecipe={setRecipe}/>
@@ -134,7 +136,7 @@ function Recipe(){
             ) : (
                 <>
                     {loading ? <p className="loading">loading...</p> : <></>}
-                    <p className="error">{error}</p>
+                    <p className="error">{loadingError}</p>
                 </>
             )}
         </div>
