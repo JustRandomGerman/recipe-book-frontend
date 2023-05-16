@@ -13,7 +13,7 @@ function RecipeCard( { recipe } : RecipeCardProps){
         <div className={style.recipe_card}>
             <Link to={"/recipe/" + recipe.id}>
                 <div>
-                    <img src={recipe.image} alt='image'></img>
+                    <img src={recipe.image_paths[0].path} alt='image'></img>
                     <h1>{recipe.name}</h1>
                 </div>
             </Link>

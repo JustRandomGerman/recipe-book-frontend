@@ -34,6 +34,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
             updatedKeywords[index] = updatedKeyword;
             return { ...oldRecipe, keywords: updatedKeywords };
         })
+        console.log(InputRef)
         //The input element gets unfocussed WHY??????????????
     }
 

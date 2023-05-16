@@ -65,7 +65,7 @@ function Recipe(){
             instructions: recipe?.instructions,
             ingredients: recipe?.ingredients,
             tags: recipe?.tags,
-            image: recipe?.image
+            image_paths: recipe?.image_paths
         }).then((response) => {
             setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
@@ -100,7 +100,7 @@ function Recipe(){
             {!loading && loadingError === "" ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
-                    <RecipeImage editing={editing} image={recipe!.image} setRecipe={setRecipe}/>
+                    <RecipeImage editing={editing} image_paths={recipe!.image_paths} setRecipe={setRecipe}/>
                     <section>
                         <p className='error'>{error}</p>
                         <p className='success'>{success}</p>

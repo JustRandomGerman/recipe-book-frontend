@@ -38,7 +38,9 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
             updatedIngredients[index] = updatedIngredient;
             return { ...oldRecipe, ingredients: updatedIngredients };
         })
-
+        console.log(name)
+        console.log(amountInputRef)
+        console.log(nameInputRef)
         //ingredient_name input gets unfocussed. WHY?
     }
 

@@ -8,6 +8,7 @@
     border-bottom-left-radius: .5em;
     border: 1px solid lightgray;
     padding: .5em;
+    height: 100%;
 }
 
 .search input{
@@ -17,6 +18,7 @@
     border-right: none;
     padding: .5em;
     outline: none;
+    height: 100%;
 }
 
 .search #begin_search{
@@ -25,6 +27,8 @@
     border-bottom-right-radius: .5em;
     border: 1px solid lightgray;
     padding: .5em;
+    height: 100%;
+    margin: 0;
 }
 
 .search #begin_search img{
@@ -34,20 +38,20 @@
 @media (prefers-color-scheme: dark) {
     .search select{
         background-color: rgb(60, 60, 60);
-        border: 2px solid yellow;
+        border: 1px solid yellow;
         color: yellow;
     }
 
     .search input{
-        border-top: 2px solid yellow;
-        border-bottom: 2px solid yellow;
+        border-top: 1px solid yellow;
+        border-bottom: 1px solid yellow;
         background-color: rgb(60, 60, 60);
         color: white;
     }
 
     .search #begin_search{
         background-color: rgb(60, 60, 60);
-        border: 2px solid yellow;
+        border: 1px solid yellow;
     }
     
 }

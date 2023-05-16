@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext } from 'react';
 import style from '../../css/components/RecipeImage.module.css';
 import { Recipe } from '../interfaces/Recipe';
+import { ImagePath } from '../interfaces/ImagePath';
 import axios from 'axios'
 import delete_image from '../../assets/trash.svg'
 import delete_image_white from '../../assets/trash_white.svg'
@@ -8,11 +9,11 @@ import ThemeContext from '../context/ThemeContext';
 
 interface RecipeImageProps{
     editing: boolean,
-    image: string,
+    image_paths: ImagePath[],
     setRecipe: Function
 }
 
-function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
+function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     const theme = useContext(ThemeContext);
 
     function deleteImage(){
@@ -37,16 +38,20 @@ function RecipeImage ({ editing, image, setRecipe } : RecipeImageProps){
 
     return(
         <>
-            {image !== "" ? 
-                <img src={image} alt="image of food"></img>
-            :
-                <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>
-            }
-            {editing && image !== "" ? <div className={style.image_buttons}>
-                <button onClick={deleteImage}>
-                    <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
-                </button>
-            </div> : <></>}
+            {image_paths.map( (image_path) => {
+                return (<>
+                    {image_path.path !== "" ? 
+                        <img key={image_path.path} src={image_path.path} alt="image of food"></img>
+                    :
+                        <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>
+                    }
+                    {editing && image_path.path !== "" ? <div className={style.image_buttons}>
+                        <button onClick={deleteImage}>
+                            <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
+                        </button>
+                    </div> : <></>}
+                </>)
+            })}
         </>
     )
 }
