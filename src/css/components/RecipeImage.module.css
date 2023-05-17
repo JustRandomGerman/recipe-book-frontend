@@ -2,10 +2,12 @@
     position: relative;
     top: -3rem;
     background-color: inherit;
-    width: 3rem;
+    width: auto;
     height: 3rem;
     border-top-left-radius: .5em;
     float: right;
+    display: flex;
+    flex-direction: row;
 }
 
 .image_buttons button{
@@ -15,6 +17,7 @@
     padding: 0;
     background: none;
     border: none;
+    color: inherit;
 }
 
 .image_buttons img{
