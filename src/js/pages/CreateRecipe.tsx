@@ -14,7 +14,7 @@ function CreateRecipe(){
         id: 0,
         name: 'Recipe Name',
         keywords: [],
-        image: '',
+        image_paths: [{path: ''}],
         ingredients: [],
         instructions: 'Recipe Instructions',
         tags: []
@@ -29,7 +29,7 @@ function CreateRecipe(){
             instructions: recipe?.instructions,
             ingredients: recipe?.ingredients,
             tags: recipe?.tags,
-            image: recipe?.image
+            image_paths: recipe?.image_paths
         }).then((response) => {
             //TODO redirect to recipe page
         }).catch((error) => {
@@ -40,7 +40,7 @@ function CreateRecipe(){
     
     return(
         <div className={style.create_recipe}>
-            <RecipeImage editing={true} image={recipe.image} setRecipe={setRecipe}/>
+            <RecipeImage editing={true} image_paths={recipe.image_paths} setRecipe={setRecipe}/>
             <p className='error'>{error}</p>
             <RecipeHeading editing={true} name={recipe.name} setRecipe={setRecipe} />
             <RecipeKeywords editing={true} keywords={recipe.keywords} setRecipe={setRecipe} />

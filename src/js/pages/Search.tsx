@@ -9,6 +9,7 @@ function Search(){
 
     const [params, setParams] = useSearchParams();
     let [recipes, setRecipes] = useState<Recipe[]>();
+    let [error, setError] = useState<string>("");
 
     useEffect( () => {
         axios.post('http://localhost:3000/search', {
@@ -16,13 +17,17 @@ function Search(){
             mode: params.get('mode'),
             tags: params.get('tags')?.split(',')
         }).then( (response) => {
+            setError("");
             setRecipes(response.data)
+        }).catch( (error) => {
+            setError(error.response.data.message);
         })
     }, [params])
 
     return(
         <div className={style.search}>
-            <h2>{"Results for: \"" + params.get('query') + "\""}</h2>
+            {(error === "" ? <h2>{`Results for: "${params.get('query')}"`}</h2> : <></>)}
+            <p className='warning'>{error}</p>
             <div className={style.container}>
                 {recipes?.map(( (recipe: Recipe) => <RecipeCard key={"searchResult_" + recipe.name} recipe={recipe} />))}
             </div>

@@ -33,6 +33,17 @@ a{
     display: none;
 }
 
+.warning{
+    border: 1px solid rgb(255, 102, 0);
+    border-radius: .5em;
+    background-color: rgb(250, 150, 84);
+    padding: .5em;
+}
+
+.error:empty{
+    display: none;
+}
+
 @media (prefers-color-scheme: dark) {
     body{
         background-color: rgb(50, 50, 50);
@@ -49,5 +60,9 @@ a{
 
     .success{
         background-color: green;
+    }
+
+    .warning{
+        background-color: rgb(255, 102, 0);
     }
 }
