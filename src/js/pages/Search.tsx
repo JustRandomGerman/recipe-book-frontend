@@ -12,10 +12,14 @@ function Search(){
     let [error, setError] = useState<string>("");
 
     useEffect( () => {
+        //prevent the tags array in the request from being filled with an empty string when no tags are selected
+        const tagsParam = params.get('tags');
+        const tags = tagsParam ? tagsParam.split(',') : [];
+
         axios.post('http://localhost:3000/search', {
             query: params.get('query'),
             mode: params.get('mode'),
-            tags: params.get('tags')?.split(',')
+            tags: tags
         }).then( (response) => {
             setError("");
             setRecipes(response.data)

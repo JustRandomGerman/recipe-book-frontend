@@ -40,7 +40,7 @@ a{
     padding: .5em;
 }
 
-.error:empty{
+.warning:empty{
     display: none;
 }
 
