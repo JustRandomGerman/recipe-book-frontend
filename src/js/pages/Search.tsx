@@ -25,6 +25,7 @@ function Search(){
             setRecipes(response.data)
         }).catch( (error) => {
             setError(error.response.data.message);
+            setRecipes([]);
         })
     }, [params])
 
