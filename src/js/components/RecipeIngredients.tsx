@@ -23,7 +23,7 @@ function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredient
             <h2>Ingredients</h2>
             <table>
                 <tbody>
-                    {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient.ingredient_name}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
+                    {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
             {editing ? <button onClick={addIngredient}>+</button> : <></>}
