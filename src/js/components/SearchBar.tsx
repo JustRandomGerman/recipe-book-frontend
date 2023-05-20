@@ -28,12 +28,12 @@ function SearchBar(){
 
     return(
         <form className={style.search} onSubmit={handleStartSearch}>
-            <select name="search_mode" value={searchMode} onChange={handleSelectChange}>
+            <select title="Select diferent search modes" name="search_mode" value={searchMode} onChange={handleSelectChange}>
                 <option value="recipe">Recipe</option>
                 <option value="ingredient">Ingredient</option>
             </select>
             <input type="search" value={searchString} onInput={e => setSearchString(e.currentTarget.value)}/>
-            <button id={style.begin_search}>
+            <button title="Search" id={style.begin_search}>
                 <img src={theme === "light" ? search_image : search_image_white} alt='search' />
             </button>
             <FilterMenu selectedTags={searchFilterTags} setSelectedTags={setSearchFilterTags}/>

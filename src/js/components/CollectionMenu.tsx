@@ -25,7 +25,7 @@ function CollectionMenu( { shown, setShown } : CollectionMenuProps){
         {shown ? 
             <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
                 <div className={style.popup}>
-                    <button id={style.close_button} onClick={hideCollectionPopup}>
+                    <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
                         <img src={theme === "light" ? image : image_white} alt="Close" />
                     </button>
                     <h3>Add to collection</h3>

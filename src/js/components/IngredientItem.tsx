@@ -58,7 +58,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
                 <input type="text" name="ingredient_name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
             </td>
             <td>
-                {editing ? <button onClick={removeIngredient}><img src={theme === "light" ? delete_image : delete_image_white} /> </button> : <></>}
+                {editing ? <button title="Delete ingredient" onClick={removeIngredient}><img src={theme === "light" ? delete_image : delete_image_white} /> </button> : <></>}
             </td>
         </tr>
     )

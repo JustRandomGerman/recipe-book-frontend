@@ -31,7 +31,7 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
 
     return(
         <>
-            <button id={style.filter} onClick={handleFilterButton}>
+            <button title="toggle filter menu" id={style.filter} onClick={handleFilterButton}>
                 <img src={theme === "light" ? filter_image : filter_image_white} alt='Filter' />
             </button>
             {shown ? 

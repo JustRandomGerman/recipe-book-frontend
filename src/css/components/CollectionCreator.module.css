@@ -1,11 +1,3 @@
-.creator{
-    display: none;
-}
-
-.shown{
-    display: unset;
-}
-
 .creator input{
     border: 1px solid lightgray;
     border-radius: .5em;

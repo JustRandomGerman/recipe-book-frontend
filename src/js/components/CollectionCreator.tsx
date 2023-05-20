@@ -15,12 +15,16 @@ function CollectionCreator( {parent_shown} : CollectionCreatorProps){
     
     return(
         <>
-            <button className={`${style.creator} ${(!shown && parent_shown) ? style.shown : ''}`} onClick={handleAddCollection}>Add collection</button>
-            <div className={`${style.creator} ${(shown && parent_shown) ? style.shown : ''}`}>
-                <input type="text"></input>
-                <br />
-                <button id={style.create_button}>Add</button>
-            </div>
+            {(!shown && parent_shown) ? <button title="Show the collection creator" className={style.creator} onClick={handleAddCollection}>Add collection</button> : <></>}
+            {(shown && parent_shown) ?
+                <div className={style.creator}>
+                    <input type="text"></input>
+                    <br />
+                    <button title="Add a new collection" id={style.create_button}>Add</button>
+                </div>
+                : <></>
+            }
+            
         </>
     )
 }

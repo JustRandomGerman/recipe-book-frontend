@@ -47,7 +47,7 @@ function CreateRecipe(){
             <RecipeIngredients editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
             <RecipeInstructions editing={true} instructions={recipe.instructions} setRecipe={setRecipe} />
             <RecipeTags editing={true} tags={recipe.tags} setRecipe={setRecipe}/>
-            <button onClick={save}>Save</button>
+            <button title="Save the new recipe" onClick={save}>Save</button>
         </div>
     )
 }

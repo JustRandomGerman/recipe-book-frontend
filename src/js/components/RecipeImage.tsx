@@ -52,17 +52,17 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
             })}
             <div className={style.image_buttons}>
                 {editing && image_paths[currentIndex].path !== "" ? <>
-                    <button onClick={deleteImage}>
+                    <button title="Delete the current image" onClick={deleteImage}>
                         <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                     </button>
-                    <button onClick={addImage}>
+                    <button title="Add a new image" onClick={addImage}>
                         +
                     </button>
                 </> : <></>}
-                <button onClick={moveLeft}>
+                <button title="Move left" onClick={moveLeft}>
                     {"<"}
                 </button>
-                <button onClick={moveRight}>
+                <button title="Move right" onClick={moveRight}>
                     {">"}
                 </button>
             </div>

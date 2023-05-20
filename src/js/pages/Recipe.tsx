@@ -106,22 +106,22 @@ function Recipe(){
                         <p className='success'>{success}</p>
                     </section>
                     <section className={style.control_buttons}>
-                        {editing ? <button onClick={save}>
+                        {editing ? <button title="Save the recipe" onClick={save}>
                             <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
                         </button> : <></>}
-                        {editing ? <button onClick={cancel}>
+                        {editing ? <button title="Cancel editing" onClick={cancel}>
                             <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
                         </button> : <></>}
-                        {!editing ? <button onClick={edit}>
+                        {!editing ? <button title="Edit recipe" onClick={edit}>
                             <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
                         </button> : <></>}
-                        {!editing ? <button onClick={showCollectionPopup}>
+                        {!editing ? <button title="Show collection popup" onClick={showCollectionPopup}>
                             <img src={theme === "light" ? collection_image : collection_image_white} alt='Add to collection'/>
                         </button> : <></>}
-                        {!editing ? <button onClick={deleteRecipe}>
+                        {!editing ? <button title="Delete recipe" onClick={deleteRecipe}>
                             <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
                         </button> : <></>}
-                        {!editing ? <button onClick={savePdf}>
+                        {!editing ? <button title="Download PDF of the recipe" onClick={savePdf}>
                             <img src={theme === "light" ? download_image : download_image_white} alt='Download'/>
                         </button> : <></>}
                     </section>

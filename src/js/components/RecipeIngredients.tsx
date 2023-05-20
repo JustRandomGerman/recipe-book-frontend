@@ -26,7 +26,7 @@ function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredient
                     {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
-            {editing ? <button onClick={addIngredient}>+</button> : <></>}
+            {editing ? <button title="Add a new ingredient" onClick={addIngredient}>+</button> : <></>}
         </section>
     )
 }
