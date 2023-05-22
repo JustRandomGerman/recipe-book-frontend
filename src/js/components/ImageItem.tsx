@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext } from 'react';
 import { Recipe } from '../interfaces/Recipe';
 import { ImagePath } from '../interfaces/ImagePath';
-import axios from 'axios';
+import { uploadImage } from '../../api';
 
 interface ImageItemProps{
     index: number
@@ -12,17 +12,17 @@ interface ImageItemProps{
 
 function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemProps){
 
-    function uploadImage(event : ChangeEvent<HTMLInputElement>){
-        console.log(event.currentTarget)
+    function handleUploadImage(event : ChangeEvent<HTMLInputElement>){
         const { files } = event.currentTarget;
-        const formData = new FormData;
-        formData.append("image", files![0])
-        axios.post("http://localhost:3000/recipes/upload", formData).then((response) => {
-            setRecipe((oldRecipe : Recipe) => ({
-                ...oldRecipe,
-                image: response.data.image
-            }))
-        })
+        console.log(files)
+        uploadImage(files).then((response) => {
+            console.log(response);
+            setRecipe((oldRecipe : Recipe) => {
+                const updatedImagePaths = [...oldRecipe.image_paths];
+                updatedImagePaths[index] = {path: response.image};
+                return { ...oldRecipe, image_paths: updatedImagePaths};
+            })
+        });
     }
 
     return(
@@ -30,9 +30,9 @@ function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemPr
             {index === currentIndex ?
                 <>
                     {image_path.path !== "" ? 
-                        <img key={image_path.path} src={image_path.path} alt="image of food"></img>
+                        <img src={image_path.path} alt="image of food"></img>
                     :
-                        <input name="new_image" type='file' accept='image/*' onChange={uploadImage}></input>
+                        <input name="new_image" type='file' accept='image/*' onChange={handleUploadImage}></input>
                     }
                 </>
             :

@@ -2,8 +2,8 @@ import style from '../../css/components/RecipeTags.module.css';
 import TagItem from './TagItem';
 import { Tag } from '../interfaces/Tag'
 import { useEffect, useState } from 'react';
-
-import axios from 'axios'
+import { getAvailableTags } from '../../api';
+import { Recipe } from '../interfaces/Recipe';
 
 interface RecipeTagsProps{
     editing: boolean
@@ -16,20 +16,20 @@ function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
     let [availableTags, setAvailableTags] = useState<Tag[]>([]);
 
     useEffect( () => {
-        axios.get<Tag[]>("http://localhost:3000/tags/available").then((response) => {
-            setAvailableTags(response.data.filter(tag => {
+        getAvailableTags().then( (response) => {
+            setAvailableTags(response.filter(tag => {
                 const isTagInRecipe = tags.some(recipeTag => recipeTag.tag_name === tag.tag_name);
                 return !isTagInRecipe;
-              }));
+            }));
         })
     }, [])
 
     function addTag(event: React.ChangeEvent<HTMLSelectElement>) {
         const tagName = event.target.value;
         const tag = { tag_name: tagName };
-        setRecipe((prevRecipe: any) => ({
-            ...prevRecipe,
-            tags: [...prevRecipe.tags, tag],
+        setRecipe((oldRecipe: Recipe) => ({
+            ...oldRecipe,
+            tags: [...oldRecipe.tags, tag],
         }));
         setAvailableTags((oldTags : Tag[]) => {
             return oldTags.filter((t) => t.tag_name !== tagName)

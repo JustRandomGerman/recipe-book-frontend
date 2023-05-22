@@ -4,7 +4,7 @@ import FilterItem from './FilterItem';
 import filter_image from '../../assets/funnel.svg';
 import filter_image_white from '../../assets/funnel_white.svg'
 import { Tag } from '../interfaces/Tag'
-import axios from 'axios';
+import { getAvailableTags } from '../../api';
 import ThemeContext from '../context/ThemeContext';
 
 interface FilterMenuProps{
@@ -19,8 +19,8 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
     let [tags, setTags] = useState<Tag[]>([]);
 
     useEffect( () => {
-        axios.get<Tag[]>("http://localhost:3000/tags/available").then((response) => {
-          setTags(response.data);
+        getAvailableTags().then((response) => {
+          setTags(response);
         })
     }, [])
     

@@ -42,7 +42,8 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
         setRecipe((oldRecipe : Recipe) => {
             const updatedImagePaths = [...oldRecipe.image_paths, { path: "" }];
             return { ...oldRecipe, image_paths: updatedImagePaths };
-        })        
+        })
+        //TODO set current index to added image
     }
 
     return(

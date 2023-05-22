@@ -21,7 +21,7 @@ import delete_image_white from '../../assets/trash_white.svg'
 import download_image from '../../assets/download.svg'
 import download_image_white from '../../assets/download_white.svg'
 import { Recipe } from '../interfaces/Recipe';
-import axios from 'axios'
+import { getRecipe, updateRecipe, deleteRecipe } from '../../api';
 import ThemeContext from '../context/ThemeContext';
 
 function Recipe(){
@@ -37,14 +37,15 @@ function Recipe(){
     let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
+    const id : number = Number(params.id);
 
     useEffect( () => {
-        axios.get<Recipe>(`http://localhost:3000/recipes/${params.id}`).then((response) => {
-            setRecipe(response.data);
-            setOriginalRecipe(response.data);
+        getRecipe(id).then((response) => {
+            setRecipe(response);
+            setOriginalRecipe(response);
             setLoading(false);
         }).catch((error) => {
-            setLoadingError(`${error.response.status} - ${error.response.data.message}`)
+            setLoadingError(error)
             setLoading(false)
         })
     }, [])
@@ -59,14 +60,7 @@ function Recipe(){
 
     function save(){
         setEditing(false);
-        axios.put<Recipe>(`http://localhost:3000/recipes/${params.id}`, {
-            name: recipe?.name,
-            keywords: recipe?.keywords,
-            instructions: recipe?.instructions,
-            ingredients: recipe?.ingredients,
-            tags: recipe?.tags,
-            image_paths: recipe?.image_paths
-        }).then((response) => {
+        updateRecipe(id, recipe!).then((response) => {
             setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
             setOriginalRecipe(recipe);
@@ -75,9 +69,8 @@ function Recipe(){
                 setSuccess("");
             }, 5000)
         }).catch((error) => {
-            const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`)
-            setError(`${error.response.status} - ${details}`)
-        })
+            setError(error);
+        });
     }
 
     function cancel(){
@@ -85,8 +78,8 @@ function Recipe(){
         setRecipe(orginalRecipe);
     }
 
-    function deleteRecipe(){
-        axios.delete(`http://localhost:3000/recipes/${params.id}`).then(
+    function deleteRecipeButton(){
+        deleteRecipe(id).then(
             //TODO redirect
         )
     }
@@ -118,7 +111,7 @@ function Recipe(){
                         {!editing ? <button title="Show collection popup" onClick={showCollectionPopup}>
                             <img src={theme === "light" ? collection_image : collection_image_white} alt='Add to collection'/>
                         </button> : <></>}
-                        {!editing ? <button title="Delete recipe" onClick={deleteRecipe}>
+                        {!editing ? <button title="Delete recipe" onClick={deleteRecipeButton}>
                             <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
                         </button> : <></>}
                         {!editing ? <button title="Download PDF of the recipe" onClick={savePdf}>

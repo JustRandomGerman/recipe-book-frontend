@@ -7,7 +7,7 @@ import RecipeTags from '../components/RecipeTags';
 import { useState } from 'react';
 import Recipe from './Recipe';
 import RecipeKeywords from '../components/RecipeKeywords';
-import axios from 'axios';
+import { createRecipe } from '../../api';
 
 function CreateRecipe(){
     const emptyRecipe : Recipe = {
@@ -23,19 +23,11 @@ function CreateRecipe(){
     let [error, setError] = useState<string>();
 
     function save(){
-        axios.post<Recipe>('http://localhost:3000/recipes', {
-            name: recipe?.name,
-            keywords: recipe?.keywords,
-            instructions: recipe?.instructions,
-            ingredients: recipe?.ingredients,
-            tags: recipe?.tags,
-            image_paths: recipe?.image_paths
-        }).then((response) => {
+        createRecipe(recipe).then((response) => {
             //TODO redirect to recipe page
         }).catch((error) => {
-            const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`)
-            setError(`${error.response.status} - ${details}`)
-        })
+            setError(error);
+        });
     }
     
     return(

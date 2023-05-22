@@ -1,9 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
 import style from '../../css/pages/Search.module.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import RecipeCard from '../components/RecipeCard';
 import { Recipe } from '../interfaces/Recipe';
+import { search } from '../../api';
 
 function Search(){
 
@@ -16,15 +16,11 @@ function Search(){
         const tagsParam = params.get('tags');
         const tags = tagsParam ? tagsParam.split(',') : [];
 
-        axios.post('http://localhost:3000/search', {
-            query: params.get('query'),
-            mode: params.get('mode'),
-            tags: tags
-        }).then( (response) => {
+        search(params.get('query')!, params.get('mode')!, tags).then((response) => {
             setError("");
-            setRecipes(response.data)
+            setRecipes(response);
         }).catch( (error) => {
-            setError(error.response.data.message);
+            setError(error);
             setRecipes([]);
         })
     }, [params])
