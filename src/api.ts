@@ -63,7 +63,7 @@ const getCollection = function(id : number){
     })
 }
 
-const createCollection = function(collection : Collection){
+const createCollection = function(collection : {name : string}){
     return axios.post<Collection>(`${baseURL}/collections`, {
         ...collection
     }).then((response) => {

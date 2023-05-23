@@ -92,7 +92,7 @@ function Recipe(){
         <div className={style.recipe}>
             {!loading && loadingError === "" ? (
                 <>
-                    <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown}/>
+                    <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown} recipeId={id} recipeCollections={recipe!.collections} setRecipe={setRecipe}/>
                     <RecipeImage editing={editing} image_paths={recipe!.image_paths} setRecipe={setRecipe}/>
                     <section>
                         <p className='error'>{error}</p>

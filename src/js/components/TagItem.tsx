@@ -18,7 +18,7 @@ function TagItem({editing, tag, setRecipe, setAvailableTags} : TagItemProps){
 
     function removeTag(){
         setRecipe((oldRecipe : Recipe) => {
-            const updatedTags = oldRecipe.tags.filter((t) => t.tag_name !== tag.tag_name);
+            const updatedTags = oldRecipe.tags.filter((t : Tag) => t.tag_name !== tag.tag_name);
             return {...oldRecipe, tags: updatedTags};
         });
         setAvailableTags((oldTags : Tag[] ) => [
