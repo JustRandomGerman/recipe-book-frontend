@@ -1,0 +1,41 @@
+.collection{
+    padding: 1em;
+}
+
+.collection .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+}
+
+.collection_heading{
+    font-size: 2em;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: none;
+    color: black;
+    width: fit-content;
+}
+
+.control_buttons{
+    margin-top: 1em;
+}
+
+.control_buttons button{
+    background: none;
+    border:none;
+    margin-right: 1em;
+}
+
+.control_buttons img{
+    border-radius: 0;
+    width: 1.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .collection_heading{
+        color: white;
+    }
+
+}

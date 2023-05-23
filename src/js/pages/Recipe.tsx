@@ -8,18 +8,18 @@ import RecipeKeywords from '../components/RecipeKeywords';
 import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/RecipeTags';
-import edit_image from '../../assets/pencil.svg'
-import edit_image_white from '../../assets/pencil_white.svg'
-import check_image from '../../assets/check2.svg'
-import check_image_white from '../../assets/check2_white.svg'
-import cancel_image from '../../assets/x.svg'
-import cancel_image_white from '../../assets/x_white.svg'
-import collection_image from '../../assets/collection.svg'
-import collection_image_white from '../../assets/collection_white.svg'
-import delete_image from '../../assets/trash.svg'
-import delete_image_white from '../../assets/trash_white.svg'
-import download_image from '../../assets/download.svg'
-import download_image_white from '../../assets/download_white.svg'
+import edit_image from '../../assets/pencil.svg';
+import edit_image_white from '../../assets/pencil_white.svg';
+import check_image from '../../assets/check2.svg';
+import check_image_white from '../../assets/check2_white.svg';
+import cancel_image from '../../assets/x.svg';
+import cancel_image_white from '../../assets/x_white.svg';
+import collection_image from '../../assets/collection.svg';
+import collection_image_white from '../../assets/collection_white.svg';
+import delete_image from '../../assets/trash.svg';
+import delete_image_white from '../../assets/trash_white.svg';
+import download_image from '../../assets/download.svg';
+import download_image_white from '../../assets/download_white.svg';
 import { Recipe } from '../interfaces/Recipe';
 import { getRecipe, updateRecipe, deleteRecipe } from '../../api';
 import ThemeContext from '../context/ThemeContext';

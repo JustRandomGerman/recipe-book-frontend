@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Recipe } from './js/interfaces/Recipe';
 import { Tag } from './js/interfaces/Tag';
+import { Collection } from './js/interfaces/Collection';
 
 const baseURL = "http://localhost:3000";
 
@@ -10,7 +11,7 @@ const getRecipes = function(){
     });
 }
 
-const getRecipe = function(id: number){
+const getRecipe = function(id : number){
     return axios.get<Recipe>(`${baseURL}/recipes/${id}`).then((response) => {
         return response.data;
     }).catch((error) => {
@@ -18,7 +19,7 @@ const getRecipe = function(id: number){
     });
 }
 
-const createRecipe = function(recipe: Recipe){
+const createRecipe = function(recipe : Recipe){
     return axios.post<Recipe>(`${baseURL}/recipes`,{
         ...recipe
     }).then((response) => {
@@ -29,7 +30,7 @@ const createRecipe = function(recipe: Recipe){
     });
 }
 
-const updateRecipe = function(id: number, recipe: Recipe){
+const updateRecipe = function(id : number, recipe : Recipe){
     return axios.put<Recipe>(`${baseURL}/recipes/${id}`, {
         ...recipe
     }).then((response) => {
@@ -40,12 +41,72 @@ const updateRecipe = function(id: number, recipe: Recipe){
     });
 }
 
-const deleteRecipe = function(id: number){
+const deleteRecipe = function(id : number){
     return axios.delete(`${baseURL}/recipes/${id}`).then((response) => {
         return response.data;
     }).catch((error) => {
         throw `${error.response.status} - ${error.response.data.message}`;
     });
+}
+
+const getCollections = function(){
+    return axios.get<Collection[]>(`${baseURL}/collections`).then((response) => {
+        return response.data;
+    })
+}
+
+const getCollection = function(id : number){
+    return axios.get<Collection>(`${baseURL}/collections/${id}`).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        throw `${error.response.status} - ${error.response.data.message}`;
+    })
+}
+
+const createCollection = function(collection : Collection){
+    return axios.post<Collection>(`${baseURL}/collections`, {
+        ...collection
+    }).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`);
+        throw `${error.response.status} - ${details}`;
+    })
+}
+
+const updateCollection = function(id : number, collection : Collection){
+    return axios.patch<Collection>(`${baseURL}/collections/${id}`, {
+        name: collection.name
+    }).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        const details = error.response.data.message.map((detail : any) => `${detail.message}\n`);
+        throw `${error.response.status} - ${details}`;
+    });
+}
+
+const deleteCollection = function(id : number){
+    return axios.delete(`${baseURL}/collections/${id}`).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        throw `${error.response.status} - ${error.response.data.message}`;
+    });
+}
+
+const addRecipeToCollection = function(collection_id : number, recipe_id : number){
+    return axios.post<Collection>(`${baseURL}/collections/${collection_id}/recipes/${recipe_id}`).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        throw `${error.response.status} - ${error.response.data.message}`;
+    })
+}
+
+const removeRecipeFromCollection = function(collection_id : number, recipe_id : number){
+    return axios.delete<Collection>(`${baseURL}/collections/${collection_id}/recipes/${recipe_id}`).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        throw `${error.response.status} - ${error.response.data.message}`;
+    })
 }
 
 const getAvailableTags = function(){
@@ -79,4 +140,4 @@ const search = function(query : string, mode : string, tags : string[]){
     })
 }
 
-export {getRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getAvailableTags, uploadImage, search};
+export {getRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search};

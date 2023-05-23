@@ -1,0 +1,25 @@
+.collection_card{
+    border-radius: .5em;
+    box-shadow: 0 0 10px rgb(167, 167, 167);
+    transition: 0.3s;
+}
+
+.collection_card:hover{
+    box-shadow: 0 0 10px rgb(71, 71, 71);
+}
+
+.collection_card h1{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .collection_card{
+        box-shadow: 0 0 10px black;
+    }
+    
+    .collection_card:hover{
+        box-shadow: 0 0 10px rgb(30, 30, 30);
+        
+    }
+}
