@@ -25,7 +25,7 @@ const createRecipe = function(recipe : Recipe){
     }).then((response) => {
         return response.data;
     }).catch((error) => {
-        const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`);
+        const details = error.response.data.message.map((detail : any) => `${detail.message}\n`);
         throw `${error.response.status} - ${details}`;
     });
 }
@@ -36,7 +36,7 @@ const updateRecipe = function(id : number, recipe : Recipe){
     }).then((response) => {
         return response.data;
     }).catch((error) => {
-        const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`);
+        const details = error.response.data.message.map((detail : any) => `${detail.message}\n`);
         throw `${error.response.status} - ${details}`;
     });
 }
@@ -69,7 +69,7 @@ const createCollection = function(collection : {name : string}){
     }).then((response) => {
         return response.data;
     }).catch((error) => {
-        const details = error.response.data.message.details.map((detail : any) => `${detail.message}\n`);
+        const details = error.response.data.message.map((detail : any) => `${detail.message}\n`);
         throw `${error.response.status} - ${details}`;
     })
 }

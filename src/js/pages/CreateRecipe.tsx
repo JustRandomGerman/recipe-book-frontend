@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Recipe from './Recipe';
 import RecipeKeywords from '../components/RecipeKeywords';
 import { createRecipe } from '../../api';
+import { useNavigate } from 'react-router-dom';
 
 function CreateRecipe(){
     const emptyRecipe : Recipe = {
@@ -17,14 +18,16 @@ function CreateRecipe(){
         image_paths: [{path: ''}],
         ingredients: [],
         instructions: 'Recipe Instructions',
-        tags: []
+        tags: [],
+        collections: []
       };
     let [recipe, setRecipe] = useState<Recipe>(emptyRecipe);
     let [error, setError] = useState<string>();
 
+    const navigate = useNavigate();
     function save(){
         createRecipe(recipe).then((response) => {
-            //TODO redirect to recipe page
+            navigate(`/recipe/${response.id}`)
         }).catch((error) => {
             setError(error);
         });

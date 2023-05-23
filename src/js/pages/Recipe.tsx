@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from '../../css/pages/Recipe.module.css';
 import CollectionMenu from '../components/CollectionMenu';
 import RecipeImage from '../components/RecipeImage';
@@ -78,10 +78,11 @@ function Recipe(){
         setRecipe(orginalRecipe);
     }
 
+    const navigate = useNavigate();
     function deleteRecipeButton(){
-        deleteRecipe(id).then(
-            //TODO redirect
-        )
+        deleteRecipe(id).then((response) => {
+            navigate("/");
+        })
     }
 
     function savePdf(){
