@@ -32,6 +32,14 @@
     padding-left: 0;
 }
 
+.popup button{
+    background-color: rgb(180, 180, 180);
+    border:none;
+    color: inherit;
+    border-radius: .5em;
+    padding: .5em;
+}
+
 #close_button{
     float: right;
     position: relative;
@@ -64,5 +72,9 @@
 
     .popup input[type=checkbox]{
         background: rgb(60, 60, 60);
+    }
+
+    .popup button{
+        background-color: rgb(110,110,110);
     }
 }

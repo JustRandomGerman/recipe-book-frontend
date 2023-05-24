@@ -14,9 +14,7 @@ function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemPr
 
     function handleUploadImage(event : ChangeEvent<HTMLInputElement>){
         const { files } = event.currentTarget;
-        console.log(files)
         uploadImage(files).then((response) => {
-            console.log(response);
             setRecipe((oldRecipe : Recipe) => {
                 const updatedImagePaths = [...oldRecipe.image_paths];
                 updatedImagePaths[index] = {path: response.image};

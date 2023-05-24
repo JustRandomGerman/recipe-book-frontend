@@ -1,3 +1,18 @@
+.images{
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
+}
+
+.images img{
+    width: 100%;
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
+}
+
+.images{
+    background-color: inherit;
+}
+
 .image_buttons{
     position: relative;
     top: -3rem;

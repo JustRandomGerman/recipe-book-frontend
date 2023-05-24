@@ -3,8 +3,14 @@ import { ImagePath } from '../interfaces/ImagePath';
 import ThemeContext from '../context/ThemeContext';
 import ImageItem from './ImageItem';
 import { Recipe } from '../interfaces/Recipe';
-import delete_image from '../../assets/trash.svg'
-import delete_image_white from '../../assets/trash_white.svg'
+import delete_image from '../../assets/trash.svg';
+import delete_image_white from '../../assets/trash_white.svg';
+import arrow_left from '../../assets/arrow-left.svg';
+import arrow_left_white from '../../assets/arrow-left_white.svg';
+import arrow_right from '../../assets/arrow-right.svg';
+import arrow_right_white from '../../assets/arrow-right_white.svg';
+import plus from '../../assets/plus-lg.svg';
+import plus_white from '../../assets/plus-lg_white.svg';
 import style from '../../css/components/RecipeImage.module.css';
 
 interface RecipeImageProps{
@@ -47,7 +53,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     }
 
     return(
-        <>
+        <div className={style.images}>
             {image_paths.map( (image_path : ImagePath, index : number) => {
                 return <ImageItem key={image_path.path} index={index} currentIndex={currentIndex} image_path={image_path} setRecipe={setRecipe} />
             })}
@@ -57,17 +63,17 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
                         <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                     </button>
                     <button title="Add a new image" onClick={addImage}>
-                        +
+                        <img src={theme === "light" ? plus : plus_white} alt="Delete"></img>
                     </button>
                 </> : <></>}
                 <button title="Move left" onClick={moveLeft}>
-                    {"<"}
+                    <img src={theme === "light" ? arrow_left : arrow_left_white} alt="Delete"></img>
                 </button>
                 <button title="Move right" onClick={moveRight}>
-                    {">"}
+                    <img src={theme === "light" ? arrow_right : arrow_right_white} alt="Delete"></img>
                 </button>
             </div>
-        </>
+        </div>
     )
 }
 

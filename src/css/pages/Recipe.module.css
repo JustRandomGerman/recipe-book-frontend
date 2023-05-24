@@ -11,12 +11,6 @@
     margin: 2em auto 2em auto;
 }
 
-.recipe img{
-    width: 100%;
-    border-top-right-radius: .5em;
-    border-top-left-radius: .5em;
-}
-
 .recipe section{
     margin: 1rem;
 }
