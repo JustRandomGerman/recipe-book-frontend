@@ -37,11 +37,33 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     }
 
     function deleteImage(){
-        setRecipe((oldRecipe : Recipe) => {
-            const updatedImagePaths = [...oldRecipe.image_paths];
-            updatedImagePaths.splice(currentIndex, 1);
-            return {...oldRecipe, image_paths: updatedImagePaths};
-        })
+        if(image_paths.length === 1){
+            //only one image exists, so instead of completely deleting make path empty to show upload dialog
+            setRecipe((oldRecipe : Recipe) => {
+                const updatedImagePaths = [...oldRecipe.image_paths];
+                updatedImagePaths[currentIndex] = {path: ""};
+                return {...oldRecipe, image_paths: updatedImagePaths};
+            })
+        }
+        else{
+            //there is more than one image, so it can be deleted
+            setCurrentIndex((oldIndex) => {
+                console.log(image_paths)
+                if(oldIndex === 0){
+                    //the first image gets deleted and there is more than one image, so set the current index to 0
+                    return 0;
+                }
+                else{
+                    //there definetely is a previous image, so the new index is the previous image
+                    return oldIndex - 1;
+                }
+            })
+            setRecipe((oldRecipe : Recipe) => {
+                const updatedImagePaths = [...oldRecipe.image_paths];
+                updatedImagePaths.splice(currentIndex, 1);
+                return {...oldRecipe, image_paths: updatedImagePaths};
+            })
+        }
     }
 
     function addImage(){
@@ -49,7 +71,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
             const updatedImagePaths = [...oldRecipe.image_paths, { path: "" }];
             return { ...oldRecipe, image_paths: updatedImagePaths };
         })
-        //TODO set current index to added image
+        setCurrentIndex(image_paths.length);
     }
 
     return(
