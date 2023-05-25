@@ -60,8 +60,8 @@ function Recipe(){
     }
 
     function save(){
-        setEditing(false);
         updateRecipe(id, recipe!).then((response) => {
+            setEditing(false);
             setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
             setOriginalRecipe(recipe);
@@ -71,6 +71,9 @@ function Recipe(){
             }, 5000)
         }).catch((error) => {
             setError(error);
+            setTimeout(() => {
+                setError("");
+            }, 5000)
         });
     }
 

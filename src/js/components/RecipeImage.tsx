@@ -81,7 +81,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
                 return <ImageItem key={image_path.path} index={index} currentIndex={currentIndex} image_path={image_path} setRecipe={setRecipe} />
             })}
             <div className={style.image_buttons}>
-                {editing && image_paths[currentIndex].path !== "" ? <>
+                {editing ? <>
                     <button title="Delete the current image" onClick={deleteImage}>
                         <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                     </button>
