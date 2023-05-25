@@ -23,6 +23,7 @@ import download_image_white from '../../assets/download_white.svg';
 import { Recipe } from '../interfaces/Recipe';
 import { getRecipe, updateRecipe, deleteRecipe } from '../../api';
 import ThemeContext from '../context/ThemeContext';
+import { Ingredient } from '../interfaces/Ingredient';
 
 function Recipe(){
     const theme = useContext(ThemeContext);
@@ -85,9 +86,35 @@ function Recipe(){
         })
     }
 
-    function savePdf(){
-        //TODO
-    } 
+    function savePdf() {
+        import('jspdf').then((pdf) => {
+            const doc = new pdf.jsPDF();
+            
+            // Add recipe details to the PDF
+            doc.setFont("Helvetica", "bold")
+            doc.text(recipe!.name, 10, 20);
+
+            doc.setFontSize(12);
+            doc.text("Zutaten:", 10, 30);
+            
+            doc.setFont("Helvetica", "normal")
+            // Loop through ingredients and add them to the PDF
+            let y = 37;
+            recipe!.ingredients.forEach((ingredient : Ingredient) => {
+                doc.text(`- ${ingredient.amount} ${ingredient.ingredient_name}`, 10, y);
+                y += 7;
+            });
+
+            //Add the instructions
+            doc.setFont("Helvetica", "bold")
+            doc.text("Anweisungen:", 10, y + 5)
+            doc.setFont("Helvetica", "normal")
+            doc.text(recipe!.instructions, 10, y + 15, {maxWidth: doc.internal.pageSize.getWidth() - 20});
+            
+            // Save the PDF file
+            doc.save(`${recipe!.name}.pdf`);
+        });
+    }
 
     return(
         <div className={style.recipe}>
