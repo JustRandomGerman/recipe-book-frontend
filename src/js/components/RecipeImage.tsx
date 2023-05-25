@@ -7,8 +7,10 @@ import delete_image from '../../assets/trash.svg';
 import delete_image_white from '../../assets/trash_white.svg';
 import arrow_left from '../../assets/caret-left.svg';
 import arrow_left_white from '../../assets/caret-left_white.svg';
+import arrow_left_grey from '../../assets/caret-left_grey.svg';
 import arrow_right from '../../assets/caret-right.svg';
 import arrow_right_white from '../../assets/caret-right_white.svg';
+import arrow_right_grey from '../../assets/caret-right_grey.svg';
 import plus from '../../assets/plus-lg.svg';
 import plus_white from '../../assets/plus-lg_white.svg';
 import style from '../../css/components/RecipeImage.module.css';
@@ -48,7 +50,6 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
         else{
             //there is more than one image, so it can be deleted
             setCurrentIndex((oldIndex) => {
-                console.log(image_paths)
                 if(oldIndex === 0){
                     //the first image gets deleted and there is more than one image, so set the current index to 0
                     return 0;
@@ -85,14 +86,14 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
                         <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
                     </button>
                     <button title="Add a new image" onClick={addImage}>
-                        <img src={theme === "light" ? plus : plus_white} alt="Delete"></img>
+                        <img src={theme === "light" ? plus : plus_white} alt="Add an image"></img>
                     </button>
                 </> : <></>}
                 <button title="Move left" onClick={moveLeft}>
-                    <img src={theme === "light" ? arrow_left : arrow_left_white} alt="Delete"></img>
+                    <img src={(currentIndex === 0) ? arrow_left_grey : (theme === "light" ? arrow_left : arrow_left_white)} alt="Move left"></img>
                 </button>
                 <button title="Move right" onClick={moveRight}>
-                    <img src={theme === "light" ? arrow_right : arrow_right_white} alt="Delete"></img>
+                    <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey : (theme === "light" ? arrow_right : arrow_right_white)} alt="Move right"></img>
                 </button>
             </div>
         </div>
