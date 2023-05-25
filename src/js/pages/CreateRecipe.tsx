@@ -36,7 +36,9 @@ function CreateRecipe(){
     return(
         <div className={style.create_recipe}>
             <RecipeImage editing={true} image_paths={recipe.image_paths} setRecipe={setRecipe}/>
-            <p className='error'>{error}</p>
+            <section>
+                <p className='error'>{error}</p>
+            </section>
             <RecipeHeading editing={true} name={recipe.name} setRecipe={setRecipe} />
             <RecipeKeywords editing={true} keywords={recipe.keywords} setRecipe={setRecipe} />
             <RecipeIngredients editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
