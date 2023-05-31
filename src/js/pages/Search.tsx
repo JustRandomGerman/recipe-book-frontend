@@ -27,7 +27,7 @@ function Search(){
 
     return(
         <div className={style.search}>
-            {(error === "" ? <h2>{`Results for: "${params.get('query')}"`}</h2> : <></>)}
+            {(error === "" && <h2>{`Results for: "${params.get('query')}"`}</h2>)}
             <p className='warning'>{error}</p>
             <div className={style.container}>
                 {recipes?.map(( (recipe: Recipe) => <RecipeCard key={"searchResult_" + recipe.name} recipe={recipe} />))}

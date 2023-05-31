@@ -33,7 +33,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
 
     return(
         <>
-        {shown ? 
+        {shown &&
             <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
                 <div className={style.popup}>
                     <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
@@ -46,7 +46,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
                     
                     <CollectionCreator parentShown={shown} setCollections={setCollections}/>
                 </div>
-            </div> : <></>
+            </div>
         }
         </>
     )

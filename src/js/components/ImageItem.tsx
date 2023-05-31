@@ -25,7 +25,7 @@ function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemPr
 
     return(
         <>
-            {index === currentIndex ?
+            {index === currentIndex &&
                 <>
                     {image_path.path !== "" ? 
                         <img src={image_path.path} alt="image of food"></img>
@@ -33,8 +33,6 @@ function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemPr
                         <input name="new_image" type='file' accept='image/*' onChange={handleUploadImage}></input>
                     }
                 </>
-            :
-                <></>
             }
         </>
     )

@@ -41,12 +41,12 @@ function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
             <h2>Tags</h2>
             <div className={style.tags}>
                 {tags.map(tag => <TagItem key={tag.tag_name} editing={editing} tag={tag} setRecipe={setRecipe} setAvailableTags={setAvailableTags} />)}
-                {editing ? 
+                {editing &&
                     <select title="Add a new tag" id={style.tag_select} onChange={addTag} value={"Add Tag"}>
                         <option value="Add Tag" disabled>Add Tag</option>
                         {availableTags.map((availableTag, index) => <option key={index} value={availableTag.tag_name}>{availableTag.tag_name}</option>)}
                     </select> 
-                : <></>}
+                }
             </div>
         </section>
     )

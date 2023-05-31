@@ -130,36 +130,34 @@ function Recipe(){
                         <p className='success'>{success}</p>
                     </section>
                     <section className={style.control_buttons}>
-                        {editing ? <button title="Save the recipe" onClick={save}>
+                        {editing && <button title="Save the recipe" onClick={save}>
                             <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
-                        </button> : <></>}
-                        {editing ? <button title="Cancel editing" onClick={cancel}>
+                        </button>}
+                        {editing && <button title="Cancel editing" onClick={cancel}>
                             <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
-                        </button> : <></>}
-                        {!editing ? <button title="Edit recipe" onClick={edit}>
+                        </button>}
+                        {!editing && <button title="Edit recipe" onClick={edit}>
                             <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
-                        </button> : <></>}
-                        {!editing ? <button title="Show collection popup" onClick={showCollectionPopup}>
+                        </button>}
+                        {!editing && <button title="Show collection popup" onClick={showCollectionPopup}>
                             <img src={theme === "light" ? collection_image : collection_image_white} alt='Add to collection'/>
-                        </button> : <></>}
-                        {!editing ? <button title="Delete recipe" onClick={deleteRecipeButton}>
+                        </button>}
+                        {!editing && <button title="Delete recipe" onClick={deleteRecipeButton}>
                             <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
-                        </button> : <></>}
-                        {!editing ? <button title="Download PDF of the recipe" onClick={savePdf}>
+                        </button>}
+                        {!editing && <button title="Download PDF of the recipe" onClick={savePdf}>
                             <img src={theme === "light" ? download_image : download_image_white} alt='Download'/>
-                        </button> : <></>}
+                        </button>}
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
-                    {editing ? 
-                        <RecipeKeywords editing={editing} keywords={recipe!.keywords} setRecipe={setRecipe} />
-                    : <></>}
+                    {editing && <RecipeKeywords editing={editing} keywords={recipe!.keywords} setRecipe={setRecipe} /> }
                     <RecipeIngredients editing={editing} ingredients={recipe!.ingredients} setRecipe={setRecipe} />
                     <RecipeInstructions editing={editing} instructions={recipe!.instructions} setRecipe={setRecipe} />
                     <TagList editing={editing} tags={recipe!.tags} setRecipe={setRecipe}/>
                 </>
             ) : (
                 <>
-                    {loading ? <p className="loading">loading...</p> : <></>}
+                    {loading && <p className="loading">loading...</p>}
                     <p className="error">{loadingError}</p>
                 </>
             )}

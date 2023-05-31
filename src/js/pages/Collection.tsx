@@ -92,18 +92,18 @@ function Collection() {
                     <p className='error'>{error}</p>
                     <p className='success'>{success}</p>
                     <section className={style.control_buttons}>
-                        {editing ? <button title="Save the collection" onClick={saveCollection}>
+                        {editing && <button title="Save the collection" onClick={saveCollection}>
                             <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
-                        </button> : <></>}
-                        {editing ? <button title="Cancel editing" onClick={cancel}>
+                        </button>}
+                        {editing && <button title="Cancel editing" onClick={cancel}>
                             <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
-                        </button> : <></>}
-                        {!editing ? <button title="Edit collection" onClick={edit}>
+                        </button>}
+                        {!editing && <button title="Edit collection" onClick={edit}>
                             <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
-                        </button> : <></>}
-                        {!editing ? <button title="Delete collection" onClick={deleteCollectionButton}>
+                        </button>}
+                        {!editing && <button title="Delete collection" onClick={deleteCollectionButton}>
                             <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
-                        </button> : <></>}
+                        </button>}
                     </section>
                     <input className={style.collection_heading} type="text" value={collection?.name} onInput={handleInput} disabled={!editing} />
                     <h2>Recipes in this collection:</h2>
@@ -113,7 +113,7 @@ function Collection() {
                 </>
             ) : (
                 <>
-                    {loading ? <p className="loading">loading...</p> : <></>}
+                    {loading && <p className="loading">loading...</p>}
                     <p className='error'>{loadingError}</p>
                 </>
             )}

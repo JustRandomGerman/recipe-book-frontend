@@ -31,9 +31,9 @@ function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredient
                     {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
-            {editing ? <button title="Add a new ingredient" onClick={addIngredient}>
+            {editing && <button title="Add a new ingredient" onClick={addIngredient}>
                 <img src={theme === "light" ? plus : plus_white} alt="Delete"></img>
-            </button> : <></>}
+            </button>}
         </section>
     )
 }

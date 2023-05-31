@@ -30,14 +30,13 @@ function CollectionCreator( {parentShown, setCollections} : CollectionCreatorPro
     
     return(
         <>
-            {(!shown && parentShown) ? <button title="Show the collection creator" className={style.creator} onClick={handleShowCreator}>Add collection</button> : <></>}
-            {(shown && parentShown) ?
+            {(!shown && parentShown) && <button title="Show the collection creator" className={style.creator} onClick={handleShowCreator}>Add collection</button>}
+            {(shown && parentShown) &&
                 <div className={style.creator}>
                     <input type="text" value={currentText} onInput={handleInput}></input>
                     <br />
                     <button title="Add a new collection" id={style.create_button} onClick={handleAddCollection}>Add</button>
                 </div>
-                : <></>
             }
             
         </>
