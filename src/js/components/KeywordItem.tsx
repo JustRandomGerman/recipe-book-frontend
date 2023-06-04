@@ -47,7 +47,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
 
     return (
         <div className={style.keyword}>
-            <input type="text" value={keyword.keyword_name} onInput={handleKeywordInput} ref={InputRef}/>
+            <input type="text" placeholder="keyword" value={keyword.keyword_name} onInput={handleKeywordInput} ref={InputRef}/>
             {editing && <button title="Delete keyword" onClick={removeKeyword}><img src={theme === "light" ? delete_image : delete_image_white}></img></button>}
         </div>
     )

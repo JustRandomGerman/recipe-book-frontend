@@ -52,10 +52,10 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
     return(
         <tr className={style.ingredient}>
             <td>
-                <input type="text" name="amount" value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
+                <input type="text" name="amount" placeholder="amount" value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
             </td>
             <td>
-                <input type="text" name="ingredient_name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
+                <input type="text" name="ingredient_name" placeholder="name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
             </td>
             <td>
                 {editing && <button title="Delete ingredient" onClick={removeIngredient}><img src={theme === "light" ? delete_image : delete_image_white} /> </button>}

@@ -15,6 +15,10 @@
     border: none;
 }
 
+.keyword input:placeholder-shown{
+    width: 4em !important;
+}
+
 .keyword button{
     height: 1em;
     background: none;

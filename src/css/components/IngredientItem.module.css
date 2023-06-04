@@ -6,6 +6,11 @@
     background: transparent;
     outline: none;
     border: none;
+    min-width: 2em;
+}
+
+.ingredient input:placeholder-shown{
+    width: 5em !important;
 }
 
 .ingredient td:first-child{
