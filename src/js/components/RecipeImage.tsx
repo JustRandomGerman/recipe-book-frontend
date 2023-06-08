@@ -1,18 +1,10 @@
 import { useContext, useState } from 'react';
 import { ImagePath } from '../interfaces/ImagePath';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import ImageItem from './ImageItem';
 import { Recipe } from '../interfaces/Recipe';
-import delete_image from '../../assets/trash.svg';
-import delete_image_white from '../../assets/trash_white.svg';
-import arrow_left from '../../assets/caret-left.svg';
-import arrow_left_white from '../../assets/caret-left_white.svg';
 import arrow_left_grey from '../../assets/caret-left_grey.svg';
-import arrow_right from '../../assets/caret-right.svg';
-import arrow_right_white from '../../assets/caret-right_white.svg';
 import arrow_right_grey from '../../assets/caret-right_grey.svg';
-import plus from '../../assets/plus-lg.svg';
-import plus_white from '../../assets/plus-lg_white.svg';
 import style from '../../css/components/RecipeImage.module.css';
 
 interface RecipeImageProps{
@@ -83,17 +75,17 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
             <div className={style.image_buttons}>
                 {editing && <>
                     <button title="Delete the current image" onClick={deleteImage}>
-                        <img src={theme === "light" ? delete_image : delete_image_white} alt="Delete"></img>
+                        <img src={theme.deleteImage} alt="Delete"></img>
                     </button>
                     <button title="Add a new image" onClick={addImage}>
-                        <img src={theme === "light" ? plus : plus_white} alt="Add an image"></img>
+                        <img src={theme.plusImage} alt="Add an image"></img>
                     </button>
                 </>}
                 <button title="Move left" onClick={moveLeft}>
-                    <img src={(currentIndex === 0) ? arrow_left_grey : (theme === "light" ? arrow_left : arrow_left_white)} alt="Move left"></img>
+                    <img src={(currentIndex === 0) ? arrow_left_grey : theme.arrowLeftImage} alt="Move left"></img>
                 </button>
                 <button title="Move right" onClick={moveRight}>
-                    <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey : (theme === "light" ? arrow_right : arrow_right_white)} alt="Move right"></img>
+                    <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey : theme.arrowRightImage} alt="Move right"></img>
                 </button>
             </div>
         </div>

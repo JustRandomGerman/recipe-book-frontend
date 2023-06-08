@@ -2,9 +2,7 @@ import style from '../../css/components/KeywordItem.module.css'
 import { Recipe } from '../interfaces/Recipe';
 import { Keyword } from '../interfaces/Keyword';
 import { useEffect, useContext, useRef } from 'react';
-import delete_image from '../../assets/trash.svg';
-import delete_image_white from '../../assets/trash_white.svg';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 interface KeywordItemProps {
     index: number
@@ -48,7 +46,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
     return (
         <div className={style.keyword}>
             <input type="text" placeholder="keyword" value={keyword.keyword_name} onInput={handleKeywordInput} ref={InputRef}/>
-            {editing && <button title="Delete keyword" onClick={removeKeyword}><img src={theme === "light" ? delete_image : delete_image_white}></img></button>}
+            {editing && <button title="Delete keyword" onClick={removeKeyword}><img src={theme.deleteImage}></img></button>}
         </div>
     )
 }

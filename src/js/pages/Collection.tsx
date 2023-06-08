@@ -1,18 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import style from '../../css/pages/Collection.module.css';
-import edit_image from '../../assets/pencil.svg';
-import edit_image_white from '../../assets/pencil_white.svg';
-import check_image from '../../assets/check2.svg';
-import check_image_white from '../../assets/check2_white.svg';
-import cancel_image from '../../assets/x.svg';
-import cancel_image_white from '../../assets/x_white.svg';
-import delete_image from '../../assets/trash.svg';
-import delete_image_white from '../../assets/trash_white.svg';
 import { Collection } from '../interfaces/Collection';
 import { getCollection, updateCollection, deleteCollection } from '../../api';
 import RecipeCard from '../components/RecipeCard';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 function Collection() {
     const theme = useContext(ThemeContext);
@@ -93,16 +85,16 @@ function Collection() {
                     <p className='success'>{success}</p>
                     <section className={style.control_buttons}>
                         {editing && <button title="Save the collection" onClick={saveCollection}>
-                            <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
+                            <img src={theme.checkImage} alt={"Save"}/>
                         </button>}
                         {editing && <button title="Cancel editing" onClick={cancel}>
-                            <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
+                            <img src={theme.xImage} alt='cancel' />
                         </button>}
                         {!editing && <button title="Edit collection" onClick={edit}>
-                            <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
+                            <img src={theme.editImage} alt={"Edit"}/>
                         </button>}
                         {!editing && <button title="Delete collection" onClick={deleteCollectionButton}>
-                            <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
+                            <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
                     </section>
                     <input className={style.collection_heading} type="text" value={collection?.name} onInput={handleInput} disabled={!editing} />

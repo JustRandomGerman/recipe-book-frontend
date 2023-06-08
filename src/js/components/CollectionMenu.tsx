@@ -1,10 +1,8 @@
 import style from '../../css/components/CollectionMenu.module.css';
 import CollectionItem from './CollectionItem';
 import CollectionCreator from './CollectionCreator';
-import image from '../../assets/x.svg';
-import image_white from '../../assets/x_white.svg'
 import { useContext, useEffect, useState } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { Collection } from '../interfaces/Collection';
 import { getCollections } from '../../api';
 
@@ -37,7 +35,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
             <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
                 <div className={style.popup}>
                     <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
-                        <img src={theme === "light" ? image : image_white} alt="Close" />
+                        <img src={theme.xImage} alt="Close" />
                     </button>
                     <h3>Add to collection</h3>
                     <ul>

@@ -8,21 +8,9 @@ import RecipeKeywords from '../components/RecipeKeywords';
 import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/RecipeTags';
-import edit_image from '../../assets/pencil.svg';
-import edit_image_white from '../../assets/pencil_white.svg';
-import check_image from '../../assets/check2.svg';
-import check_image_white from '../../assets/check2_white.svg';
-import cancel_image from '../../assets/x.svg';
-import cancel_image_white from '../../assets/x_white.svg';
-import collection_image from '../../assets/collection.svg';
-import collection_image_white from '../../assets/collection_white.svg';
-import delete_image from '../../assets/trash.svg';
-import delete_image_white from '../../assets/trash_white.svg';
-import download_image from '../../assets/download.svg';
-import download_image_white from '../../assets/download_white.svg';
 import { Recipe } from '../interfaces/Recipe';
 import { getRecipe, updateRecipe, deleteRecipe } from '../../api';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { Ingredient } from '../interfaces/Ingredient';
 
 function Recipe(){
@@ -131,22 +119,22 @@ function Recipe(){
                     </section>
                     <section className={style.control_buttons}>
                         {editing && <button title="Save the recipe" onClick={save}>
-                            <img src={theme === "light" ? check_image : check_image_white} alt={"Save"}/>
+                            <img src={theme.checkImage} alt={"Save"}/>
                         </button>}
                         {editing && <button title="Cancel editing" onClick={cancel}>
-                            <img src={theme === "light" ? cancel_image : cancel_image_white} alt='cancel' />
+                            <img src={theme.xImage} alt='cancel' />
                         </button>}
                         {!editing && <button title="Edit recipe" onClick={edit}>
-                            <img src={theme === "light" ? edit_image : edit_image_white} alt={"Edit"}/>
+                            <img src={theme.editImage} alt={"Edit"}/>
                         </button>}
                         {!editing && <button title="Show collection popup" onClick={showCollectionPopup}>
-                            <img src={theme === "light" ? collection_image : collection_image_white} alt='Add to collection'/>
+                            <img src={theme.collectionImage} alt='Add to collection'/>
                         </button>}
                         {!editing && <button title="Delete recipe" onClick={deleteRecipeButton}>
-                            <img src={theme === "light" ? delete_image : delete_image_white} alt='Delete'/>
+                            <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
                         {!editing && <button title="Download PDF of the recipe" onClick={savePdf}>
-                            <img src={theme === "light" ? download_image : download_image_white} alt='Download'/>
+                            <img src={theme.downloadImage} alt='Download'/>
                         </button>}
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />

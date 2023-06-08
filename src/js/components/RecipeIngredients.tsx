@@ -3,9 +3,7 @@ import IngredientItem from './IngredientItem';
 import { Ingredient } from '../interfaces/Ingredient'
 import Recipe from '../pages/Recipe';
 import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
-import plus from '../../assets/plus-lg.svg';
-import plus_white from '../../assets/plus-lg_white.svg';
+import { ThemeContext } from '../context/ThemeContext';
 
 interface RecipeIngredientsProps{
     editing: boolean
@@ -32,7 +30,7 @@ function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredient
                 </tbody>
             </table>
             {editing && <button title="Add a new ingredient" onClick={addIngredient}>
-                <img src={theme === "light" ? plus : plus_white} alt="Delete"></img>
+                <img src={theme.plusImage} alt="Delete"></img>
             </button>}
         </section>
     )

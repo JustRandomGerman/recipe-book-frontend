@@ -2,9 +2,7 @@ import style from '../../css/components/RecipeKeywords.module.css';
 import { Recipe } from '../interfaces/Recipe';
 import { Keyword } from '../interfaces/Keyword';
 import KeywordItem from './KeywordItem';
-import plus from '../../assets/plus-lg.svg';
-import plus_white from '../../assets/plus-lg_white.svg';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { useContext } from 'react';
 
 interface RecipeKeywordsProps {
@@ -30,7 +28,7 @@ function RecipeKeywords({ editing, keywords, setRecipe }: RecipeKeywordsProps) {
             <div className={style.keyword_container}>
                 {keywords.map((keyword : Keyword, index : number) => <KeywordItem key={`${index}_${keyword}`} index={index} editing={editing} keyword={keyword} setRecipe={setRecipe} />)}
                 <button title="Add a new keyword" onClick={addKeyword}>
-                    <img src={theme === "light" ? plus : plus_white} alt="Delete"></img>
+                    <img src={theme.plusImage} alt="Delete"></img>
                 </button>
             </div>
         </section>

@@ -1,10 +1,8 @@
 import style from '../../css/components/IngredientItem.module.css';
 import { useContext, useEffect, useRef } from 'react';
 import { Ingredient } from '../interfaces/Ingredient'
-import delete_image from '../../assets/trash.svg'
-import delete_image_white from '../../assets/trash_white.svg'
 import { Recipe } from '../interfaces/Recipe';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 interface IngredientItemProps{
     index: number
@@ -58,7 +56,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
                 <input type="text" name="ingredient_name" placeholder="name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
             </td>
             <td>
-                {editing && <button title="Delete ingredient" onClick={removeIngredient}><img src={theme === "light" ? delete_image : delete_image_white} /> </button>}
+                {editing && <button title="Delete ingredient" onClick={removeIngredient}><img src={theme.deleteImage} /> </button>}
             </td>
         </tr>
     )
