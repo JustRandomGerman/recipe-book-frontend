@@ -35,7 +35,7 @@ function RecipeInstructions ({ editing, instructions, setRecipe } : RecipeInstru
     return(
         <section>
             <h2>Instructions</h2>
-            <textarea className={style.recipe_instructions} value={instructions} onInput={handleInput} disabled={!editing} ref={textareaRef}/>
+            <textarea className={style.recipe_instructions} value={instructions} placeholder="Instructions for the recipe" onInput={handleInput} disabled={!editing} ref={textareaRef}/>
         </section>
     )
 }

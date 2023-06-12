@@ -8,19 +8,17 @@
     height: 1em;
 }
 
-.filter_menu{
-    position: absolute;
+.filter_menu[open]{
     background-color: white;
     border: 1px solid lightgray;
     border-radius: .5em;
     width: 50%;
-    left: 25%;
     display: flex;
     flex-wrap: wrap;
 }
 
 @media (prefers-color-scheme: dark){
-    .filter_menu{
+    .filter_menu[open]{
         background-color: rgb(60, 60, 60);
         box-shadow: 0 0 10px black;
         border: none;

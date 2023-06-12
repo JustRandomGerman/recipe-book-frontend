@@ -13,11 +13,11 @@ import { useNavigate } from 'react-router-dom';
 function CreateRecipe(){
     const emptyRecipe : Recipe = {
         id: 0,
-        name: 'Recipe Name',
+        name: "",
         keywords: [],
         image_paths: [{path: ''}],
         ingredients: [],
-        instructions: 'Recipe Instructions',
+        instructions: "",
         tags: [],
         collections: []
       };

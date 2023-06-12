@@ -18,7 +18,7 @@ function RecipeHeading({ editing, name, setRecipe } : RecipeHeadingProps) {
     }
 
     return (
-        <input className={style.recipe_heading} type="text" value={name} onInput={handleInput} disabled={!editing} />
+        <input className={style.recipe_heading} type="text" value={name} placeholder="Name of the recipe" onInput={handleInput} disabled={!editing} />
     )
 }
 

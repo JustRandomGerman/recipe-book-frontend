@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import style from '../../css/components/FilterMenu.module.css';
 import FilterItem from './FilterItem';
 import { Tag } from '../interfaces/Tag'
@@ -11,7 +11,9 @@ interface FilterMenuProps{
 }
 
 function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
-    const theme = useContext(ThemeContext)
+    const theme = useContext(ThemeContext);
+
+    const dialogRef = useRef<HTMLDialogElement>(null);
     
     let [shown, setShown] = useState<boolean>(false);
     let [tags, setTags] = useState<Tag[]>([]);
@@ -24,7 +26,14 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
     
     function handleFilterButton(event : React.MouseEvent<HTMLElement>){
         event.preventDefault();
-        setShown(!shown);
+        if(!shown){
+            dialogRef.current?.show();
+            setShown(true);
+        }
+        else{
+            dialogRef.current?.close();
+            setShown(false);
+        }
     }
 
     return(
@@ -32,11 +41,9 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
             <button title="toggle filter menu" id={style.filter} onClick={handleFilterButton}>
                 <img src={theme.filterImage} alt='Filter' />
             </button>
-            {shown &&
-                <div className={style.filter_menu}>
-                    {tags.map(tag => <FilterItem key={tag.tag_name} currentTag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
-                </div>
-            }
+            <dialog className={style.filter_menu} ref={dialogRef}>
+                {tags.map(tag => <FilterItem key={tag.tag_name} currentTag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>) }
+            </dialog>
         </>
     )
 }
