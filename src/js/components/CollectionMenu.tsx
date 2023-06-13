@@ -41,22 +41,6 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
     }
 
     return(
-        <>
-        {/*shown &&
-            <div className={`${style.popup_backdrop} ${shown ? style.shown : ''}`}>
-                <div className={style.popup}>
-                    <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
-                        <img src={theme.xImage} alt="Close" />
-                    </button>
-                    <h3>Add to collection</h3>
-                    <ul>
-                        {collections.map((collection : Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} />)}
-                    </ul>
-                    
-                    <CollectionCreator parentShown={shown} setCollections={setCollections}/>
-                </div>
-            </div>
-        */}
         <dialog className={style.popup} ref={dialogRef}>
             <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
                 <img src={theme.xImage} alt="Close" />
@@ -68,7 +52,6 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
             
             <CollectionCreator parentShown={shown} setCollections={setCollections}/>
         </dialog>
-        </>
     )
 }
 
