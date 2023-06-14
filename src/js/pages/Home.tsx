@@ -8,8 +8,8 @@ import CollectionCard from '../components/CollectionCard';
 
 function Home() {
 
-    let [recipes, setRecipes] = useState<Recipe[]>();
-    let [collections, setCollections] = useState<Collection[]>()
+    const [recipes, setRecipes] = useState<Recipe[]>();
+    const [collections, setCollections] = useState<Collection[]>()
 
     useEffect( () => {
         getRecipes().then((response) => {

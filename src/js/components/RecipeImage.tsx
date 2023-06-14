@@ -16,7 +16,7 @@ interface RecipeImageProps{
 function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     const theme = useContext(ThemeContext);
 
-    let [ currentIndex, setCurrentIndex] = useState<number>(0);
+    const [ currentIndex, setCurrentIndex] = useState<number>(0);
 
     function moveLeft(){
         if(currentIndex > 0){

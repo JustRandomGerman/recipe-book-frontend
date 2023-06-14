@@ -20,9 +20,9 @@ function CreateRecipe(){
         instructions: "",
         tags: [],
         collections: []
-      };
-    let [recipe, setRecipe] = useState<Recipe>(emptyRecipe);
-    let [error, setError] = useState<string>();
+    };
+    const [recipe, setRecipe] = useState<Recipe>(emptyRecipe);
+    const [error, setError] = useState<string>();
 
     const navigate = useNavigate();
     function save(){

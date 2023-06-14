@@ -19,7 +19,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
-    let [collections, setCollections] = useState<Collection[]>([]);
+    const [collections, setCollections] = useState<Collection[]>([]);
 
     useEffect(() => {
         getCollections().then((response) => {

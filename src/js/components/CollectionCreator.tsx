@@ -10,8 +10,8 @@ interface CollectionCreatorProps{
 
 function CollectionCreator( {parentShown, setCollections} : CollectionCreatorProps){
     
-    let [shown, setShown] = useState<boolean>(false);
-    let [currentText, setCurrentText] = useState<string>("");
+    const [shown, setShown] = useState<boolean>(false);
+    const [currentText, setCurrentText] = useState<string>("");
     
     function handleShowCreator(){
         setShown(true);

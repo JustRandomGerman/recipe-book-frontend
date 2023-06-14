@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import style from '../../css/pages/Recipe.module.css';
 import CollectionMenu from '../components/CollectionMenu';
+import DeleteMenu from '../components/DeleteMenu';
 import RecipeImage from '../components/RecipeImage';
 import RecipeHeading from '../components/RecipeHeading';
 import RecipeKeywords from '../components/RecipeKeywords';
@@ -9,21 +10,22 @@ import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/RecipeTags';
 import { Recipe } from '../interfaces/Recipe';
-import { getRecipe, updateRecipe, deleteRecipe } from '../../api';
+import { getRecipe, updateRecipe } from '../../api';
 import { ThemeContext } from '../context/ThemeContext';
 import { Ingredient } from '../interfaces/Ingredient';
 
 function Recipe(){
     const theme = useContext(ThemeContext);
     
-    let [collectionPopupShown, setCollectionPopupShown] = useState<boolean>(false);
-    let [editing, setEditing] = useState<boolean>(false);
-    let [loading, setLoading] = useState<boolean>(true);
-    let [error, setError] = useState<string>("");
-    let [loadingError, setLoadingError] = useState<string>("");
-    let [success, setSuccess] = useState<string>("");
-    let [recipe, setRecipe] = useState<Recipe>();
-    let [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
+    const [collectionPopupShown, setCollectionPopupShown] = useState<boolean>(false);
+    const [deleteMenuShown, setDeleteMenuShown] = useState<boolean>(false);
+    const [editing, setEditing] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string>("");
+    const [loadingError, setLoadingError] = useState<string>("");
+    const [success, setSuccess] = useState<string>("");
+    const [recipe, setRecipe] = useState<Recipe>();
+    const [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
     const id : number = Number(params.id);
@@ -39,15 +41,15 @@ function Recipe(){
         })
     }, [])
 
-    function showCollectionPopup(){
+    function handleShowCollectionPopup(){
         setCollectionPopupShown(true);
     }
 
-    function edit(){
+    function handleEdit(){
         setEditing(true);
     }
 
-    function save(){
+    function handleSave(){
         updateRecipe(id, recipe!).then((response) => {
             setEditing(false);
             setSuccess("Successfully saved recipe");
@@ -65,16 +67,14 @@ function Recipe(){
         });
     }
 
-    function cancel(){
+    function handleCancel(){
         setEditing(false);
         setRecipe(orginalRecipe);
     }
 
-    const navigate = useNavigate();
-    function deleteRecipeButton(){
-        deleteRecipe(id).then((response) => {
-            navigate("/");
-        })
+    
+    function handleDelete(){
+        setDeleteMenuShown(true);
     }
 
     function savePdf() {
@@ -112,25 +112,26 @@ function Recipe(){
             {!loading && loadingError === "" ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown} recipeId={id} recipeCollections={recipe!.collections} setRecipe={setRecipe}/>
+                    <DeleteMenu shown={deleteMenuShown} setShown={setDeleteMenuShown} recipeId={recipe!.id}/>
                     <RecipeImage editing={editing} image_paths={recipe!.image_paths} setRecipe={setRecipe}/>
                     <section>
                         <p className='error'>{error}</p>
                         <p className='success'>{success}</p>
                     </section>
                     <section className={style.control_buttons}>
-                        {editing && <button title="Save the recipe" onClick={save}>
+                        {editing && <button title="Save the recipe" onClick={handleSave}>
                             <img src={theme.checkImage} alt={"Save"}/>
                         </button>}
-                        {editing && <button title="Cancel editing" onClick={cancel}>
+                        {editing && <button title="Cancel editing" onClick={handleCancel}>
                             <img src={theme.xImage} alt='cancel' />
                         </button>}
-                        {!editing && <button title="Edit recipe" onClick={edit}>
+                        {!editing && <button title="Edit recipe" onClick={handleEdit}>
                             <img src={theme.editImage} alt={"Edit"}/>
                         </button>}
-                        {!editing && <button title="Show collection popup" onClick={showCollectionPopup}>
+                        {!editing && <button title="Show collection popup" onClick={handleShowCollectionPopup}>
                             <img src={theme.collectionImage} alt='Add to collection'/>
                         </button>}
-                        {!editing && <button title="Delete recipe" onClick={deleteRecipeButton}>
+                        {!editing && <button title="Delete recipe" onClick={handleDelete}>
                             <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
                         {!editing && <button title="Download PDF of the recipe" onClick={savePdf}>

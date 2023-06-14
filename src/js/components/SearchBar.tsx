@@ -9,9 +9,9 @@ function SearchBar(){
     const theme = useContext(ThemeContext)
 
     const navigate = useNavigate();
-    let [searchString, setSearchString] = useState<string>("");
-    let [searchMode, setSearchMode] = useState<string>("recipe");
-    let [searchFilterTags, setSearchFilterTags] = useState<Tag[]>([]);
+    const [searchString, setSearchString] = useState<string>("");
+    const [searchMode, setSearchMode] = useState<string>("recipe");
+    const [searchFilterTags, setSearchFilterTags] = useState<Tag[]>([]);
 
     function handleSelectChange(event : React.ChangeEvent<HTMLSelectElement>){
         setSearchMode(event.target.value);

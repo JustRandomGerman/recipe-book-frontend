@@ -13,7 +13,7 @@ interface RecipeTagsProps{
 
 function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
 
-    let [availableTags, setAvailableTags] = useState<Tag[]>([]);
+    const [availableTags, setAvailableTags] = useState<Tag[]>([]);
 
     useEffect( () => {
         getAvailableTags().then( (response) => {

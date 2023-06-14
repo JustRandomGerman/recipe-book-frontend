@@ -15,8 +15,8 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
 
     const dialogRef = useRef<HTMLDialogElement>(null);
     
-    let [shown, setShown] = useState<boolean>(false);
-    let [tags, setTags] = useState<Tag[]>([]);
+    const [shown, setShown] = useState<boolean>(false);
+    const [tags, setTags] = useState<Tag[]>([]);
 
     useEffect( () => {
         getAvailableTags().then((response) => {

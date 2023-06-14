@@ -9,13 +9,13 @@ import { ThemeContext } from '../context/ThemeContext';
 function Collection() {
     const theme = useContext(ThemeContext);
 
-    let [collection, setCollection] = useState<Collection>();
-    let [originalCollection, setOriginalCollection] = useState<Collection>();
-    let [loading, setLoading] = useState<boolean>(true);
-    let [loadingError, setLoadingError] = useState<string>("");
-    let [error, setError] = useState<string>("");
-    let [success, setSuccess] = useState<string>("");
-    let [editing, setEditing] = useState<boolean>(false);
+    const [collection, setCollection] = useState<Collection>();
+    const [originalCollection, setOriginalCollection] = useState<Collection>();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [loadingError, setLoadingError] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    const [success, setSuccess] = useState<string>("");
+    const [editing, setEditing] = useState<boolean>(false);
 
     const params = useParams();
     const id : number = Number(params.id);

@@ -8,8 +8,8 @@ import { search } from '../../api';
 function Search(){
 
     const [params, setParams] = useSearchParams();
-    let [recipes, setRecipes] = useState<Recipe[]>();
-    let [error, setError] = useState<string>("");
+    const [recipes, setRecipes] = useState<Recipe[]>();
+    const [error, setError] = useState<string>("");
 
     useEffect( () => {
         //prevent the tags array in the request from being filled with an empty string when no tags are selected

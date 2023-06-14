@@ -42,7 +42,7 @@ interface ThemeProviderProps{
 }
 
 export const ThemeProvider = ({children} : ThemeProviderProps) => {
-    let [theme, setTheme] = useState({
+    const [theme, setTheme] = useState({
         color: "light",
         deleteImage: delete_image,
         editImage: edit_image,
