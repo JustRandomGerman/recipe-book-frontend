@@ -13,11 +13,11 @@ function SearchBar(){
     const [searchMode, setSearchMode] = useState<string>("recipe");
     const [searchFilterTags, setSearchFilterTags] = useState<Tag[]>([]);
 
-    function handleSelectChange(event : React.ChangeEvent<HTMLSelectElement>){
+    function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>){
         setSearchMode(event.target.value);
     }
 
-    function handleStartSearch(event : React.FormEvent<HTMLFormElement>){
+    function handleStartSearch(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         if(! (searchString === "")){
             navigate("/search?query=" + searchString + "&mode=" + searchMode + "&tags=" + searchFilterTags.map(tag => tag.tag_name));

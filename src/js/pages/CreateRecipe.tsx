@@ -11,7 +11,7 @@ import { createRecipe } from '../../api';
 import { useNavigate } from 'react-router-dom';
 
 function CreateRecipe(){
-    const emptyRecipe : Recipe = {
+    const emptyRecipe: Recipe = {
         id: 0,
         name: "",
         keywords: [],

@@ -28,7 +28,7 @@ function Home() {
             </div>
             <h1>Collections</h1>
             <div className={style.container}>
-                {collections?.map((collection : Collection) => <CollectionCard key={collection.id} collection={collection} />)}
+                {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
             </div>
         </div>
     )

@@ -10,12 +10,12 @@ interface ImageItemProps{
     setRecipe: Function
 }
 
-function ImageItem ({ index, currentIndex, image_path, setRecipe } : ImageItemProps){
+function ImageItem ({ index, currentIndex, image_path, setRecipe }: ImageItemProps){
 
-    function handleUploadImage(event : ChangeEvent<HTMLInputElement>){
+    function handleUploadImage(event: ChangeEvent<HTMLInputElement>){
         const { files } = event.currentTarget;
         uploadImage(files).then((response) => {
-            setRecipe((oldRecipe : Recipe) => {
+            setRecipe((oldRecipe: Recipe) => {
                 const updatedImagePaths = [...oldRecipe.image_paths];
                 updatedImagePaths[index] = {path: response.image};
                 return { ...oldRecipe, image_paths: updatedImagePaths};

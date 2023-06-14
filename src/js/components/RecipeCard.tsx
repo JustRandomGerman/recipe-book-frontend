@@ -6,7 +6,7 @@ interface RecipeCardProps{
     recipe: Recipe
 }
 
-function RecipeCard( { recipe } : RecipeCardProps){
+function RecipeCard( { recipe }: RecipeCardProps){
     
 
     return(

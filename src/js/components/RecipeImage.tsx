@@ -13,10 +13,10 @@ interface RecipeImageProps{
     setRecipe: Function
 }
 
-function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
+function RecipeImage ({ editing, image_paths, setRecipe }: RecipeImageProps){
     const theme = useContext(ThemeContext);
 
-    const [ currentIndex, setCurrentIndex] = useState<number>(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     function handleMoveLeft(){
         if(currentIndex > 0){
@@ -33,7 +33,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     function handleDeleteImage(){
         if(image_paths.length === 1){
             //only one image exists, so instead of completely deleting make path empty to show upload dialog
-            setRecipe((oldRecipe : Recipe) => {
+            setRecipe((oldRecipe: Recipe) => {
                 const updatedImagePaths = [...oldRecipe.image_paths];
                 updatedImagePaths[currentIndex] = {path: ""};
                 return {...oldRecipe, image_paths: updatedImagePaths};
@@ -51,7 +51,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
                     return oldIndex - 1;
                 }
             })
-            setRecipe((oldRecipe : Recipe) => {
+            setRecipe((oldRecipe: Recipe) => {
                 const updatedImagePaths = [...oldRecipe.image_paths];
                 updatedImagePaths.splice(currentIndex, 1);
                 return {...oldRecipe, image_paths: updatedImagePaths};
@@ -60,7 +60,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
     }
 
     function handleAddImage(){
-        setRecipe((oldRecipe : Recipe) => {
+        setRecipe((oldRecipe: Recipe) => {
             const updatedImagePaths = [...oldRecipe.image_paths, { path: "" }];
             return { ...oldRecipe, image_paths: updatedImagePaths };
         })
@@ -69,7 +69,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
 
     return(
         <div className={style.images}>
-            {image_paths.map( (image_path : ImagePath, index : number) => {
+            {image_paths.map( (image_path: ImagePath, index: number) => {
                 return <ImageItem key={image_path.path} index={index} currentIndex={currentIndex} image_path={image_path} setRecipe={setRecipe} />
             })}
             <div className={style.image_buttons}>
@@ -82,10 +82,10 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
                     </button>
                 </>}
                 <button title="Move left" onClick={handleMoveLeft}>
-                    <img src={(currentIndex === 0) ? arrow_left_grey : theme.arrowLeftImage} alt="Move left"></img>
+                    <img src={(currentIndex === 0) ? arrow_left_grey: theme.arrowLeftImage} alt="Move left"></img>
                 </button>
                 <button title="Move right" onClick={handleMoveRight}>
-                    <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey : theme.arrowRightImage} alt="Move right"></img>
+                    <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey: theme.arrowRightImage} alt="Move right"></img>
                 </button>
             </div>
         </div>

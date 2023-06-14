@@ -11,7 +11,7 @@ interface IngredientItemProps{
     setRecipe: Function
 }
 
-function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItemProps){
+function IngredientItem({index, editing, ingredient, setRecipe}: IngredientItemProps){
     const theme = useContext(ThemeContext)
 
     const amountInputRef = useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
 
     function handleInput(event: React.FormEvent<HTMLInputElement>) {
         const { name, value } = event.currentTarget;
-        setRecipe((oldRecipe : Recipe) => {
+        setRecipe((oldRecipe: Recipe) => {
             const updatedIngredient = { ...ingredient, [name]: value };
             const updatedIngredients = [...oldRecipe.ingredients];
             //using the index to update, because name might not be unique
@@ -50,7 +50,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
     return(
         <tr className={style.ingredient}>
             <td>
-                <input type="text" name="amount" placeholder="amount" value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
+                <input type="text" name="amount" placeholder={editing ? "amount" : "" /* only show the placeholder when editing as the amount is allowed to be empty */} value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
             </td>
             <td>
                 <input type="text" name="ingredient_name" placeholder="name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>

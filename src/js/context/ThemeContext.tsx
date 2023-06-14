@@ -41,7 +41,7 @@ interface ThemeProviderProps{
     children: ReactNode
 }
 
-export const ThemeProvider = ({children} : ThemeProviderProps) => {
+export const ThemeProvider = ({children}: ThemeProviderProps) => {
     const [theme, setTheme] = useState({
         color: "light",
         deleteImage: delete_image,

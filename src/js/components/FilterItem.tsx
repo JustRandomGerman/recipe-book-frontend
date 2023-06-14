@@ -7,17 +7,17 @@ interface FilterItemProps{
     setSelectedTags: Function
 }
 
-function FilterItem( {currentTag, selectedTags, setSelectedTags} : FilterItemProps){
+function FilterItem( {currentTag, selectedTags, setSelectedTags}: FilterItemProps){
     
-    function handleSelectChange(event : React.ChangeEvent<HTMLInputElement>){
+    function handleSelectChange(event: React.ChangeEvent<HTMLInputElement>){
         if(event.target.checked === true){
-            setSelectedTags((prevTags : Tag[]) => [
+            setSelectedTags((prevTags: Tag[]) => [
             ...prevTags,
             currentTag
             ])
         }
         else{
-            setSelectedTags((prevTags : Tag[]) => {
+            setSelectedTags((prevTags: Tag[]) => {
                 return prevTags.filter((tag: Tag) => tag.tag_name !== currentTag.tag_name)
             })
         }

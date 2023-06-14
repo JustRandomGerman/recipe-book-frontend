@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Collection } from '../interfaces/Collection';
 
 interface CollectionCreatorProps{
-    parentShown : boolean
-    setCollections : Function
+    parentShown: boolean
+    setCollections: Function
 }
 
-function CollectionCreator( {parentShown, setCollections} : CollectionCreatorProps){
+function CollectionCreator( {parentShown, setCollections}: CollectionCreatorProps){
     
     const [shown, setShown] = useState<boolean>(false);
     const [currentText, setCurrentText] = useState<string>("");
@@ -17,7 +17,7 @@ function CollectionCreator( {parentShown, setCollections} : CollectionCreatorPro
         setShown(true);
     }
 
-    function handleInput(event : React.FormEvent<HTMLInputElement>){
+    function handleInput(event: React.FormEvent<HTMLInputElement>){
         const value = event.currentTarget.value;
         setCurrentText(value);
     }

@@ -6,7 +6,7 @@ interface CollectionCardProps{
     collection: Collection
 }
 
-function CollectionCard( { collection } : CollectionCardProps){
+function CollectionCard( { collection }: CollectionCardProps){
     
 
     return(

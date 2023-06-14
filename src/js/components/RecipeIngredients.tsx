@@ -11,7 +11,7 @@ interface RecipeIngredientsProps{
     setRecipe: Function
 }
 
-function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredientsProps){
+function RecipeIngredients( {editing, ingredients, setRecipe}: RecipeIngredientsProps){
     const theme = useContext(ThemeContext);
 
     function handleAddIngredient(){

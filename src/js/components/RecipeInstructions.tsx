@@ -8,7 +8,7 @@ interface RecipeInstructionProps{
     setRecipe: Function
 }
 
-function RecipeInstructions ({ editing, instructions, setRecipe } : RecipeInstructionProps){
+function RecipeInstructions ({ editing, instructions, setRecipe }: RecipeInstructionProps){
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 

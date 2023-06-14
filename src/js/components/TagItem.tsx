@@ -11,15 +11,15 @@ interface TagItemProps{
     setAvailableTags: Function
 }
 
-function TagItem({editing, tag, setRecipe, setAvailableTags} : TagItemProps){
+function TagItem({editing, tag, setRecipe, setAvailableTags}: TagItemProps){
     const theme = useContext(ThemeContext)
 
     function handleRemoveTag(){
-        setRecipe((oldRecipe : Recipe) => {
-            const updatedTags = oldRecipe.tags.filter((t : Tag) => t.tag_name !== tag.tag_name);
+        setRecipe((oldRecipe: Recipe) => {
+            const updatedTags = oldRecipe.tags.filter((t: Tag) => t.tag_name !== tag.tag_name);
             return {...oldRecipe, tags: updatedTags};
         });
-        setAvailableTags((oldTags : Tag[] ) => [
+        setAvailableTags((oldTags: Tag[] ) => [
             ...oldTags,
             tag
         ]);

@@ -25,8 +25,8 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
 
     function handleKeywordInput(event: React.FormEvent<HTMLInputElement>) {
         const { value } = event.currentTarget;
-        setRecipe((oldRecipe : Recipe) => {
-            const updatedKeyword = {...keyword, keyword_name : value}
+        setRecipe((oldRecipe: Recipe) => {
+            const updatedKeyword = {...keyword, keyword_name: value}
             const updatedKeywords = [...oldRecipe.keywords];
             //using the index to update, because name might not be unique
             updatedKeywords[index] = updatedKeyword;
@@ -35,7 +35,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
     }
 
     function handleRemoveKeyword(){
-        setRecipe((oldRecipe : Recipe) => {
+        setRecipe((oldRecipe: Recipe) => {
             const updatedKeywords = [...oldRecipe.keywords];
             //using the index to splice, because name might not be unique
             updatedKeywords.splice(index, 1)

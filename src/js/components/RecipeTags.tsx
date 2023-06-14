@@ -11,7 +11,7 @@ interface RecipeTagsProps{
     setRecipe: Function
 }
 
-function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
+function RecipeTags( {editing, tags, setRecipe}: RecipeTagsProps){
 
     const [availableTags, setAvailableTags] = useState<Tag[]>([]);
 
@@ -24,14 +24,14 @@ function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
         })
     }, [])
 
-    function addTag(event: React.ChangeEvent<HTMLSelectElement>) {
+    function handleAddTag(event: React.ChangeEvent<HTMLSelectElement>) {
         const tagName = event.target.value;
         const tag = { tag_name: tagName };
         setRecipe((oldRecipe: Recipe) => ({
             ...oldRecipe,
             tags: [...oldRecipe.tags, tag],
         }));
-        setAvailableTags((oldTags : Tag[]) => {
+        setAvailableTags((oldTags: Tag[]) => {
             return oldTags.filter((t) => t.tag_name !== tagName)
         });
     }
@@ -42,7 +42,7 @@ function RecipeTags( {editing, tags, setRecipe} : RecipeTagsProps){
             <div className={style.tags}>
                 {tags.map(tag => <TagItem key={tag.tag_name} editing={editing} tag={tag} setRecipe={setRecipe} setAvailableTags={setAvailableTags} />)}
                 {editing &&
-                    <select title="Add a new tag" id={style.tag_select} onChange={addTag} value={"Add Tag"}>
+                    <select title="Add a new tag" id={style.tag_select} onChange={handleAddTag} value={"Add Tag"}>
                         <option value="Add Tag" disabled>Add Tag</option>
                         {availableTags.map((availableTag, index) => <option key={index} value={availableTag.tag_name}>{availableTag.tag_name}</option>)}
                     </select> 

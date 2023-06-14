@@ -28,7 +28,7 @@ function Recipe(){
     const [orginalRecipe, setOriginalRecipe] = useState<Recipe>();
     
     const params = useParams();
-    const id : number = Number(params.id);
+    const id: number = Number(params.id);
 
     useEffect( () => {
         getRecipe(id).then((response) => {
@@ -91,7 +91,7 @@ function Recipe(){
             doc.setFont("Helvetica", "normal")
             // Loop through ingredients and add them to the PDF
             let y = 37;
-            recipe!.ingredients.forEach((ingredient : Ingredient) => {
+            recipe!.ingredients.forEach((ingredient: Ingredient) => {
                 doc.text(`- ${ingredient.amount} ${ingredient.ingredient_name}`, 10, y);
                 y += 7;
             });

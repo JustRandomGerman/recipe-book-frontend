@@ -6,11 +6,11 @@ import { getAvailableTags } from '../../api';
 import { ThemeContext } from '../context/ThemeContext';
 
 interface FilterMenuProps{
-    selectedTags : Tag[],
-    setSelectedTags : Function
+    selectedTags: Tag[],
+    setSelectedTags: Function
 }
 
-function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
+function FilterMenu( {selectedTags, setSelectedTags}: FilterMenuProps ){
     const theme = useContext(ThemeContext);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -24,7 +24,7 @@ function FilterMenu( {selectedTags, setSelectedTags} : FilterMenuProps ){
         })
     }, [])
     
-    function handleFilterButton(event : React.MouseEvent<HTMLElement>){
+    function handleFilterButton(event: React.MouseEvent<HTMLElement>){
         event.preventDefault();
         if(!shown){
             dialogRef.current?.show();

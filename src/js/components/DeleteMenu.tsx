@@ -9,7 +9,7 @@ interface DeleteMenuProps{
     recipeId: number
 }
 
-function DeleteMenu({shown, setShown, recipeId} : DeleteMenuProps){
+function DeleteMenu({shown, setShown, recipeId}: DeleteMenuProps){
     const dialogRef = useRef<HTMLDialogElement>(null);
     
     useEffect( () => {

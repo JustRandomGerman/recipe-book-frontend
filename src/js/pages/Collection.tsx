@@ -18,7 +18,7 @@ function Collection() {
     const [editing, setEditing] = useState<boolean>(false);
 
     const params = useParams();
-    const id : number = Number(params.id);
+    const id: number = Number(params.id);
 
     useEffect( () => {
         getCollection(id).then((response) => {
@@ -31,7 +31,7 @@ function Collection() {
         })
     }, [])
 
-    function handleInput(event : React.FormEvent<HTMLInputElement>){
+    function handleInput(event: React.FormEvent<HTMLInputElement>){
         const value = event.currentTarget.value;
         setCollection((oldCollection: Collection | undefined) => {
             if (!oldCollection) {

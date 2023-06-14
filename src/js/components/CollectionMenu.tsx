@@ -7,14 +7,14 @@ import { Collection } from '../interfaces/Collection';
 import { getCollections } from '../../api';
 
 interface CollectionMenuProps {
-    shown : boolean
-    setShown : Function
-    recipeId : number
-    recipeCollections : Collection[]
-    setRecipe : Function
+    shown: boolean
+    setShown: Function
+    recipeId: number
+    recipeCollections: Collection[]
+    setRecipe: Function
 }
 
-function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setRecipe } : CollectionMenuProps){
+function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setRecipe }: CollectionMenuProps){
     const theme = useContext(ThemeContext);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -47,7 +47,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
             </button>
             <h3>Add to collection</h3>
             <ul>
-                {collections.map((collection : Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} />)}
+                {collections.map((collection: Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} />)}
             </ul>
             
             <CollectionCreator parentShown={shown} setCollections={setCollections}/>

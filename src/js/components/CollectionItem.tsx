@@ -4,18 +4,18 @@ import { Collection } from '../interfaces/Collection';
 import { Recipe } from '../interfaces/Recipe';
 
 interface CollectionItemProps {
-    collection : Collection
-    recipeId : number
-    recipeCollections : Collection[]
+    collection: Collection
+    recipeId: number
+    recipeCollections: Collection[]
     setRecipe: Function
 }
 
-function CollectionItem( {collection, recipeId, recipeCollections, setRecipe} : CollectionItemProps){
+function CollectionItem( {collection, recipeId, recipeCollections, setRecipe}: CollectionItemProps){
 
-    function handleSelectChange(event : React.ChangeEvent<HTMLInputElement>){
+    function handleSelectChange(event: React.ChangeEvent<HTMLInputElement>){
         if(event.target.checked === true){
             addRecipeToCollection(collection.id, recipeId).then((response) => {
-                setRecipe((oldRecipe : Recipe) => ({
+                setRecipe((oldRecipe: Recipe) => ({
                     ...oldRecipe,
                     collections: [...oldRecipe.collections, response]
                 }))
@@ -23,8 +23,8 @@ function CollectionItem( {collection, recipeId, recipeCollections, setRecipe} : 
         }
         else{
             removeRecipeFromCollection(collection.id, recipeId).then((response) => {
-                setRecipe((oldRecipe : Recipe) => {
-                    const updatedCollections = oldRecipe.collections.filter((c : Collection) => c.id !== collection.id);
+                setRecipe((oldRecipe: Recipe) => {
+                    const updatedCollections = oldRecipe.collections.filter((c: Collection) => c.id !== collection.id);
                     return {...oldRecipe, collections: updatedCollections};
                 });
             })
