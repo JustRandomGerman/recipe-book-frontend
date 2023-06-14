@@ -5,6 +5,10 @@
     border-radius: .5em;
 }
 
+.delete_menu p{
+    margin-top: 0;
+}
+
 .delete_menu button{
     margin-right: 1em;
     background-color: rgb(180, 180, 180);
