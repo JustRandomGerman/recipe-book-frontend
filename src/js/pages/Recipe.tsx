@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from '../../css/pages/Recipe.module.css';
 import CollectionMenu from '../components/CollectionMenu';
 import DeleteMenu from '../components/DeleteMenu';
@@ -10,7 +10,7 @@ import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import TagList from '../components/RecipeTags';
 import { Recipe } from '../interfaces/Recipe';
-import { getRecipe, updateRecipe } from '../../api';
+import { deleteRecipe, getRecipe, updateRecipe } from '../../api';
 import { ThemeContext } from '../context/ThemeContext';
 import { Ingredient } from '../interfaces/Ingredient';
 
@@ -77,6 +77,14 @@ function Recipe(){
         setDeleteMenuShown(true);
     }
 
+    const navigate = useNavigate()
+    //the function passed to the DeleteMenu
+    function deleteFunction(){
+        deleteRecipe(id).then((response) => {
+            navigate("/");
+        })
+    }
+
     function handleSavePdf() {
         import('jspdf').then((pdf) => {
             const doc = new pdf.jsPDF();
@@ -112,7 +120,7 @@ function Recipe(){
             {!loading && loadingError === "" ? (
                 <>
                     <CollectionMenu shown={collectionPopupShown} setShown={setCollectionPopupShown} recipeId={id} recipeCollections={recipe!.collections} setRecipe={setRecipe}/>
-                    <DeleteMenu shown={deleteMenuShown} setShown={setDeleteMenuShown} recipeId={recipe!.id}/>
+                    <DeleteMenu shown={deleteMenuShown} setShown={setDeleteMenuShown} deletedObject='recipe' deleteFunction={deleteFunction}/>
                     <RecipeImage editing={editing} image_paths={recipe!.image_paths} setRecipe={setRecipe}/>
                     <section>
                         <p className='error'>{error}</p>

@@ -1,15 +1,14 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { deleteRecipe } from '../../api';
 import style from '../../css/components/DeleteMenu.module.css';
 
 interface DeleteMenuProps{
-    shown: boolean,
-    setShown: Function,
-    recipeId: number
+    shown: boolean
+    setShown: Function
+    deletedObject: string
+    deleteFunction: Function
 }
 
-function DeleteMenu({shown, setShown, recipeId}: DeleteMenuProps){
+function DeleteMenu({shown, setShown, deletedObject, deleteFunction}: DeleteMenuProps){
     const dialogRef = useRef<HTMLDialogElement>(null);
     
     useEffect( () => {
@@ -25,17 +24,14 @@ function DeleteMenu({shown, setShown, recipeId}: DeleteMenuProps){
         setShown(false);
     }
 
-    const navigate = useNavigate();
     function handleDelete(){
-        deleteRecipe(recipeId).then((response) => {
-            navigate("/");
-        })
+        deleteFunction();
     }
     
     return (
         <dialog className={style.delete_menu} ref={dialogRef}>
-            <p>Are you sure you want to delete the recipe?</p>
-            <button title="Delete the recipe" onClick={handleDelete}>Delete</button>
+            <p>{`Are you sure you want to delete the ${deletedObject}`}</p>
+            <button title={`Delete the ${deletedObject}`} onClick={handleDelete}>Delete</button>
             <button title="Cancel" onClick={handleCancel}>Cancel</button>
         </dialog>
     )

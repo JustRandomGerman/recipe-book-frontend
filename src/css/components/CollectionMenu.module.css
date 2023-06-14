@@ -7,6 +7,10 @@
     border: none;
 }
 
+.popup::backdrop{
+    background: rgba(40, 40, 40, 0.25);
+}
+
 .popup h3{
     margin-left: 0;
     margin-top: .5em;

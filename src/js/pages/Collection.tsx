@@ -5,6 +5,7 @@ import { Collection } from '../interfaces/Collection';
 import { getCollection, updateCollection, deleteCollection } from '../../api';
 import RecipeCard from '../components/RecipeCard';
 import { ThemeContext } from '../context/ThemeContext';
+import DeleteMenu from '../components/DeleteMenu';
 
 function Collection() {
     const theme = useContext(ThemeContext);
@@ -16,6 +17,7 @@ function Collection() {
     const [error, setError] = useState<string>("");
     const [success, setSuccess] = useState<string>("");
     const [editing, setEditing] = useState<boolean>(false);
+    const [deleteMenuShown, setDeleteMenuShown] = useState<boolean>(false);
 
     const params = useParams();
     const id: number = Number(params.id);
@@ -44,7 +46,7 @@ function Collection() {
         });
     }
 
-    function handleSaveCollection(){
+    function handleSave(){
         //remove error from previous attempt
         setError("");
         setEditing(false);
@@ -70,8 +72,12 @@ function Collection() {
         setEditing(true);
     }
 
+    function handleDelete(){
+        setDeleteMenuShown(true);
+    }
+
     const navigate = useNavigate();
-    function handleDeleteCollectionButton(){
+    function deleteFunction(){
         deleteCollection(id).then((response) => {
             navigate("/");
         })
@@ -81,10 +87,11 @@ function Collection() {
         <div className={style.collection}>
             {!loading && loadingError === "" ? (
                 <>
+                    <DeleteMenu shown={deleteMenuShown} setShown={setDeleteMenuShown} deletedObject='collection' deleteFunction={deleteFunction} />
                     <p className='error'>{error}</p>
                     <p className='success'>{success}</p>
                     <section className={style.control_buttons}>
-                        {editing && <button title="Save the collection" onClick={handleSaveCollection}>
+                        {editing && <button title="Save the collection" onClick={handleSave}>
                             <img src={theme.checkImage} alt={"Save"}/>
                         </button>}
                         {editing && <button title="Cancel editing" onClick={handleCancel}>
@@ -93,7 +100,7 @@ function Collection() {
                         {!editing && <button title="Edit collection" onClick={handleEdit}>
                             <img src={theme.editImage} alt={"Edit"}/>
                         </button>}
-                        {!editing && <button title="Delete collection" onClick={handleDeleteCollectionButton}>
+                        {!editing && <button title="Delete collection" onClick={handleDelete}>
                             <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
                     </section>
