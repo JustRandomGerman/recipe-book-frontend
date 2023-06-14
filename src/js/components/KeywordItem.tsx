@@ -34,7 +34,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
         })
     }
 
-    function removeKeyword(){
+    function handleRemoveKeyword(){
         setRecipe((oldRecipe : Recipe) => {
             const updatedKeywords = [...oldRecipe.keywords];
             //using the index to splice, because name might not be unique
@@ -46,7 +46,7 @@ function KeywordItem({ index, editing, keyword, setRecipe }: KeywordItemProps) {
     return (
         <div className={style.keyword}>
             <input type="text" placeholder="keyword" value={keyword.keyword_name} onInput={handleKeywordInput} ref={InputRef}/>
-            {editing && <button title="Delete keyword" onClick={removeKeyword}><img src={theme.deleteImage}></img></button>}
+            {editing && <button title="Delete keyword" onClick={handleRemoveKeyword}><img src={theme.deleteImage}></img></button>}
         </div>
     )
 }

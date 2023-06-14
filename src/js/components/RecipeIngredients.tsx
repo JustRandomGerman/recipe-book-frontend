@@ -14,7 +14,7 @@ interface RecipeIngredientsProps{
 function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredientsProps){
     const theme = useContext(ThemeContext);
 
-    function addIngredient(){
+    function handleAddIngredient(){
         setRecipe((oldRecipe: Recipe) => {
             const updatedIngredients = [...oldRecipe.ingredients, { amount: "", ingredient_name: "" }];
             return { ...oldRecipe, ingredients: updatedIngredients };
@@ -29,7 +29,7 @@ function RecipeIngredients( {editing, ingredients, setRecipe} : RecipeIngredient
                     {ingredients.map((ingredient, index) => <IngredientItem key={`${index}_${ingredient}`} index={index} editing={editing} ingredient={ingredient} setRecipe={setRecipe}/>)}
                 </tbody>
             </table>
-            {editing && <button title="Add a new ingredient" onClick={addIngredient}>
+            {editing && <button title="Add a new ingredient" onClick={handleAddIngredient}>
                 <img src={theme.plusImage} alt="Delete"></img>
             </button>}
         </section>

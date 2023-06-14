@@ -25,7 +25,7 @@ function CreateRecipe(){
     const [error, setError] = useState<string>();
 
     const navigate = useNavigate();
-    function save(){
+    function handleSave(){
         createRecipe(recipe).then((response) => {
             navigate(`/recipe/${response.id}`)
         }).catch((error) => {
@@ -44,7 +44,7 @@ function CreateRecipe(){
             <RecipeIngredients editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
             <RecipeInstructions editing={true} instructions={recipe.instructions} setRecipe={setRecipe} />
             <RecipeTags editing={true} tags={recipe.tags} setRecipe={setRecipe}/>
-            <button id={style.save_button} title="Save the new recipe" onClick={save}>Save</button>
+            <button id={style.save_button} title="Save the new recipe" onClick={handleSave}>Save</button>
         </div>
     )
 }

@@ -38,7 +38,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
         })
     }
 
-    function removeIngredient(){
+    function handleRemoveIngredient(){
         setRecipe((oldRecipe: Recipe) => {
           const updatedIngredients = [...oldRecipe.ingredients];
           //using the index to splice, because name might not be unique
@@ -56,7 +56,7 @@ function IngredientItem({index, editing, ingredient, setRecipe} : IngredientItem
                 <input type="text" name="ingredient_name" placeholder="name" value={ingredient.ingredient_name} onInput={handleInput} disabled={!editing} ref={nameInputRef}/>
             </td>
             <td>
-                {editing && <button title="Delete ingredient" onClick={removeIngredient}><img src={theme.deleteImage} /> </button>}
+                {editing && <button title="Delete ingredient" onClick={handleRemoveIngredient}><img src={theme.deleteImage} /> </button>}
             </td>
         </tr>
     )

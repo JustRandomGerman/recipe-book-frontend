@@ -77,7 +77,7 @@ function Recipe(){
         setDeleteMenuShown(true);
     }
 
-    function savePdf() {
+    function handleSavePdf() {
         import('jspdf').then((pdf) => {
             const doc = new pdf.jsPDF();
             
@@ -134,7 +134,7 @@ function Recipe(){
                         {!editing && <button title="Delete recipe" onClick={handleDelete}>
                             <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
-                        {!editing && <button title="Download PDF of the recipe" onClick={savePdf}>
+                        {!editing && <button title="Download PDF of the recipe" onClick={handleSavePdf}>
                             <img src={theme.downloadImage} alt='Download'/>
                         </button>}
                     </section>

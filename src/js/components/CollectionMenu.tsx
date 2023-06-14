@@ -36,13 +36,13 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
         }
     }, [shown])
 
-    function hideCollectionPopup(){
+    function handleHideCollectionPopup(){
         setShown(false);
     }
 
     return(
         <dialog className={style.popup} ref={dialogRef}>
-            <button title="Close collection popup" id={style.close_button} onClick={hideCollectionPopup}>
+            <button title="Close collection popup" id={style.close_button} onClick={handleHideCollectionPopup}>
                 <img src={theme.xImage} alt="Close" />
             </button>
             <h3>Add to collection</h3>

@@ -44,7 +44,7 @@ function Collection() {
         });
     }
 
-    function saveCollection(){
+    function handleSaveCollection(){
         //remove error from previous attempt
         setError("");
         setEditing(false);
@@ -61,17 +61,17 @@ function Collection() {
         })
     }
 
-    function cancel(){
+    function handleCancel(){
         setEditing(false);
         setCollection(originalCollection);
     }
 
-    function edit(){
+    function handleEdit(){
         setEditing(true);
     }
 
     const navigate = useNavigate();
-    function deleteCollectionButton(){
+    function handleDeleteCollectionButton(){
         deleteCollection(id).then((response) => {
             navigate("/");
         })
@@ -84,16 +84,16 @@ function Collection() {
                     <p className='error'>{error}</p>
                     <p className='success'>{success}</p>
                     <section className={style.control_buttons}>
-                        {editing && <button title="Save the collection" onClick={saveCollection}>
+                        {editing && <button title="Save the collection" onClick={handleSaveCollection}>
                             <img src={theme.checkImage} alt={"Save"}/>
                         </button>}
-                        {editing && <button title="Cancel editing" onClick={cancel}>
+                        {editing && <button title="Cancel editing" onClick={handleCancel}>
                             <img src={theme.xImage} alt='cancel' />
                         </button>}
-                        {!editing && <button title="Edit collection" onClick={edit}>
+                        {!editing && <button title="Edit collection" onClick={handleEdit}>
                             <img src={theme.editImage} alt={"Edit"}/>
                         </button>}
-                        {!editing && <button title="Delete collection" onClick={deleteCollectionButton}>
+                        {!editing && <button title="Delete collection" onClick={handleDeleteCollectionButton}>
                             <img src={theme.deleteImage} alt='Delete'/>
                         </button>}
                     </section>

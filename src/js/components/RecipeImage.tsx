@@ -18,19 +18,19 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
 
     const [ currentIndex, setCurrentIndex] = useState<number>(0);
 
-    function moveLeft(){
+    function handleMoveLeft(){
         if(currentIndex > 0){
             setCurrentIndex((oldIndex) => oldIndex - 1);
         }
     }
 
-    function moveRight(){
+    function handleMoveRight(){
         if(currentIndex < (image_paths.length - 1)){
             setCurrentIndex((oldIndex) => oldIndex + 1);
         }
     }
 
-    function deleteImage(){
+    function handleDeleteImage(){
         if(image_paths.length === 1){
             //only one image exists, so instead of completely deleting make path empty to show upload dialog
             setRecipe((oldRecipe : Recipe) => {
@@ -59,7 +59,7 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
         }
     }
 
-    function addImage(){
+    function handleAddImage(){
         setRecipe((oldRecipe : Recipe) => {
             const updatedImagePaths = [...oldRecipe.image_paths, { path: "" }];
             return { ...oldRecipe, image_paths: updatedImagePaths };
@@ -74,17 +74,17 @@ function RecipeImage ({ editing, image_paths, setRecipe } : RecipeImageProps){
             })}
             <div className={style.image_buttons}>
                 {editing && <>
-                    <button title="Delete the current image" onClick={deleteImage}>
+                    <button title="Delete the current image" onClick={handleDeleteImage}>
                         <img src={theme.deleteImage} alt="Delete"></img>
                     </button>
-                    <button title="Add a new image" onClick={addImage}>
+                    <button title="Add a new image" onClick={handleAddImage}>
                         <img src={theme.plusImage} alt="Add an image"></img>
                     </button>
                 </>}
-                <button title="Move left" onClick={moveLeft}>
+                <button title="Move left" onClick={handleMoveLeft}>
                     <img src={(currentIndex === 0) ? arrow_left_grey : theme.arrowLeftImage} alt="Move left"></img>
                 </button>
-                <button title="Move right" onClick={moveRight}>
+                <button title="Move right" onClick={handleMoveRight}>
                     <img src={(currentIndex === (image_paths.length - 1)) ? arrow_right_grey : theme.arrowRightImage} alt="Move right"></img>
                 </button>
             </div>

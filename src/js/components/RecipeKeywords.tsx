@@ -14,7 +14,7 @@ interface RecipeKeywordsProps {
 function RecipeKeywords({ editing, keywords, setRecipe }: RecipeKeywordsProps) {
     const theme = useContext(ThemeContext);
 
-    function addKeyword() {
+    function handleAddKeyword() {
         setRecipe((oldRecipe: Recipe) => {
             const updatedKeywords = [...oldRecipe.keywords, { keyword_name: "" }];
             return { ...oldRecipe, keywords: updatedKeywords };
@@ -27,7 +27,7 @@ function RecipeKeywords({ editing, keywords, setRecipe }: RecipeKeywordsProps) {
             <p>Keywords are used when searching for recipes. The name does not have to be duplicated</p>
             <div className={style.keyword_container}>
                 {keywords.map((keyword : Keyword, index : number) => <KeywordItem key={`${index}_${keyword}`} index={index} editing={editing} keyword={keyword} setRecipe={setRecipe} />)}
-                <button title="Add a new keyword" onClick={addKeyword}>
+                <button title="Add a new keyword" onClick={handleAddKeyword}>
                     <img src={theme.plusImage} alt="Delete"></img>
                 </button>
             </div>
