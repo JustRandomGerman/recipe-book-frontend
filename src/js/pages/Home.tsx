@@ -3,7 +3,7 @@ import style from '../../css/pages/Home.module.css';
 import RecipeCard from '../components/RecipeCard';
 import { Recipe } from '../interfaces/Recipe';
 import { Collection } from '../interfaces/Collection';
-import { getRecipes, getCollections } from '../../api';
+import { getRecentRecipes, getCollections } from '../../api';
 import CollectionCard from '../components/CollectionCard';
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
     const [collections, setCollections] = useState<Collection[]>()
 
     useEffect( () => {
-        getRecipes().then((response) => {
+        getRecentRecipes(10).then((response) => {
             setRecipes(response);
         })
         getCollections().then((response) => {
@@ -22,7 +22,7 @@ function Home() {
 
     return (
         <div className={style.home}>
-            <h1>{"Recent (actually all during development)"}</h1>
+            <h1>{"Recently viewed"}</h1>
             <div className={style.container}>
                 {recipes?.map((recipe: Recipe) => <RecipeCard key={`recent_${recipe.id}_${recipe.name}`} recipe={recipe} />)}
             </div>

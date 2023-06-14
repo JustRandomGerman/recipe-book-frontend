@@ -11,6 +11,12 @@ const getRecipes = function(){
     });
 }
 
+const getRecentRecipes = function(amount: number){
+    return axios.get<Recipe[]>(`${baseURL}/recipes/recent?amount=${amount}`).then((response) => {
+        return response.data;
+    });
+}
+
 const getRecipe = function(id: number){
     return axios.get<Recipe>(`${baseURL}/recipes/${id}`).then((response) => {
         return response.data;
@@ -140,4 +146,4 @@ const search = function(query: string, mode: string, tags: string[]){
     })
 }
 
-export {getRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search};
+export {getRecipes, getRecentRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search};
