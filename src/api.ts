@@ -142,7 +142,12 @@ const search = function(query: string, mode: string, tags: string[]){
     }).then( (response) => {
         return response.data;
     }).catch( (error) => {
-        throw `${error.response.status} - ${error.response.data.message}`;
+        if(error.response){
+            throw `${error.response.status} - ${error.response.data.message}`;
+        }
+        else{
+            throw 'something went wrong';
+        }
     })
 }
 

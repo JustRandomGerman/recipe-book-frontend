@@ -21,6 +21,8 @@ import arrow_right from '../../assets/caret-right.svg';
 import arrow_right_white from '../../assets/caret-right_white.svg';
 import plus from '../../assets/plus-lg.svg';
 import plus_white from '../../assets/plus-lg_white.svg';
+import logo_black from '../../assets/recipe_book_icon.svg';
+import logo_yellow from '../../assets/recipe_book_icon_yellow.svg'
 
 export const ThemeContext = createContext({
     color: "light",
@@ -34,7 +36,8 @@ export const ThemeContext = createContext({
     searchImage: search_image,
     arrowLeftImage: arrow_left,
     arrowRightImage: arrow_right,
-    plusImage: plus
+    plusImage: plus,
+    logo: logo_black
 });
 
 interface ThemeProviderProps{
@@ -54,7 +57,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
         searchImage: search_image,
         arrowLeftImage: arrow_left,
         arrowRightImage: arrow_right,
-        plusImage: plus
+        plusImage: plus,
+        logo: logo_black
     });
 
     //set the correct theme when loading
@@ -72,7 +76,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             searchImage: (colorScheme === "light" ? search_image : search_image_white),
             arrowLeftImage: (colorScheme === "light" ? arrow_left : arrow_left_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right : arrow_right_white),
-            plusImage: (colorScheme === "light" ? plus : plus_white)
+            plusImage: (colorScheme === "light" ? plus : plus_white),
+            logo: (colorScheme === "light" ? logo_black : logo_yellow)
         });
     }, [])
 
@@ -92,7 +97,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             searchImage: (colorScheme === "light" ? search_image : search_image_white),
             arrowLeftImage: (colorScheme === "light" ? arrow_left : arrow_left_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right : arrow_right_white),
-            plusImage: (colorScheme === "light" ? plus : plus_white)
+            plusImage: (colorScheme === "light" ? plus : plus_white),
+            logo: (colorScheme === "light" ? logo_black : logo_yellow)
         });
     })
 
