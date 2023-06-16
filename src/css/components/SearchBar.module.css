@@ -1,6 +1,5 @@
 .search{
     height: 2em;
-    display: flex;
 }
 
 .search select{
@@ -10,6 +9,7 @@
     border: 1px solid lightgray;
     padding: .5em;
     height: 100%;
+    vertical-align: middle;
 }
 
 .search input{
@@ -20,6 +20,7 @@
     padding: .5em;
     outline: none;
     height: 100%;
+    vertical-align: middle;
 }
 
 .search #begin_search{
@@ -30,6 +31,7 @@
     padding: .5em;
     height: 100%;
     margin: 0;
+    vertical-align: middle;
 }
 
 .search #begin_search img{

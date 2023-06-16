@@ -2,6 +2,7 @@
     background-color: transparent;
     border: none;
     padding: .5em;
+    vertical-align: middle;
 }
 
 #filter img{
