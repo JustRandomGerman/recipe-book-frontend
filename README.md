@@ -7,6 +7,7 @@ a simple webapp to save your own recipes
 ### Requirements
 Needed packages:
 - nodejs
+- npm
 
 Install all other dependencies:
 ```
