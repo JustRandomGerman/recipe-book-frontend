@@ -3,7 +3,7 @@ import style from '../../css/pages/Home.module.css';
 import RecipeCard from '../components/RecipeCard';
 import { Recipe } from '../interfaces/Recipe';
 import { Collection } from '../interfaces/Collection';
-import { getRecentRecipes, getCollections } from '../../api';
+import { getRecipes, getCollections } from '../../api';
 import CollectionCard from '../components/CollectionCard';
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
     const [collections, setCollections] = useState<Collection[]>()
 
     useEffect( () => {
-        getRecentRecipes(10).then((response) => {
+        getRecipes().then((response) => {
             setRecipes(response);
         })
         getCollections().then((response) => {

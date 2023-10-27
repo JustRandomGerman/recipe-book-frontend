@@ -40,7 +40,7 @@
 
 @media (prefers-color-scheme: dark) {
     .search select{
-        background-color: rgb(60, 60, 60);
+        background-color: #1e1e1e;
         border: 1px solid yellow;
         color: yellow;
     }
@@ -48,12 +48,12 @@
     .search input{
         border-top: 1px solid yellow;
         border-bottom: 1px solid yellow;
-        background-color: rgb(60, 60, 60);
+        background-color: #1e1e1e;
         color: white;
     }
 
     .search #begin_search{
-        background-color: rgb(60, 60, 60);
+        background-color: #1e1e1e;
         border: 1px solid yellow;
     }
     

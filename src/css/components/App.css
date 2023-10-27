@@ -46,12 +46,12 @@ a{
 
 @media (prefers-color-scheme: dark) {
     body{
-        background-color: rgb(50, 50, 50);
-        color: white;
+        background-color: #161516;
+        color: #FFFBE4;
     }
 
     a{
-        color: white;
+        color: #FFFBE4;
     }
 
     .error{

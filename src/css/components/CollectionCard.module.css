@@ -15,11 +15,11 @@
 
 @media (prefers-color-scheme: dark) {
     .collection_card{
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 0 10px #030303;
     }
     
     .collection_card:hover{
-        box-shadow: 0 0 10px rgb(30, 30, 30);
+        box-shadow: 0 0 10px #0a0a0a;
         
     }
 }
