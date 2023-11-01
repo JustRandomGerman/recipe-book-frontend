@@ -6,12 +6,31 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .header p{
     padding: 0;
 }
 
 .header a{
     padding: 0;
+}
+
+#left_part{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#left_part button{
+    margin-right: 2em;
+    background: none;
+    border: none;
+}
+
+#left_part button img{
+    min-width: 2em;
+    min-height: 2em;
 }
 
 #logo{

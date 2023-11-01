@@ -1,19 +1,38 @@
 import style from '../../css/components/Sidebar.module.css';
+import { MouseEventHandler, useContext, useEffect, useRef, useState } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+import { Collection } from '../interfaces/Collection';
+import { getCollections } from '../../api';
+import CollectionCard from './CollectionCard';
 
-function Sidebar() {
-    
+interface SidebarProps{
+    shown: boolean
+}
+
+function Sidebar( {shown}: SidebarProps) {
+    const theme = useContext(ThemeContext);  
   
-      return (
+    const [collections, setCollections] = useState<Collection[]>();
+
+    useEffect( () => {
+        getCollections().then((response) => {
+            setCollections(response);
+        })
+    }, [])
+
+    return (
         <>
-            <button>
-
-            </button>
-            
-            <div>
-
-            </div>
+            {shown && <div className={style.sidebar}>
+                <div>
+                    <h2>Collections</h2>
+                    {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
+                </div>
+                <footer className={style.footer}>
+                    &copy; Daniel Drescher. All rights reserved
+                </footer>
+            </div>}
         </>
-      )
-  }
+    )
+}
   
-  export default Sidebar;
+export default Sidebar;

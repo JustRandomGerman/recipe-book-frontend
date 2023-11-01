@@ -26,10 +26,6 @@ function Home() {
             <div className={style.container}>
                 {recipes?.map((recipe: Recipe) => <RecipeCard key={`recent_${recipe.id}_${recipe.name}`} recipe={recipe} />)}
             </div>
-            <h1>Collections</h1>
-            <div className={style.container}>
-                {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
-            </div>
         </div>
     )
 }

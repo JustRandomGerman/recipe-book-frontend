@@ -22,7 +22,9 @@ import arrow_right_white from '../../assets/caret-right_white.svg';
 import plus from '../../assets/plus-lg.svg';
 import plus_white from '../../assets/plus-lg_white.svg';
 import logo_black from '../../assets/recipe_book_icon.svg';
-import logo_yellow from '../../assets/recipe_book_icon_yellow.svg'
+import logo_yellow from '../../assets/recipe_book_icon_yellow.svg';
+import hamburger_menu from '../../assets/hamburger_menu.svg';
+import hamburger_menu_white from '../../assets/hamburger_menu_white.svg';
 
 export const ThemeContext = createContext({
     color: "light",
@@ -37,7 +39,8 @@ export const ThemeContext = createContext({
     arrowLeftImage: arrow_left,
     arrowRightImage: arrow_right,
     plusImage: plus,
-    logo: logo_black
+    logo: logo_black,
+    hamburger_menu: hamburger_menu
 });
 
 interface ThemeProviderProps{
@@ -58,7 +61,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
         arrowLeftImage: arrow_left,
         arrowRightImage: arrow_right,
         plusImage: plus,
-        logo: logo_black
+        logo: logo_black,
+        hamburger_menu: hamburger_menu
     });
 
     //set the correct theme when loading
@@ -77,7 +81,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             arrowLeftImage: (colorScheme === "light" ? arrow_left : arrow_left_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right : arrow_right_white),
             plusImage: (colorScheme === "light" ? plus : plus_white),
-            logo: (colorScheme === "light" ? logo_black : logo_yellow)
+            logo: (colorScheme === "light" ? logo_black : logo_yellow),
+            hamburger_menu: (colorScheme === "light" ? hamburger_menu : hamburger_menu_white)
         });
     }, [])
 
@@ -98,7 +103,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             arrowLeftImage: (colorScheme === "light" ? arrow_left : arrow_left_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right : arrow_right_white),
             plusImage: (colorScheme === "light" ? plus : plus_white),
-            logo: (colorScheme === "light" ? logo_black : logo_yellow)
+            logo: (colorScheme === "light" ? logo_black : logo_yellow),
+            hamburger_menu: (colorScheme === "light" ? hamburger_menu : hamburger_menu_white)
         });
     })
 

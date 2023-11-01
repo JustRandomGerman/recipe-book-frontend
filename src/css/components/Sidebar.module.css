@@ -1,0 +1,16 @@
+.sidebar{
+    float: left;
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (prefers-color-scheme: dark) {
+    .sidebar{
+        background-color: #1e1e1e;
+    }
+}
