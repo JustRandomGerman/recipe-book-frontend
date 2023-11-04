@@ -4,13 +4,15 @@ import RecipeHeading from '../components/RecipeHeading';
 import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import RecipeTags from '../components/RecipeTags';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Recipe from './Recipe';
 import RecipeKeywords from '../components/RecipeKeywords';
 import { createRecipe } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext';
 
 function CreateRecipe(){
+    const theme = useContext(ThemeContext);
     const emptyRecipe: Recipe = {
         id: 0,
         name: "",
@@ -39,12 +41,16 @@ function CreateRecipe(){
             <section>
                 <p className='error'>{error}</p>
             </section>
+            <section className={style.control_buttons}>
+                <button id={style.save_button} title="Save the new recipe" onClick={handleSave}>
+                    <img src={theme.saveImage} alt="Save"/>
+                </button>
+            </section>
             <RecipeHeading editing={true} name={recipe.name} setRecipe={setRecipe} />
             <RecipeKeywords editing={true} keywords={recipe.keywords} setRecipe={setRecipe} />
             <RecipeIngredients editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
             <RecipeInstructions editing={true} instructions={recipe.instructions} setRecipe={setRecipe} />
             <RecipeTags editing={true} tags={recipe.tags} setRecipe={setRecipe}/>
-            <button id={style.save_button} title="Save the new recipe" onClick={handleSave}>Save</button>
         </div>
     )
 }

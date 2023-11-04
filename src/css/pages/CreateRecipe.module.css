@@ -10,12 +10,17 @@
     margin: 1rem;
 }
 
-#save_button{
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    background-color: var(--box-active-small-color);
+.control_buttons{
+    margin-bottom: 0 !important;
+}
+
+.control_buttons button{
+    background: none;
     border:none;
-    color: inherit;
-    border-radius: .5em;
-    padding: .5em;
+    margin-right: 1em;
+}
+
+.control_buttons img{
+    border-radius: 0;
+    width: 1.5em;
 }

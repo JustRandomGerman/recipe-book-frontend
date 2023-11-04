@@ -21,7 +21,7 @@ function Header( {setSidebarShown}: HeaderProps ) {
       <header className={style.header}>
         <div id={style.left_part}>
           <button onClick={handleToggleSidebar}>
-            <img src={theme.hamburger_menu} />
+            <img src={theme.hamburgerMenuImage} />
           </button>
           <Link to='/'>
             <img id={style.logo} src={theme.logo} alt='Recipe Book'/>

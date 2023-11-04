@@ -128,22 +128,22 @@ function Recipe(){
                     </section>
                     <section className={style.control_buttons}>
                         {editing && <button title="Save the recipe" onClick={handleSave}>
-                            <img src={theme.checkImage} alt={"Save"}/>
+                            <img src={theme.checkImage} alt="Save"/>
                         </button>}
                         {editing && <button title="Cancel editing" onClick={handleCancel}>
-                            <img src={theme.xImage} alt='cancel' />
+                            <img src={theme.xImage} alt="Cancel" />
                         </button>}
                         {!editing && <button title="Edit recipe" onClick={handleEdit}>
-                            <img src={theme.editImage} alt={"Edit"}/>
+                            <img src={theme.editImage} alt="Edit"/>
                         </button>}
                         {!editing && <button title="Show collection popup" onClick={handleShowCollectionPopup}>
-                            <img src={theme.collectionImage} alt='Add to collection'/>
+                            <img src={theme.collectionImage} alt="Add to collection"/>
                         </button>}
                         {!editing && <button title="Delete recipe" onClick={handleDelete}>
-                            <img src={theme.deleteImage} alt='Delete'/>
+                            <img src={theme.deleteImage} alt="Delete"/>
                         </button>}
                         {!editing && <button title="Download PDF of the recipe" onClick={handleSavePdf}>
-                            <img src={theme.downloadImage} alt='Download'/>
+                            <img src={theme.downloadImage} alt="Download"/>
                         </button>}
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
