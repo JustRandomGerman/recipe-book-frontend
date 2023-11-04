@@ -11,11 +11,36 @@
 }
 
 .sidebar hr{
-    margin: 0 1em;
+    margin: 1em 0;
     height: 1px;
     border-width: 0;
     color: var(--line-color);
     background-color: var(--line-color);
+}
+
+#create_button{
+    text-align: center;
+    padding-bottom: 0;
+}
+
+#create_button button{
+    padding: 1em 3em;
+    background-color: var(--accent-color);
+    color: var(--text-dark-color);
+    border: none;
+    border-radius: .5em;
+}
+
+.sidebar section, footer{
+    padding: 1em;
+}
+
+.sidebar footer p{
+    margin-bottom: 0;
+}
+
+.sidebar section h2{
+    margin-top: 0;
 }
 
 #top_rule{

@@ -1,4 +1,5 @@
 import style from '../../css/components/Sidebar.module.css';
+import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Collection } from '../interfaces/Collection';
@@ -25,13 +26,20 @@ function Sidebar( {shown}: SidebarProps) {
             {shown && <div className={style.sidebar}>
                 <div>
                     <hr id={style.top_rule}/>
-                    <h2>Collections</h2>
-                    {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
+                    <section id={style.create_button}>
+                        <Link to='create'>
+                            <button>Create new</button>
+                        </Link>
+                    </section>
+                    <section>
+                        <h2>Collections</h2>
+                        {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
+                    </section>
                 </div>
                 <footer className={style.footer}>
                     <hr />
                     <a href='https://github.com/JustRandomGerman'>GitHub</a><br />
-                    &copy; Daniel Drescher. All rights reserved
+                    <p>&copy; Daniel Drescher. All rights reserved</p>
                 </footer>
             </div>}
         </>

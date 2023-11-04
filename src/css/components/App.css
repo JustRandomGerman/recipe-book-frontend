@@ -1,5 +1,7 @@
 :root{
+    --accent-color: #FFD000;
     --text-color: #1F1F1F;
+    --text-dark-color: #1F1F1F; /*for text that is supposed to always be dark*/
     --background-color: #FFFFFF;
     --shadow-color: #A7A7A7;
     --shadow-hover-color: #474747;
