@@ -14,7 +14,7 @@
     background: transparent;
     border: none;
     padding: none;
-    color: black;
+    color: var(--text-color);
     width: fit-content;
 }
 
@@ -31,11 +31,4 @@
 .control_buttons img{
     border-radius: 0;
     width: 1.5em;
-}
-
-@media (prefers-color-scheme: dark) {
-    .collection_heading{
-        color: white;
-    }
-
 }

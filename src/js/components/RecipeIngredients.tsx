@@ -30,7 +30,7 @@ function RecipeIngredients( {editing, ingredients, setRecipe}: RecipeIngredients
                 </tbody>
             </table>
             {editing && <button title="Add a new ingredient" onClick={handleAddIngredient}>
-                <img src={theme.plusImage} alt="Delete"></img>
+                <img src={theme.plusImage} alt="Add"></img>
             </button>}
         </section>
     )

@@ -3,17 +3,10 @@
 }
 
 .ingredient_list button{
-    background-color: lightgray;
+    background-color: var(--box-active-small-color);
     border: none;
     border-radius: .5em;
-    color: black;
+    color: var(--text-color);
     width: 10em;
     height: 2em;
-}
-
-@media (prefers-color-scheme: dark){
-    .ingredient_list button{
-        background-color: rgb(110,110,110);
-        color: white;
-    }
 }

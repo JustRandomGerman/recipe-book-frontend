@@ -1,13 +1,9 @@
 .delete_menu{
     color: inherit;
-    background-color: white;
+    background-color: var(--background-color);
     border: none;
     border-radius: .5em;
-    box-shadow: 0 0 10px gray;
-}
-
-.delete_menu::backdrop{
-    background: rgba(40, 40, 40, 0.25);
+    box-shadow: 0 0 10px var(--shadow-static-color);
 }
 
 .delete_menu p{
@@ -16,20 +12,9 @@
 
 .delete_menu button{
     margin-right: 1em;
-    background-color: rgb(180, 180, 180);
+    background-color: var(--box-active-small-color);
     border:none;
     color: inherit;
     border-radius: .5em;
     padding: .5em;
-}
-
-@media (prefers-color-scheme: dark){
-    .delete_menu{
-        box-shadow: 0 0 10px #030303;
-        background-color: #161516;
-    }
-
-    .delete_menu button{
-        background-color: rgb(110,110,110);
-    }
 }

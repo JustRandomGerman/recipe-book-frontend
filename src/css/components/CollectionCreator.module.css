@@ -1,5 +1,5 @@
 .creator input{
-    border: 1px solid lightgray;
+    border: 1px solid var(--line-color);
     border-radius: .5em;
     margin-bottom: 1em;
     padding: .5em;

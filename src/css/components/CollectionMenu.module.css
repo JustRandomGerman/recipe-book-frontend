@@ -1,14 +1,11 @@
 .popup{
     color: inherit;
     border-radius: .5em;
-    box-shadow: 0 0 10px gray;
+    background-color: var(--background-color);
+    box-shadow: 0 0 10px var(--shadow-static-color);
     padding: 1rem;
     min-width: 15em;
     border: none;
-}
-
-.popup::backdrop{
-    background: rgba(40, 40, 40, 0.25);
 }
 
 .popup h3{
@@ -23,11 +20,16 @@
 }
 
 .popup button{
-    background-color: rgb(180, 180, 180);
+    background-color: var(--box-active-small-color);
     border:none;
     color: inherit;
     border-radius: .5em;
     padding: .5em;
+}
+
+.popup input{
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 #close_button{
@@ -47,24 +49,4 @@
 @keyframes fadeIn{
     from {opacity: 0;}
     to {opacity: 1;}
-}
-
-@media (prefers-color-scheme: dark){
-    .popup{
-        background-color: #161516;
-        box-shadow: 0 0 10px #030303;
-    }
-
-    .popup input{
-        background-color: #1e1e1e;
-        color: #FFFBE4;
-    }
-
-    .popup input[type=checkbox]{
-        background: rgb(60, 60, 60);
-    }
-
-    .popup button{
-        background-color: rgb(110,110,110);
-    }
 }

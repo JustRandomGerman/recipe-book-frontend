@@ -1,5 +1,5 @@
 .tag{
-    background-color: lightgray;
+    background-color: var(--box-passive-small-color);
     border-radius: 5px;
     padding: .5em;
     display: flex;
@@ -15,10 +15,4 @@
     background: none;
     border: none;
     margin-left: 1em;
-}
-
-@media (prefers-color-scheme: dark){
-    .tag{
-        background-color: rgb(80, 80, 80);
-    }
 }

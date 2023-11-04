@@ -1,6 +1,6 @@
 .sidebar{
     float: left;
-    background-color: white;
+    background-color: var(--background-color);
     position: absolute;
     height: 100%;
     padding: 1em;
@@ -14,8 +14,8 @@
     margin: 0 1em;
     height: 1px;
     border-width: 0;
-    color: gray;
-    background-color: gray;
+    color: var(--line-color);
+    background-color: var(--line-color);
 }
 
 #top_rule{
@@ -24,6 +24,6 @@
 
 @media (prefers-color-scheme: dark) {
     .sidebar{
-        background-color: #1e1e1e;
+        background-color: var(--header-color);
     }
 }

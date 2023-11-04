@@ -30,6 +30,7 @@ function Sidebar( {shown}: SidebarProps) {
                 </div>
                 <footer className={style.footer}>
                     <hr />
+                    <a href='https://github.com/JustRandomGerman'>GitHub</a><br />
                     &copy; Daniel Drescher. All rights reserved
                 </footer>
             </div>}

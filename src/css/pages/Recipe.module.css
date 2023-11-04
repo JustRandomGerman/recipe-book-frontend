@@ -1,11 +1,6 @@
-.recipe_background{
-    background-color: white;
-    height: 100%
-}
-
 .recipe{
-    background-color: white;
-    box-shadow: 0 0 10px gray;
+    background-color: var(--background-color);
+    box-shadow: 0 0 10px var(--shadow-static-color);
     width: 50%;
     border-radius: .5em;
     margin: 2em auto 2em auto;
@@ -28,11 +23,4 @@
 .control_buttons img{
     border-radius: 0;
     width: 1.5em;
-}
-
-@media (prefers-color-scheme: dark){
-    .recipe{
-        background-color: #161516;
-        box-shadow: 0 0 10px black;
-    }
 }

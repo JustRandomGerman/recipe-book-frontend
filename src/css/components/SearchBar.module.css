@@ -3,18 +3,21 @@
 }
 
 .search select{
-    background-color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-top-left-radius: .5em;
     border-bottom-left-radius: .5em;
-    border: 1px solid lightgray;
+    border: 1px solid var(--line-color);
     padding: .5em;
     height: 100%;
     vertical-align: middle;
 }
 
 .search input{
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-top: 1px solid var(--line-color);
+    border-bottom: 1px solid var(--line-color);
     border-left: none;
     border-right: none;
     padding: .5em;
@@ -24,10 +27,10 @@
 }
 
 .search #begin_search{
-    background-color: white;
+    background-color: var(--background-color);
     border-top-right-radius: .5em;
     border-bottom-right-radius: .5em;
-    border: 1px solid lightgray;
+    border: 1px solid var(--line-color);
     padding: .5em;
     height: 100%;
     margin: 0;
@@ -36,25 +39,4 @@
 
 .search #begin_search img{
     height: 1em;
-}
-
-@media (prefers-color-scheme: dark) {
-    .search select{
-        background-color: #1e1e1e;
-        border: 1px solid yellow;
-        color: yellow;
-    }
-
-    .search input{
-        border-top: 1px solid yellow;
-        border-bottom: 1px solid yellow;
-        background-color: #1e1e1e;
-        color: white;
-    }
-
-    .search #begin_search{
-        background-color: #1e1e1e;
-        border: 1px solid yellow;
-    }
-    
 }

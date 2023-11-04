@@ -1,16 +1,11 @@
 .filter_item{
     border-radius: .5em;
     border: none;
-    background-color: lightgray;
+    background-color: var(--box-active-small-color);
     margin: 1em;
+    color: var(--text-color)
 }
 
 .filter_item input{
     margin-right: .5em;
-}
-
-@media (prefers-color-scheme: dark){
-    .filter_item{
-        background-color: rgb(80, 80, 80);
-    }
 }

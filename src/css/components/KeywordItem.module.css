@@ -1,5 +1,5 @@
 .keyword{
-    background-color: lightgray;
+    background-color: var(--box-passive-small-color);
     border-radius: 5px;
     padding: .5em;
     margin-bottom: 1rem;
@@ -28,10 +28,4 @@
 .keyword img{
     height: 1em;
     width: 1em;
-}
-
-@media (prefers-color-scheme: dark){
-    .keyword{
-        background-color: rgb(80, 80, 80);
-    }
 }
