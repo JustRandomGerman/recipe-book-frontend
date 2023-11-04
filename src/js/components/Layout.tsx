@@ -11,10 +11,8 @@ function Layout() {
     return (
       <div id={style.layout}>
         <Header setSidebarShown={setSidebarShown} />
-        <div>
-          <Sidebar shown={sidebarShown} />
-          <Outlet />
-        </div>
+        <Sidebar shown={sidebarShown} />
+        <Outlet />
       </div>
     )
 }

@@ -1,5 +1,5 @@
 import style from '../../css/components/Sidebar.module.css';
-import { MouseEventHandler, useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Collection } from '../interfaces/Collection';
 import { getCollections } from '../../api';
@@ -24,10 +24,12 @@ function Sidebar( {shown}: SidebarProps) {
         <>
             {shown && <div className={style.sidebar}>
                 <div>
+                    <hr id={style.top_rule}/>
                     <h2>Collections</h2>
                     {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
                 </div>
                 <footer className={style.footer}>
+                    <hr />
                     &copy; Daniel Drescher. All rights reserved
                 </footer>
             </div>}
