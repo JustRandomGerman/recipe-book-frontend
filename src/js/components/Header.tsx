@@ -28,9 +28,7 @@ function Header( {setSidebarShown}: HeaderProps ) {
           </Link>
         </div>
         <SearchBar />
-        <Link to='create'>
-          <p>Create new</p>
-        </Link>
+        <div>{/* This is for having everything in the correct place */}</div>
       </header>
     )
 }

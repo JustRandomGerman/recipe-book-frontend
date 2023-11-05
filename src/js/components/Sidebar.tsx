@@ -32,13 +32,14 @@ function Sidebar( {shown}: SidebarProps) {
                         </Link>
                     </section>
                     <section>
+                        <hr />
                         <h2>Collections</h2>
                         {collections?.map((collection: Collection) => <CollectionCard key={collection.id} collection={collection} />)}
                     </section>
                 </div>
                 <footer className={style.footer}>
                     <hr />
-                    <a href='https://github.com/JustRandomGerman'>GitHub</a><br />
+                    <a href='https://github.com/JustRandomGerman' target='_blank'>GitHub</a><br />
                     <p>&copy; Daniel Drescher. All rights reserved</p>
                 </footer>
             </div>}
