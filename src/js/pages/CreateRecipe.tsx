@@ -1,7 +1,7 @@
 import style from '../../css/pages/CreateRecipe.module.css';
 import RecipeImage from '../components/RecipeImage';
 import RecipeHeading from '../components/RecipeHeading';
-import RecipeIngredients from '../components/RecipeIngredients';
+import RecipeIngredientGroups from '../components/RecipeIngredientGroups';
 import RecipeInstructions from '../components/RecipeInstructions';
 import RecipeTags from '../components/RecipeTags';
 import { useContext, useState } from 'react';
@@ -17,11 +17,12 @@ function CreateRecipe(){
         id: 0,
         name: "",
         keywords: [],
-        image_paths: [{path: ''}],
-        ingredients: [],
+        image_paths: [{ path: '' }],
+        ingredient_groups: [{name: '_main_', position: 0, ingredients: []}],
         instructions: "",
         tags: [],
-        collections: []
+        collections: [],
+        last_viewed: new Date(Date.now())
     };
     const [recipe, setRecipe] = useState<Recipe>(emptyRecipe);
     const [error, setError] = useState<string>();
@@ -48,7 +49,7 @@ function CreateRecipe(){
             </section>
             <RecipeHeading editing={true} name={recipe.name} setRecipe={setRecipe} />
             <RecipeKeywords editing={true} keywords={recipe.keywords} setRecipe={setRecipe} />
-            <RecipeIngredients editing={true} ingredients={recipe.ingredients} setRecipe={setRecipe} />
+            <RecipeIngredientGroups editing={true} ingredient_groups={recipe.ingredient_groups} setRecipe={setRecipe} />
             <RecipeInstructions editing={true} instructions={recipe.instructions} setRecipe={setRecipe} />
             <RecipeTags editing={true} tags={recipe.tags} setRecipe={setRecipe}/>
         </div>

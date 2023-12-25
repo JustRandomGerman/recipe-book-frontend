@@ -8,10 +8,11 @@ interface IngredientItemProps{
     index: number
     editing: boolean
     ingredient: Ingredient
+    ingredient_group_index: number 
     setRecipe: Function
 }
 
-function IngredientItem({index, editing, ingredient, setRecipe}: IngredientItemProps){
+function IngredientItem({index, editing, ingredient, ingredient_group_index, setRecipe}: IngredientItemProps){
     const theme = useContext(ThemeContext)
 
     const amountInputRef = useRef<HTMLInputElement>(null);
@@ -31,21 +32,46 @@ function IngredientItem({index, editing, ingredient, setRecipe}: IngredientItemP
         const { name, value } = event.currentTarget;
         setRecipe((oldRecipe: Recipe) => {
             const updatedIngredient = { ...ingredient, [name]: value };
-            const updatedIngredients = [...oldRecipe.ingredients];
+            const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
             //using the index to update, because name might not be unique
             updatedIngredients[index] = updatedIngredient;
-            return { ...oldRecipe, ingredients: updatedIngredients };
+
+            const updatedIngredientGroup = {
+                ...oldRecipe.ingredient_groups[ingredient_group_index],
+                ingredients: updatedIngredients
+            };
+            
+            const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
+            updatedIngredientGroups[ingredient_group_index] = updatedIngredientGroup;
+            
+            return {
+                ...oldRecipe,
+                ingredient_groups: updatedIngredientGroups
+            };
         })
     }
 
-    function handleRemoveIngredient(){
+    function handleRemoveIngredient() {
         setRecipe((oldRecipe: Recipe) => {
-          const updatedIngredients = [...oldRecipe.ingredients];
-          //using the index to splice, because name might not be unique
-          updatedIngredients.splice(index, 1);
-          return { ...oldRecipe, ingredients: updatedIngredients };
+            const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
+            // Using the index to splice, because name might not be unique
+            updatedIngredients.splice(index, 1);
+        
+            const updatedIngredientGroup = {
+                ...oldRecipe.ingredient_groups[ingredient_group_index],
+                ingredients: updatedIngredients
+            };
+        
+            const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
+            updatedIngredientGroups[ingredient_group_index] = updatedIngredientGroup;
+        
+            return {
+                ...oldRecipe,
+                ingredient_groups: updatedIngredientGroups
+            };
         });
-      }
+    }
+      
 
     return(
         <tr className={style.ingredient}>
