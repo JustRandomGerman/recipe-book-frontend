@@ -7,6 +7,7 @@ import RecipeImage from '../components/RecipeImage';
 import RecipeHeading from '../components/RecipeHeading';
 import RecipeKeywords from '../components/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeInstructions';
+import RecipeIngredientGroups from '../components/RecipeIngredientGroups';
 import TagList from '../components/RecipeTags';
 import { Recipe } from '../interfaces/Recipe';
 import { deleteRecipe, getRecipe, updateRecipe } from '../../api';
@@ -31,80 +32,18 @@ function Recipe(){
     const id: number = Number(params.id);
 
     useEffect( () => {
-        /*getRecipe(id).then((response) => {
-            setRecipe(response);
-            setOriginalRecipe(response);
+        getRecipe(id).then((response) => {
+            const sortedIngredientGroups = [...response.ingredient_groups].sort((a, b) => a.position - b.position);
+            const sortedRecipe = {
+                ...response,
+                ingredient_groups: sortedIngredientGroups
+            }
+            setRecipe(sortedRecipe);
+            setOriginalRecipe(sortedRecipe);
             setLoading(false);
         }).catch((error) => {
             setLoadingError(error)
             setLoading(false)
-        })*/
-        setRecipe({
-            "id": 4,
-            "name": "Bruschetta",
-            "instructions": "Die Tomaten in kleine Stücke schneiden und mit dem Saft in eine Schüssel geben. Den Knoblauch sehr klein hacken bzw. die sehr klein würfeln und dazugeben. Den Basilikum hineinhacken und mit dem Olivenöl dazugeben. Zum Schluss noch mit Salz und Pfeffer abschmecken und optional eine halbe Stunde ziehen lassen.",
-            "last_viewed": new Date("2023-12-16T16:24:37.000Z"),
-            "image_paths": [
-                {
-                    "path": "http://localhost:3000/images/4-Bruschetta-0.jpg"
-                }
-            ],
-            "ingredient_groups": [
-                {
-                    "name": "_main_",
-                    "position": 1,
-                    "ingredients": [
-                        {
-                            "id": 38,
-                            "amount": "3",
-                            "ingredient_name": "Tomaten",
-                            "position": 1
-                        },
-                        {
-                            "id": 39,
-                            "amount": "4 EL",
-                            "ingredient_name": "Olivenöl",
-                            "position": 2
-                        },
-                        {
-                            "id": 40,
-                            "amount": "1",
-                            "ingredient_name": "Knoblauchzehe",
-                            "position": 3
-                        },
-                        {
-                            "id": 41,
-                            "amount": "",
-                            "ingredient_name": "frischer Basilikum",
-                            "position": 4
-                        },
-                        {
-                            "id": 42,
-                            "amount": "",
-                            "ingredient_name": "Salz",
-                            "position": 5
-                        },
-                        {
-                            "id": 43,
-                            "amount": "",
-                            "ingredient_name": "Pfeffer",
-                            "position": 6
-                        }
-                    ]
-                }
-            ],
-            "tags": [
-                {
-                    "id": 8,
-                    "tag_name": "dinner"
-                },
-                {
-                    "id": 9,
-                    "tag_name": "allyear"
-                }
-            ],
-            "keywords": [],
-            "collections": []
         })
     }, [])
 
@@ -217,7 +156,7 @@ function Recipe(){
                     </section>
                     <RecipeHeading editing={editing} name={recipe!.name} setRecipe={setRecipe} />
                     {editing && <RecipeKeywords editing={editing} keywords={recipe!.keywords} setRecipe={setRecipe} /> }
-                    <RecipeIngredientGroups editing={editing} ingredients={recipe!.ingredient_groups} setRecipe={setRecipe} />
+                    <RecipeIngredientGroups editing={editing} ingredient_groups={recipe!.ingredient_groups} setRecipe={setRecipe} />
                     <RecipeInstructions editing={editing} instructions={recipe!.instructions} setRecipe={setRecipe} />
                     <TagList editing={editing} tags={recipe!.tags} setRecipe={setRecipe}/>
                 </>

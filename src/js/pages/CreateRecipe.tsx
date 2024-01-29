@@ -34,7 +34,9 @@ function CreateRecipe(){
         }).catch((error) => {
             setError(error);
         });
-    }
+
+        console.log(recipe)
+    };
     
     return(
         <div className={style.create_recipe}>

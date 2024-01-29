@@ -7,15 +7,11 @@
     outline: none;
     border: none;
     min-width: 2em;
+    font-weight: normal;
 }
 
 .ingredient input:placeholder-shown{
     width: 5em !important;
-}
-
-.ingredient td:first-child{
-    display: flex;
-    justify-content: right;
 }
 
 .ingredient td:first-child input{

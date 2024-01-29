@@ -60,6 +60,7 @@ function RecipeImage ({ editing, image_paths, setRecipe }: RecipeImageProps){
     }
 
     function handleAddImage(){
+        //TODO check if an empty image already exists
         setRecipe((oldRecipe: Recipe) => {
             const updatedImagePaths = [...oldRecipe.image_paths, { path: "" }];
             return { ...oldRecipe, image_paths: updatedImagePaths };

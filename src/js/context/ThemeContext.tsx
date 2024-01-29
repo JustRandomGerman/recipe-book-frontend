@@ -21,6 +21,10 @@ import arrow_left_image from '../../assets/caret-left.svg';
 import arrow_left_image_white from '../../assets/caret-left_white.svg';
 import arrow_right_image from '../../assets/caret-right.svg';
 import arrow_right_image_white from '../../assets/caret-right_white.svg';
+import arrow_down_image from '../../assets/caret-down.svg';
+import arrow_down_image_white from '../../assets/caret-down-white.svg';
+import arrow_up_image from '../../assets/caret-up.svg';
+import arrow_up_image_white from '../../assets/caret-up-white.svg';
 import plus_image from '../../assets/plus-lg.svg';
 import plus_image_white from '../../assets/plus-lg_white.svg';
 import hamburger_menu_image from '../../assets/hamburger_menu.svg';
@@ -41,6 +45,8 @@ export const ThemeContext = createContext({
     searchImage: search_image,
     arrowLeftImage: arrow_left_image,
     arrowRightImage: arrow_right_image,
+    arrowDownImage: arrow_down_image,
+    arrowUpImage: arrow_up_image,
     plusImage: plus_image,
     hamburgerMenuImage: hamburger_menu_image,
     saveImage: save_image
@@ -64,6 +70,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
         searchImage: search_image,
         arrowLeftImage: arrow_left_image,
         arrowRightImage: arrow_right_image,
+        arrowDownImage: arrow_down_image,
+        arrowUpImage: arrow_up_image,
         plusImage: plus_image,
         hamburgerMenuImage: hamburger_menu_image,
         saveImage: save_image
@@ -85,6 +93,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             searchImage: (colorScheme === "light" ? search_image : search_image_white),
             arrowLeftImage: (colorScheme === "light" ? arrow_left_image : arrow_left_image_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right_image : arrow_right_image_white),
+            arrowDownImage: (colorScheme === "light" ? arrow_down_image : arrow_down_image_white),
+            arrowUpImage: (colorScheme === "light" ? arrow_up_image : arrow_up_image_white),
             plusImage: (colorScheme === "light" ? plus_image : plus_image_white),
             hamburgerMenuImage: (colorScheme === "light" ? hamburger_menu_image : hamburger_menu_image_white),
             saveImage: (colorScheme === "light" ? save_image : save_image_white)
@@ -108,6 +118,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             searchImage: (colorScheme === "light" ? search_image : search_image_white),
             arrowLeftImage: (colorScheme === "light" ? arrow_left_image : arrow_left_image_white),
             arrowRightImage: (colorScheme === "light" ? arrow_right_image : arrow_right_image_white),
+            arrowDownImage: (colorScheme === "light" ? arrow_down_image : arrow_down_image_white),
+            arrowUpImage: (colorScheme === "light" ? arrow_up_image : arrow_up_image_white),
             plusImage: (colorScheme === "light" ? plus_image : plus_image_white),
             hamburgerMenuImage: (colorScheme === "light" ? hamburger_menu_image : hamburger_menu_image_white),
             saveImage: (colorScheme === "light" ? save_image : save_image_white)

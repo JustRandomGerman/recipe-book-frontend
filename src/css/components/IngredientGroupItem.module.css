@@ -3,10 +3,14 @@
 }
 
 .ingredient_list button{
-    background-color: var(--box-active-small-color);
+    background-color: transparent;
     border: none;
     border-radius: .5em;
     color: var(--text-color);
-    width: 10em;
-    height: 2em;
+    margin-top: .2em;
+}
+
+.title_bar{
+    display: flex;
+    flex-direction: row;
 }
