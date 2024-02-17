@@ -9,3 +9,7 @@
     min-width: 2em;
     font-weight: bold;
 }
+
+.ingredient_group_list section:first-of-type hr{
+    display: none;
+}

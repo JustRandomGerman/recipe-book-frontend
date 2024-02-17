@@ -51,12 +51,86 @@ function IngredientItem({index, editing, ingredient, ingredient_group_index, set
         })
     }
 
+    function handleMoveUp(){
+        setRecipe((oldRecipe: Recipe) => {
+            if (index > 0 && index < oldRecipe.ingredient_groups[ingredient_group_index].ingredients.length) {
+                const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
+                const movedIngredient = updatedIngredients[index];
+                const previousIngredient = updatedIngredients[index - 1];
+
+                if(index === movedIngredient.position){
+                    // Swap positions
+                    const movedIngredientPosition = movedIngredient.position;
+                    movedIngredient.position = previousIngredient.position;
+                    previousIngredient.position = movedIngredientPosition;
+                }
+
+                // Sort the array based on the position attribute
+                updatedIngredients.sort((a, b) => a.position - b.position);
+
+                const updatedIngredientGroup = {
+                    ...oldRecipe.ingredient_groups[ingredient_group_index],
+                    ingredients: updatedIngredients
+                };
+
+                const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
+                updatedIngredientGroups[ingredient_group_index] = updatedIngredientGroup;
+
+                return {
+                    ...oldRecipe,
+                    ingredient_groups: updatedIngredientGroups
+                };
+            }
+            return oldRecipe; // Return previous state if group cannot be moved
+        });
+    }
+
+    function handleMoveDown(){
+        setRecipe((oldRecipe: Recipe) => {
+            if (index >= 0 && index < oldRecipe.ingredient_groups[ingredient_group_index].ingredients.length-1) {
+                const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
+                const movedIngredient = updatedIngredients[index];
+                const previousIngredient = updatedIngredients[index + 1];
+
+                if(index === movedIngredient.position){
+                    // Swap positions
+                    const movedIngredientPosition = movedIngredient.position;
+                    movedIngredient.position = previousIngredient.position;
+                    previousIngredient.position = movedIngredientPosition;
+                }
+
+                // Sort the array based on the position attribute
+                updatedIngredients.sort((a, b) => a.position - b.position);
+
+                const updatedIngredientGroup = {
+                    ...oldRecipe.ingredient_groups[ingredient_group_index],
+                    ingredients: updatedIngredients
+                };
+
+                const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
+                updatedIngredientGroups[ingredient_group_index] = updatedIngredientGroup;
+
+                return {
+                    ...oldRecipe,
+                    ingredient_groups: updatedIngredientGroups
+                    };
+            }
+            return oldRecipe; // Return previous state if group cannot be moved
+        });
+    }
+
     function handleRemoveIngredient() {
         setRecipe((oldRecipe: Recipe) => {
             const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
             // Using the index to splice, because name might not be unique
             updatedIngredients.splice(index, 1);
-        
+       
+            //fix position of following ingredients
+            for(let i = index; i < updatedIngredients.length; i++){
+                console.log(index, updatedIngredients.length)
+                updatedIngredients[i] = {...updatedIngredients[i], position: i};
+            }
+
             const updatedIngredientGroup = {
                 ...oldRecipe.ingredient_groups[ingredient_group_index],
                 ingredients: updatedIngredients
@@ -75,6 +149,14 @@ function IngredientItem({index, editing, ingredient, ingredient_group_index, set
 
     return(
         <tr className={style.ingredient}>
+            <td>
+                {editing && <button title="Move group up" onClick={handleMoveUp}>
+                    <img src={theme.arrowUpImage} alt="Up"></img>
+                </button>}
+                {editing && <button title="Move group down" onClick={handleMoveDown}>
+                    <img src={theme.arrowDownImage} alt="Down"></img>
+                </button>}
+            </td>
             <td>
                 <input type="text" name="amount" placeholder={editing ? "amount" : "" /* only show the placeholder when editing as the amount is allowed to be empty */} value={ingredient.amount} onInput={handleInput} disabled={!editing} ref={amountInputRef}/>
             </td>

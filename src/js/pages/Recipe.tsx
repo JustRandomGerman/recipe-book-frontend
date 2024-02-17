@@ -56,7 +56,8 @@ function Recipe(){
     }
 
     function handleSave(){
-        updateRecipe(id, recipe!).then((response) => {
+        console.log(recipe);
+        /* updateRecipe(id, recipe!).then((response) => {
             setEditing(false);
             setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
@@ -70,7 +71,7 @@ function Recipe(){
             setTimeout(() => {
                 setError("");
             }, 5000)
-        });
+        }); */
     }
 
     function handleCancel(){
@@ -96,16 +97,22 @@ function Recipe(){
             const doc = new pdf.jsPDF();
             
             // Add recipe details to the PDF
-            doc.setFont("Helvetica", "bold")
+            doc.setFont("Helvetica", "bold");
             doc.text(recipe!.name, 10, 20);
 
             doc.setFontSize(12);
             doc.text("Zutaten:", 10, 30);
             
-            doc.setFont("Helvetica", "normal")
+            doc.setFont("Helvetica", "normal");
             // Loop through ingredients and add them to the PDF
             let y = 37;
             recipe!.ingredient_groups.forEach((ingredient_group: IngredientGroup) => {
+                if(ingredient_group.name === '_main_'){
+                    doc.text("restliche Zutaten", 10, y);
+                }else{
+                    doc.text(ingredient_group.name, 10, y);
+                }
+                y +=7;
                 ingredient_group.ingredients.forEach((ingredient: Ingredient) => {
                     doc.text(`- ${ingredient.amount} ${ingredient.ingredient_name}`, 10, y);
                     y += 7;

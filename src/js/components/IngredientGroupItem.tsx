@@ -2,8 +2,9 @@ import style from '../../css/components/IngredientGroupItem.module.css';
 import IngredientItem from './IngredientItem';
 import { Ingredient } from '../interfaces/Ingredient'
 import Recipe from '../pages/Recipe';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import DeleteMenu from './DeleteMenu';
 
 interface IngredientGroupItemProps{
     editing: boolean
@@ -14,12 +15,14 @@ interface IngredientGroupItemProps{
 }
 
 function IngredientGroupItem( {editing, ingredient_group_index, name, ingredients, setRecipe}: IngredientGroupItemProps){
-    //console.log("rerendering")
     const theme = useContext(ThemeContext);
+
+    const [deleteMenuShown, setDeleteMenuShown] = useState<boolean>(false);
 
     function handleAddIngredient(){
         setRecipe((oldRecipe: Recipe) => {
-            const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients, { amount: "", ingredient_name: "" }]; //TODO
+            const oldIngredients = oldRecipe.ingredient_groups[ingredient_group_index].ingredients;
+            const updatedIngredients = [...oldIngredients, { amount: "", ingredient_name: "", position:  oldIngredients.length}]; //TODO
             const updatedIngredientGroup = {
                 ...oldRecipe.ingredient_groups[ingredient_group_index],
                 ingredients: updatedIngredients
@@ -27,7 +30,7 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
             
             const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
             updatedIngredientGroups[ingredient_group_index] = updatedIngredientGroup;
-            
+
             return {
                 ...oldRecipe,
                 ingredient_groups: updatedIngredientGroups
@@ -54,9 +57,9 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
     }
     
     function handleMoveUp(){
-        setRecipe((prevRecipe: Recipe) => {
-            if (ingredient_group_index > 0 && ingredient_group_index < prevRecipe.ingredient_groups.length) {
-                const updatedGroups = [...prevRecipe.ingredient_groups];
+        setRecipe((oldRecipe: Recipe) => {
+            if (ingredient_group_index > 0 && ingredient_group_index < oldRecipe.ingredient_groups.length) {
+                const updatedGroups = [...oldRecipe.ingredient_groups];
                 const movedGroup = updatedGroups[ingredient_group_index];
                 const previousGroup = updatedGroups[ingredient_group_index - 1];
 
@@ -71,18 +74,18 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
                 updatedGroups.sort((a, b) => a.position - b.position);
 
                 return {
-                    ...prevRecipe,
+                    ...oldRecipe,
                     ingredient_groups: updatedGroups
                     };
             }
-            return prevRecipe; // Return previous state if group cannot be moved
+            return oldRecipe; // Return previous state if group cannot be moved
         });
     }
 
     function handleMoveDown(){
-        setRecipe((prevRecipe: Recipe) => {
-            if (ingredient_group_index >= 0 && ingredient_group_index < prevRecipe.ingredient_groups.length-1) {
-                const updatedGroups = [...prevRecipe.ingredient_groups];
+        setRecipe((oldRecipe: Recipe) => {
+            if (ingredient_group_index >= 0 && ingredient_group_index < oldRecipe.ingredient_groups.length-1) {
+                const updatedGroups = [...oldRecipe.ingredient_groups];
                 const movedGroup = updatedGroups[ingredient_group_index];
                 const previousGroup = updatedGroups[ingredient_group_index + 1];
 
@@ -97,23 +100,27 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
                 updatedGroups.sort((a, b) => a.position - b.position);
 
                 return {
-                    ...prevRecipe,
+                    ...oldRecipe,
                     ingredient_groups: updatedGroups
                     };
             }
-            return prevRecipe; // Return previous state if group cannot be moved
+            return oldRecipe; // Return previous state if group cannot be moved
         });
     }
 
     function handleDelete(){
-        console.log("Deleted... just kidding")
-        //TODO implement
-        // first confirm deletion
+        setDeleteMenuShown(true);
+    }
+
+    function deleteFunction(){
+        console.log("Deleting...");
         // afterwards correct position of following elements
     }
 
     return(
         <section className={style.ingredient_list}>
+            <DeleteMenu shown={deleteMenuShown} setShown={setDeleteMenuShown} deletedObject='ingredient group' deleteFunction={deleteFunction}/>
+            <hr />
             <div className={style.title_bar}>
                 {editing && <button title="Move group up" onClick={handleMoveUp}>
                     <img src={theme.arrowUpImage} alt="Up"></img>
@@ -121,7 +128,7 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
                 {editing && <button title="Move group down" onClick={handleMoveDown}>
                     <img src={theme.arrowDownImage} alt="Down"></img>
                 </button>}
-                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} /> : <input type="text" value="" placeholder="Main group" disabled={true} />}
+                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} /> : <input type="text" value="" placeholder={editing ? "Main group" : ""} disabled={true} />}
                 {editing && <button title="Add a new ingredient" onClick={handleAddIngredient}>
                     <img src={theme.plusImage} alt="Add"></img>
                 </button>}

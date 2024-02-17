@@ -10,6 +10,16 @@
     margin-top: .2em;
 }
 
+.ingredient_list hr{
+    height: 1px;
+    background-color: var(--line-color);
+    border-width: 0;
+}
+
+.ingredient_list{
+    margin-left: 0 !important;
+}
+
 .title_bar{
     display: flex;
     flex-direction: row;
