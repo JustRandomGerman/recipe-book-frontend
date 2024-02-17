@@ -56,8 +56,7 @@ function Recipe(){
     }
 
     function handleSave(){
-        console.log(recipe);
-        /* updateRecipe(id, recipe!).then((response) => {
+        updateRecipe(id, recipe!).then((response) => {
             setEditing(false);
             setSuccess("Successfully saved recipe");
             //set original recipe to the new one after saving
@@ -71,7 +70,7 @@ function Recipe(){
             setTimeout(() => {
                 setError("");
             }, 5000)
-        }); */
+        });
     }
 
     function handleCancel(){

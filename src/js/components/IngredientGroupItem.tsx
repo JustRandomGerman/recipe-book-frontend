@@ -113,8 +113,21 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
     }
 
     function deleteFunction(){
-        console.log("Deleting...");
-        // afterwards correct position of following elements
+        setRecipe((oldRecipe: Recipe) => {
+            const updatedIngredientGroups = [...oldRecipe.ingredient_groups];
+            // Using the index to splice, because name might not be unique
+            updatedIngredientGroups.splice(ingredient_group_index, 1);
+       
+            //fix position of following ingredient groups
+            for(let i = ingredient_group_index; i < updatedIngredientGroups.length; i++){
+                updatedIngredientGroups[i] = {...updatedIngredientGroups[i], position: i};
+            }
+
+            return {
+                ...oldRecipe,
+                ingredient_groups: updatedIngredientGroups
+            };
+        });
     }
 
     return(

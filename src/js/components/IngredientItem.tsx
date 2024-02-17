@@ -127,7 +127,6 @@ function IngredientItem({index, editing, ingredient, ingredient_group_index, set
        
             //fix position of following ingredients
             for(let i = index; i < updatedIngredients.length; i++){
-                console.log(index, updatedIngredients.length)
                 updatedIngredients[i] = {...updatedIngredients[i], position: i};
             }
 
