@@ -43,6 +43,11 @@
     margin-top: 0;
 }
 
+.sidebar > footer > img {
+    height: 1em;
+    margin-left: .2em;
+}
+
 #top_rule{
     margin: 0;
 }

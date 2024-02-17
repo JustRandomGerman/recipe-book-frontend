@@ -39,7 +39,9 @@ function Sidebar( {shown}: SidebarProps) {
                 </div>
                 <footer className={style.footer}>
                     <hr />
-                    <a href='https://github.com/JustRandomGerman' target='_blank'>GitHub</a><br />
+                    <a href='https://github.com/JustRandomGerman' target='_blank'>GitHub</a>
+                    <img src={theme.newTab} alt="Open in new Tab" />
+                    <br />
                     <p>&copy; Daniel Drescher. All rights reserved</p>
                 </footer>
             </div>}

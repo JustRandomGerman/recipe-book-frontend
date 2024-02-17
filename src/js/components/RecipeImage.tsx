@@ -3,8 +3,8 @@ import { ImagePath } from '../interfaces/ImagePath';
 import { ThemeContext } from '../context/ThemeContext';
 import ImageItem from './ImageItem';
 import { Recipe } from '../interfaces/Recipe';
-import arrow_left_grey from '../../assets/caret-left_grey.svg';
-import arrow_right_grey from '../../assets/caret-right_grey.svg';
+import arrow_left_grey from '../../assets/caret-left-grey.svg';
+import arrow_right_grey from '../../assets/caret-right-grey.svg';
 import style from '../../css/components/RecipeImage.module.css';
 
 interface RecipeImageProps{

@@ -28,7 +28,7 @@ function RecipeKeywords({ editing, keywords, setRecipe }: RecipeKeywordsProps) {
             <div className={style.keyword_container}>
                 {keywords.map((keyword: Keyword, index: number) => <KeywordItem key={`${index}_${keyword}`} index={index} editing={editing} keyword={keyword} setRecipe={setRecipe} />)}
                 <button title="Add a new keyword" onClick={handleAddKeyword}>
-                    <img src={theme.plusImage} alt="Delete"></img>
+                    <img src={theme.plusImage} alt="Add"></img>
                 </button>
             </div>
         </section>

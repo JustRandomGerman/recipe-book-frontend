@@ -13,3 +13,11 @@
 .ingredient_group_list section:first-of-type hr{
     display: none;
 }
+
+.ingredient_group_list button{
+    background-color: var(--box-active-small-color);
+    border: none;
+    border-radius: .5em;
+    padding: .5em;
+    color: var(--text-color)
+}

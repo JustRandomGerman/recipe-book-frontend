@@ -1,36 +1,38 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import logo_black from '../../assets/recipe_book_icon.svg';
-import logo_yellow from '../../assets/recipe_book_icon_yellow.svg';
+import logo_black from '../../assets/recipe-book-icon.svg';
+import logo_yellow from '../../assets/recipe-book-icon-yellow.svg';
 import edit_image from '../../assets/pencil.svg';
-import edit_image_white from '../../assets/pencil_white.svg';
-import check_image from '../../assets/check2.svg';
-import check_image_white from '../../assets/check2_white.svg';
-import cancel_image from '../../assets/x.svg';
-import cancel_image_white from '../../assets/x_white.svg';
+import edit_image_white from '../../assets/pencil-white.svg';
+import check_image from '../../assets/check.svg';
+import check_image_white from '../../assets/check-white.svg';
+import cancel_image from '../../assets/close.svg';
+import cancel_image_white from '../../assets/close-white.svg';
 import collection_image from '../../assets/collection.svg';
-import collection_image_white from '../../assets/collection_white.svg';
+import collection_image_white from '../../assets/collection-white.svg';
 import delete_image from '../../assets/trash.svg';
-import delete_image_white from '../../assets/trash_white.svg';
+import delete_image_white from '../../assets/trash-white.svg';
 import download_image from '../../assets/download.svg';
-import download_image_white from '../../assets/download_white.svg';
+import download_image_white from '../../assets/download-white.svg';
 import filter_image from '../../assets/funnel.svg';
-import filter_image_white from '../../assets/funnel_white.svg';
+import filter_image_white from '../../assets/funnel-white.svg';
 import search_image from '../../assets/search.svg';
-import search_image_white from '../../assets/search_white.svg';
+import search_image_white from '../../assets/search-white.svg';
 import arrow_left_image from '../../assets/caret-left.svg';
-import arrow_left_image_white from '../../assets/caret-left_white.svg';
+import arrow_left_image_white from '../../assets/caret-left-white.svg';
 import arrow_right_image from '../../assets/caret-right.svg';
-import arrow_right_image_white from '../../assets/caret-right_white.svg';
+import arrow_right_image_white from '../../assets/caret-right-white.svg';
 import arrow_down_image from '../../assets/caret-down.svg';
 import arrow_down_image_white from '../../assets/caret-down-white.svg';
 import arrow_up_image from '../../assets/caret-up.svg';
 import arrow_up_image_white from '../../assets/caret-up-white.svg';
-import plus_image from '../../assets/plus-lg.svg';
-import plus_image_white from '../../assets/plus-lg_white.svg';
-import hamburger_menu_image from '../../assets/hamburger_menu.svg';
-import hamburger_menu_image_white from '../../assets/hamburger_menu_white.svg';
+import plus_image from '../../assets/plus.svg';
+import plus_image_white from '../../assets/plus-white.svg';
+import hamburger_menu_image from '../../assets/hamburger-menu.svg';
+import hamburger_menu_image_white from '../../assets/hamburger-menu-white.svg';
 import save_image from '../../assets/save.svg';
-import save_image_white from '../../assets/save_white.svg';
+import save_image_white from '../../assets/save-white.svg';
+import new_tab_image from '../../assets/new-tab.svg';
+import new_tab_image_white from '../../assets/new-tab-white.svg';
 
 export const ThemeContext = createContext({
     color: "light",
@@ -49,7 +51,8 @@ export const ThemeContext = createContext({
     arrowUpImage: arrow_up_image,
     plusImage: plus_image,
     hamburgerMenuImage: hamburger_menu_image,
-    saveImage: save_image
+    saveImage: save_image,
+    newTab: new_tab_image
 });
 
 interface ThemeProviderProps{
@@ -74,7 +77,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
         arrowUpImage: arrow_up_image,
         plusImage: plus_image,
         hamburgerMenuImage: hamburger_menu_image,
-        saveImage: save_image
+        saveImage: save_image,
+        newTab: new_tab_image
     });
 
     //set the correct theme when loading
@@ -97,7 +101,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             arrowUpImage: (colorScheme === "light" ? arrow_up_image : arrow_up_image_white),
             plusImage: (colorScheme === "light" ? plus_image : plus_image_white),
             hamburgerMenuImage: (colorScheme === "light" ? hamburger_menu_image : hamburger_menu_image_white),
-            saveImage: (colorScheme === "light" ? save_image : save_image_white)
+            saveImage: (colorScheme === "light" ? save_image : save_image_white),
+            newTab: (colorScheme === "light" ? new_tab_image : new_tab_image_white)
         });
     }, [])
 
@@ -122,7 +127,8 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
             arrowUpImage: (colorScheme === "light" ? arrow_up_image : arrow_up_image_white),
             plusImage: (colorScheme === "light" ? plus_image : plus_image_white),
             hamburgerMenuImage: (colorScheme === "light" ? hamburger_menu_image : hamburger_menu_image_white),
-            saveImage: (colorScheme === "light" ? save_image : save_image_white)
+            saveImage: (colorScheme === "light" ? save_image : save_image_white),
+            newTab: (colorScheme === "light" ? new_tab_image : new_tab_image_white)
         });
     })
 
