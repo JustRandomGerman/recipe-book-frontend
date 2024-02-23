@@ -43,9 +43,14 @@
     margin-top: 0;
 }
 
-.sidebar > footer > img {
+.sidebar > footer > a > img {
     height: 1em;
     margin-left: .2em;
+}
+
+.sidebar > footer > a {
+    margin-top: .25em;
+    display: block;
 }
 
 #top_rule{

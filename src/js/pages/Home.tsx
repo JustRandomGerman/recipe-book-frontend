@@ -4,7 +4,6 @@ import RecipeCard from '../components/RecipeCard';
 import { Recipe } from '../interfaces/Recipe';
 import { Collection } from '../interfaces/Collection';
 import { getRecipes, getCollections } from '../../api';
-import CollectionCard from '../components/CollectionCard';
 
 function Home() {
 

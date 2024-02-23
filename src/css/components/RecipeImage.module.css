@@ -39,7 +39,7 @@
     height: 1.5rem;
 }
 
-input[type=file]{
+.images input[type=file]{
     display: block;
     aspect-ratio: 16 / 9;
     width: 100%;
