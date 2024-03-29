@@ -43,7 +43,7 @@ function Sidebar( {shown}: SidebarProps) {
                         <img src={theme.newTab} alt="Open in new Tab" />
                     </a>
                     <Link to='developer'>Developer Page</Link>
-                    <Link to='swagger'>API Documentation</Link>
+                    <Link to='api-documentation'>API Documentation</Link>
                     <p>&copy; Daniel Drescher. All rights reserved</p>
                 </footer>
             </div>}

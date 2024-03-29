@@ -8,9 +8,10 @@ interface CollectionItemProps {
     recipeId: number
     recipeCollections: Collection[]
     setRecipe: Function
+    setSuccess: Function
 }
 
-function CollectionItem( {collection, recipeId, recipeCollections, setRecipe}: CollectionItemProps){
+function CollectionItem( {collection, recipeId, recipeCollections, setRecipe, setSuccess}: CollectionItemProps){
 
     function handleSelectChange(event: React.ChangeEvent<HTMLInputElement>){
         if(event.target.checked === true){
@@ -18,8 +19,12 @@ function CollectionItem( {collection, recipeId, recipeCollections, setRecipe}: C
                 setRecipe((oldRecipe: Recipe) => ({
                     ...oldRecipe,
                     collections: [...oldRecipe.collections, response]
-                }))
-            })
+                }));
+                setSuccess(`Added to ${collection.name}`);
+                setTimeout(() => {
+                    setSuccess("");
+                }, 5000);
+            });
         }
         else{
             removeRecipeFromCollection(collection.id, recipeId).then((response) => {
@@ -27,7 +32,11 @@ function CollectionItem( {collection, recipeId, recipeCollections, setRecipe}: C
                     const updatedCollections = oldRecipe.collections.filter((c: Collection) => c.id !== collection.id);
                     return {...oldRecipe, collections: updatedCollections};
                 });
-            })
+                setSuccess(`Removed from ${collection.name}`);
+                setTimeout(() => {
+                    setSuccess("");
+                }, 5000);
+            });
         }
     }
 

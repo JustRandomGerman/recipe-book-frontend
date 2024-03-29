@@ -151,4 +151,8 @@ const search = function(query: string, mode: string, tags: string[]){
     })
 }
 
-export {getRecipes, getRecentRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search};
+const getAPI = function(){
+    return axios.get<string>(`${baseURL}/developer/api-documentation`)
+}
+
+export {getRecipes, getRecentRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search, getAPI};

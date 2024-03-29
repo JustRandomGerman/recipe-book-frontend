@@ -26,6 +26,10 @@ a{
     text-decoration: none;
 }
 
+button{
+    cursor: pointer;
+}
+
 .loading{
     padding: .5em;
 }

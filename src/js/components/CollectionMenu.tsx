@@ -20,6 +20,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     const [collections, setCollections] = useState<Collection[]>([]);
+    const [success, setSuccess] = useState<string>("");
 
     useEffect(() => {
         getCollections().then((response) => {
@@ -46,8 +47,9 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
                 <img src={theme.xImage} alt="Close" />
             </button>
             <h3>Add to collection</h3>
+            <p className='success'>{success}</p>
             <ul>
-                {collections.map((collection: Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} />)}
+                {collections.map((collection: Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} setSuccess={setSuccess}/>)}
             </ul>
             
             <CollectionCreator parentShown={shown} setCollections={setCollections}/>
