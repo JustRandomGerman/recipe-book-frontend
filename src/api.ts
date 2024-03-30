@@ -121,6 +121,17 @@ const getAvailableTags = function(){
     });
 }
 
+const addAvailableTag = function(tag_name: string){
+    return axios.post(`${baseURL}/tags/available`,{
+        tag_name: tag_name
+    }).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        const details = error.response.data.message.map((detail: any) => `${detail.message}\n`);
+        throw `${error.response.status} - ${details}`;
+    });
+}
+
 const uploadImage = function(files: FileList | null){
     const formData = new FormData;
     if(files === null){
@@ -155,4 +166,4 @@ const getAPI = function(){
     return axios.get<string>(`${baseURL}/developer/api-documentation`)
 }
 
-export {getRecipes, getRecentRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, uploadImage, search, getAPI};
+export {getRecipes, getRecentRecipes, getRecipe, createRecipe, updateRecipe, deleteRecipe, getCollections, getCollection, createCollection, updateCollection, deleteCollection, addRecipeToCollection, removeRecipeFromCollection, getAvailableTags, addAvailableTag, uploadImage, search, getAPI};

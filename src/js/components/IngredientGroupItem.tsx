@@ -2,7 +2,7 @@ import style from '../../css/components/IngredientGroupItem.module.css';
 import IngredientItem from './IngredientItem';
 import { Ingredient } from '../interfaces/Ingredient'
 import Recipe from '../pages/Recipe';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import DeleteMenu from './DeleteMenu';
 
@@ -18,6 +18,15 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
     const theme = useContext(ThemeContext);
 
     const [deleteMenuShown, setDeleteMenuShown] = useState<boolean>(false);
+
+    const groupNameInputRef = useRef<HTMLInputElement>(null);
+
+    //adjust width of the input elements to mimick behavior of p elements
+    useEffect(() => {
+        if (groupNameInputRef.current) {
+            groupNameInputRef.current.style.width = (name.length + 1) + 'ch';
+        }
+    }, [name]);
 
     function handleAddIngredient(){
         setRecipe((oldRecipe: Recipe) => {
@@ -141,7 +150,7 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
                 {editing && <button title="Move group down" onClick={handleMoveDown}>
                     <img src={theme.arrowDownImage} alt="Down"></img>
                 </button>}
-                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} /> : <input type="text" value="" placeholder={editing ? "Main group" : ""} disabled={true} />}
+                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} ref={groupNameInputRef} /> : <input type="text" value="" placeholder={editing ? "Main group" : ""} disabled={true} id={style.main_ingredient_group} />}
                 {editing && <button title="Add a new ingredient" onClick={handleAddIngredient}>
                     <img src={theme.plusImage} alt="Add"></img>
                 </button>}

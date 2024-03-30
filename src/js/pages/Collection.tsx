@@ -31,7 +31,7 @@ function Collection() {
             setLoadingError(error);
             setLoading(false);
         })
-    }, [])
+    }, [id])
 
     function handleInput(event: React.FormEvent<HTMLInputElement>){
         const value = event.currentTarget.value;
