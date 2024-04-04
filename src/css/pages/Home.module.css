@@ -8,3 +8,9 @@
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 2rem;
 }
+
+@media (max-width: 500px){
+    .home{
+        margin-top: 6.5em;
+    }
+}

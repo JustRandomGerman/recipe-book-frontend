@@ -7,3 +7,9 @@
 .not_found p{
     margin-left: 2rem;
 }
+
+@media (max-width: 500px){
+    .not_found{
+        margin-top: 6.5em;
+    }
+}

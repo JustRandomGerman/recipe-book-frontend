@@ -24,3 +24,23 @@
     border-radius: 0;
     width: 1.5em;
 }
+
+@media (max-width: 1000px){
+    .recipe{
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px){
+    .recipe{
+        width: 100%;
+        border-radius: .5em;
+        margin: 4.5em auto 0 auto;
+    }
+}
+
+@media (max-width: 500px){
+    .recipe{
+        margin: 6.5em auto 0 auto;
+    }
+}

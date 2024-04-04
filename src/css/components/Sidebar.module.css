@@ -8,6 +8,7 @@
     padding: 0;
     position: fixed;
     top: 4.5em;
+    z-index: 1; /*fix image buttons over sidebar*/
 }
 
 .sidebar hr{
@@ -60,5 +61,18 @@
 @media (prefers-color-scheme: dark) {
     .sidebar{
         background-color: var(--header-color);
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar{
+        width: 100%
+    }
+}
+
+@media (max-width: 500px) {
+    .sidebar{
+        top: 6.5em;
+        height: calc(100% - 6.5em);
     }
 }

@@ -1,16 +1,14 @@
 .images{
     border-top-right-radius: .5em;
     border-top-left-radius: .5em;
+    background-color: inherit;
+    aspect-ratio: 16 / 9;
 }
 
 .images img{
     width: 100%;
     border-top-right-radius: .5em;
     border-top-left-radius: .5em;
-}
-
-.images{
-    background-color: inherit;
 }
 
 .image_buttons{
@@ -45,4 +43,15 @@
     width: 100%;
     text-align: center;
     line-height: 50em;
+}
+
+@media (max-width: 600px){
+    .images{
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .images img{
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
 }
