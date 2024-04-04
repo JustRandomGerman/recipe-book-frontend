@@ -25,7 +25,7 @@ function RecipeIngredientGroups( {editing, ingredient_groups, setRecipe}: Recipe
     return(
         <section className={style.ingredient_group_list}>
             <h2>Ingredients</h2>
-            {ingredient_groups.map((ingredient_group: IngredientGroup, index: number) => <IngredientGroupItem key={`${index}_${ingredient_group}`} editing={editing} ingredient_group_index={index} name={ingredient_group.name} ingredients={ingredient_group.ingredients} setRecipe={setRecipe} />)/* TODO do correct postition based on position attribute */}
+            {ingredient_groups.map((ingredient_group: IngredientGroup, index: number) => <IngredientGroupItem key={`${index}_${ingredient_group}`} editing={editing} ingredient_group_index={index} name={ingredient_group.name} ingredients={ingredient_group.ingredients} setRecipe={setRecipe} />)}
             {editing && <button title="Add a new ingredient group" onClick={handleAddIngredientGroup}>
                 <img src={theme.plusImage} alt="Add"></img>
             </button>}

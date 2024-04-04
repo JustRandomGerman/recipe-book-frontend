@@ -36,7 +36,10 @@ function Recipe(){
             const sortedIngredientGroups = [...response.ingredient_groups].sort((a, b) => a.position - b.position);
             const sortedRecipe = {
                 ...response,
-                ingredient_groups: sortedIngredientGroups
+                ingredient_groups: sortedIngredientGroups.map(group => ({
+                    ...group,
+                    ingredients: [...group.ingredients].sort((a, b) => a.position - b.position)
+                }))
             }
             setRecipe(sortedRecipe);
             setOriginalRecipe(sortedRecipe);

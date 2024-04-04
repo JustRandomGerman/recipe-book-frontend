@@ -34,8 +34,6 @@ function CreateRecipe(){
         }).catch((error) => {
             setError(error);
         });
-
-        console.log(recipe)
     };
     
     return(

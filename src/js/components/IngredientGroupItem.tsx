@@ -31,7 +31,7 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
     function handleAddIngredient(){
         setRecipe((oldRecipe: Recipe) => {
             const oldIngredients = oldRecipe.ingredient_groups[ingredient_group_index].ingredients;
-            const updatedIngredients = [...oldIngredients, { amount: "", ingredient_name: "", position:  oldIngredients.length}]; //TODO
+            const updatedIngredients = [...oldIngredients, { amount: "", ingredient_name: "", position:  oldIngredients.length}];
             const updatedIngredientGroup = {
                 ...oldRecipe.ingredient_groups[ingredient_group_index],
                 ingredients: updatedIngredients
@@ -150,7 +150,7 @@ function IngredientGroupItem( {editing, ingredient_group_index, name, ingredient
                 {editing && <button title="Move group down" onClick={handleMoveDown}>
                     <img src={theme.arrowDownImage} alt="Down"></img>
                 </button>}
-                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} ref={groupNameInputRef} /> : <input type="text" value="" placeholder={editing ? "Main group" : ""} disabled={true} id={style.main_ingredient_group} />}
+                {(name !== "_main_") ? <input type="text" value={name} placeholder="Ingredient group" onInput={handleInput} disabled={!editing} ref={groupNameInputRef} /> : <></>}
                 {editing && <button title="Add a new ingredient" onClick={handleAddIngredient}>
                     <img src={theme.plusImage} alt="Add"></img>
                 </button>}
