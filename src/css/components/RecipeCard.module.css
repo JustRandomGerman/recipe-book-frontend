@@ -18,6 +18,8 @@
     width: 100%;
     border-top-right-radius: .5em;
     border-top-left-radius: .5em;
+    aspect-ratio: 16/9;
+    object-fit: cover;
 }
 
 .recipe_card h1{
