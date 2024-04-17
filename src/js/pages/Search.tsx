@@ -17,10 +17,12 @@ function Search(){
         const tagsParam = params.get('tags');
         const tags = tagsParam ? tagsParam.split(',') : [];
 
+        setWarning("");
+
         search(params.get('query')!, params.get('mode')!, tags).then((response) => {
             setError("");
             setRecipes(response);
-            if(recipes?.length === 0){
+            if(response?.length == 0){
                 setWarning("No recipes found using your search criteria");
             }
         }).catch( (error) => {
@@ -31,7 +33,7 @@ function Search(){
 
     return(
         <div className={style.search}>
-            {((error === "" && warning === "")&& <h2>{`Results for: "${params.get('query')}"`}</h2>)}
+            {((error === "" && warning === "")&& <h2>{`Results for: ${params.get('query')}`}</h2>)}
             <p className='error'>{error}</p>
             <p className='warning'>{warning}</p>
             <div className={style.container}>

@@ -28,3 +28,7 @@
 #main_ingredient_group{
     width: 10ch;
 }
+
+.ingredient_list input:placeholder-shown{
+    width: 8em !important;
+}

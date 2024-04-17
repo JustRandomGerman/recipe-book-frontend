@@ -26,6 +26,7 @@ function DeleteMenu({shown, setShown, deletedObject, deleteFunction}: DeleteMenu
 
     function handleDelete(){
         deleteFunction();
+        setShown(false);
     }
     
     return (

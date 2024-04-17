@@ -3,8 +3,12 @@
     font-weight: bold;
     background: transparent;
     border: none;
-    padding: none;
+    padding: 0;
     color: var(--text-color);
     margin: 1rem;
     width: fit-content;
+}
+
+.recipe_heading:placeholder-shown{
+    width: 10em !important;
 }

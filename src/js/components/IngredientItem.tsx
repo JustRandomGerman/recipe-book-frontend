@@ -30,8 +30,16 @@ function IngredientItem({index, editing, ingredient, ingredient_group_index, set
 
     function handleInput(event: React.FormEvent<HTMLInputElement>) {
         const { name, value } = event.currentTarget;
+        // Replace fractions
+        let replacedValue = value;
+        replacedValue = replacedValue.replace(/1\/2/g, "½");
+        replacedValue = replacedValue.replace(/1\/4/g, "¼");
+        replacedValue = replacedValue.replace(/1\/3/g, "⅓");
+        replacedValue = replacedValue.replace(/2\/3/g, "⅔");
+        replacedValue = replacedValue.replace(/3\/4/g, "¾");
+
         setRecipe((oldRecipe: Recipe) => {
-            const updatedIngredient = { ...ingredient, [name]: value };
+            const updatedIngredient = { ...ingredient, [name]: replacedValue };
             const updatedIngredients = [...oldRecipe.ingredient_groups[ingredient_group_index].ingredients];
             //using the index to update, because name might not be unique
             updatedIngredients[index] = updatedIngredient;
