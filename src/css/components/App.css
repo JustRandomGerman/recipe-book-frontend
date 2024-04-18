@@ -92,3 +92,11 @@ button{
         background-color: #FF6600;
     }
 }
+
+.swagger-ui .info li, .swagger-ui .info p, .swagger-ui .info table, .swagger-ui .info .title, .swagger-ui a.nostyle, .swagger-ui .opblock .opblock-summary-description, .swagger-ui .opblock-description-wrapper p, .swagger-ui .response-col_status, .swagger-ui table thead tr td, .swagger-ui, .swagger-ui .response-col_links, .swagger-ui .tab li button.tablinks, .swagger-ui table thead tr th, .swagger-ui .parameter__name, .swagger-ui .parameter__type, .swagger-ui .model{
+    color: var(--text-color) !important;
+}
+
+/* .swagger-ui *{
+    color: var(--text-color) !important;
+} */
