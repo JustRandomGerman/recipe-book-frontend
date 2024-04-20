@@ -1,6 +1,9 @@
 # Use the official Node.js image as the base image
 FROM node:latest as build
 
+# Copy custom Nginx configuration file
+COPY default.conf /etc/nginx/conf.d/default.conf
+
 # Set the working directory
 WORKDIR /app
 
