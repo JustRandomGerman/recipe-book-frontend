@@ -51,7 +51,7 @@ function CollectionMenu( { shown, setShown, recipeId, recipeCollections, setReci
             <ul>
                 {collections.map((collection: Collection) => <CollectionItem key={collection.name} collection={collection} recipeId={recipeId} recipeCollections={recipeCollections} setRecipe={setRecipe} setSuccess={setSuccess}/>)}
             </ul>
-            
+            <hr />
             <CollectionCreator parentShown={shown} setCollections={setCollections}/>
         </dialog>
     )

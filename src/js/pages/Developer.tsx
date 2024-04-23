@@ -22,7 +22,7 @@ function Developer() {
         <div className={style.developer}> 
             <h1>Developer Page</h1>
             <h2>Recipe export</h2>
-            <a href='http://localhost:3000/developer/export' target='_blank'>Export all recipes</a>
+            <a href={`${import.meta.env.VITE_BACKEND_URL}/developer/export`} target='_blank'>Export all recipes</a>
             <h2>Add new Tag</h2>
             <input type='text' placeholder='New tag' onInput={handleInput}/>
             <button title='Add new tag' onClick={handleSaveNewTag}>Save tag</button>

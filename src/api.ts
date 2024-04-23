@@ -3,7 +3,7 @@ import { Recipe } from './js/interfaces/Recipe';
 import { Tag } from './js/interfaces/Tag';
 import { Collection } from './js/interfaces/Collection';
 
-const baseURL = "http://localhost:3000";
+const baseURL = import.meta.env.VITE_BACKEND_URL;
 
 const getRecipes = function(){
     return axios.get<Recipe[]>(`${baseURL}/recipes`).then((response) => {

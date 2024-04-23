@@ -27,7 +27,7 @@ function Header( {setSidebarShown}: HeaderProps ) {
             <img id={style.logo} src={theme.logo} alt='Recipe Book'/>
           </Link>
         </div>
-        <SearchBar />
+        <SearchBar setSidebarShown={setSidebarShown} />
         <div>{/* This is for having everything in the correct place */}</div>
       </header>
     )

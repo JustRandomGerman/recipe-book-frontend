@@ -6,16 +6,18 @@ import { getAvailableTags } from '../../api';
 import { ThemeContext } from '../context/ThemeContext';
 
 interface FilterMenuProps{
-    selectedTags: Tag[],
+    selectedTags: Tag[]
     setSelectedTags: Function
+    shown: boolean
+    setShown: Function
 }
 
-function FilterMenu( {selectedTags, setSelectedTags}: FilterMenuProps ){
+function FilterMenu( {selectedTags, setSelectedTags, shown, setShown}: FilterMenuProps ){
     const theme = useContext(ThemeContext);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
     
-    const [shown, setShown] = useState<boolean>(false);
+    
     const [tags, setTags] = useState<Tag[]>([]);
 
     useEffect( () => {
@@ -23,15 +25,22 @@ function FilterMenu( {selectedTags, setSelectedTags}: FilterMenuProps ){
           setTags(response);
         })
     }, [])
+
+    useEffect(() => {
+        if(shown){
+            dialogRef.current?.show();
+        }
+        else{
+            dialogRef.current?.close();
+        }
+    }, [shown])
     
     function handleFilterButton(event: React.MouseEvent<HTMLElement>){
         event.preventDefault();
         if(!shown){
-            dialogRef.current?.show();
             setShown(true);
         }
         else{
-            dialogRef.current?.close();
             setShown(false);
         }
     }

@@ -32,6 +32,14 @@
     background-color: var(--background-color);
 }
 
+.popup hr{
+    margin: 0 0 1em 0;
+    height: 1px;
+    border-width: 0;
+    color: var(--line-color);
+    background-color: var(--line-color);
+}
+
 #close_button{
     float: right;
     position: relative;
