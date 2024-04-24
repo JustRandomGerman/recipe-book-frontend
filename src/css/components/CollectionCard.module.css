@@ -1,6 +1,15 @@
+.collection_card{
+    border-radius: .5em;
+    padding: .2em;
+}
+
+.collection_card:hover{
+    background-color: var(--line-color);
+    transition: 0.3s;
+}
+
 .collection_card h1{
-    margin-left: .5em;
-    margin-right: .5em;
+    margin: .5em;
     font-weight: normal;
     font-size: larger;
 }

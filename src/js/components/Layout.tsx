@@ -4,14 +4,17 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import { useState } from 'react';
 
-function Layout() {
+interface LayoutProps{
+  sidebarShown: boolean
+  setSidebarShown: Function
+}
 
-    const [sidebarShown, setSidebarShown] = useState<boolean>(false);
+function Layout( {sidebarShown, setSidebarShown} : LayoutProps) {
 
     return (
       <div id={style.layout}>
         <Header setSidebarShown={setSidebarShown} />
-        <Sidebar shown={sidebarShown} />
+        <Sidebar shown={sidebarShown} setShown={setSidebarShown} />
         <Outlet />
       </div>
     )

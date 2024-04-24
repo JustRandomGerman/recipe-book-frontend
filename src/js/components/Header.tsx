@@ -17,13 +17,17 @@ function Header( {setSidebarShown}: HeaderProps ) {
       })
     }
 
+    function hideSidebar(){
+      setSidebarShown(false);
+    }
+
     return (
       <header className={style.header}>
         <div id={style.left_part}>
           <button onClick={handleToggleSidebar}>
             <img src={theme.hamburgerMenuImage} />
           </button>
-          <Link to='/'>
+          <Link to='/' onClick={hideSidebar}>
             <img id={style.logo} src={theme.logo} alt='Recipe Book'/>
           </Link>
         </div>

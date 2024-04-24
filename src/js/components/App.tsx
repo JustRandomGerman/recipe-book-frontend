@@ -10,15 +10,18 @@ import APIDocumentation from '../pages/APIDocumentation';
 import NotFound from '../pages/NotFound';
 import { ThemeProvider } from '../context/ThemeContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+
+    const [sidebarShown, setSidebarShown] = useState<boolean>(false);
 
     return (
         <BrowserRouter>
             <ThemeProvider>
                 <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
+                    <Route path="/" element={<Layout sidebarShown={sidebarShown} setSidebarShown={setSidebarShown}/>}>
+                        <Route index element={<Home setSidebarShown={setSidebarShown}/>} />
                         <Route path="/recipe/:id" element={<Recipe/>} />
                         <Route path="/collection/:id" element={<Collection />} />
                         <Route path="/search" element={<Search/>} />
